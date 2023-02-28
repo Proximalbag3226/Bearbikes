@@ -1,0 +1,49 @@
+package com.example.bearbikes_react.controller;
+
+import com.example.bearbikes_react.model.Repair;
+import com.example.bearbikes_react.model.Workshop;
+import com.example.bearbikes_react.repository.RepairsRepository;
+import com.example.bearbikes_react.repository.WorkshopRepository;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/repairs")
+@CrossOrigin()
+public class RepairsController {
+    private final RepairsRepository repairsRepository;
+
+    public RepairsController(RepairsRepository repairsRepository){
+        this.repairsRepository = repairsRepository;
+    }
+
+    @GetMapping(value={"/count"})
+    public int countRegisteredRepairs(){
+        return repairsRepository.count();
+    }
+
+    @GetMapping(value={"/getAll"})
+    public List<Repair> getRegisteredRepairs() {
+        return repairsRepository.getAll();
+    }
+
+    @PostMapping(value="/register")
+    public String registerNewWorkshop(
+            @RequestParam("idDueño")int idDueño,
+            @RequestParam("idTaller")int idTaller,
+            @RequestParam("idCiclista")int idCiclista,
+            @RequestParam("tipo")String tipo
+            )
+    {
+        // http://localhost:9000/repairs/register?idDueño=2&idTaller=1&idCiclista=1&tipo=cambioRin
+        Repair newRepair = new Repair(idDueño, idCiclista, idTaller, tipo);
+        System.out.println(newRepair);
+
+
+        repairsRepository.addNew(newRepair);
+        return newRepair.toString();
+
+    }
+
+}
