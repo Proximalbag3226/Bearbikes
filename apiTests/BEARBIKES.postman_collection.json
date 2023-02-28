@@ -1,0 +1,289 @@
+{
+	"info": {
+		"_postman_id": "38324b9a-0384-4848-8060-e8bd1ba98331",
+		"name": "BEARBIKES",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26086390"
+	},
+	"item": [
+		{
+			"name": "CICLISTAS",
+			"item": [
+				{
+					"name": "Contar Ciclistas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/{{PATH_CICLISTAS}}/count",
+							"host": [
+								"{{SERVER_IP}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"{{PATH_CICLISTAS}}",
+								"count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Ciclistas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/{{PATH_CICLISTAS}}/getAll",
+							"host": [
+								"{{SERVER_IP}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"{{PATH_CICLISTAS}}",
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registrar Ciclistas",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"email@postman.com\",\r\n    \"password\": \"contraseñaPostman1\",\r\n    \"nombre\": \"Post\",\r\n    \"apellidoPat\": \"Man\",\r\n    \"apellidoMat\": \"Request\",\r\n    \"celular\": \"5533175289\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/{{PATH_CICLISTAS}}/register",
+							"host": [
+								"{{SERVER_IP}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"{{PATH_CICLISTAS}}",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DUEÑOS TALLER",
+			"item": [
+				{
+					"name": "Contar dueños taller",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/{{PATH_DUEÑOS_TALLER}}/count",
+							"host": [
+								"{{SERVER_IP}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"{{PATH_DUEÑOS_TALLER}}",
+								"count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Dueños taller",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/{{PATH_DUEÑOS_TALLER}}/getAll",
+							"host": [
+								"{{SERVER_IP}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"{{PATH_DUEÑOS_TALLER}}",
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registrar Dueños taller",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"email@postman.com\",\r\n    \"password\": \"contraseñaPostman1\",\r\n    \"nombre\": \"Post\",\r\n    \"apellidoPat\": \"Man\",\r\n    \"apellidoMat\": \"Request\",\r\n    \"celular\": \"5533175289\",\r\n    \"rfc\": \"1234567890ABCDE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/{{PATH_DUEÑOS_TALLER}}/register",
+							"host": [
+								"{{SERVER_IP}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"{{PATH_DUEÑOS_TALLER}}",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ADMINISTRADORES",
+			"item": [
+				{
+					"name": "Contar Administradores",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/{{PATH_ADMIN}}/count",
+							"host": [
+								"{{SERVER_IP}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"{{PATH_ADMIN}}",
+								"count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Administradores",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/{{PATH_ADMIN}}/getAll",
+							"host": [
+								"{{SERVER_IP}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"{{PATH_ADMIN}}",
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registrar Administradores",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"email@postman.com\",\r\n    \"password\": \"contraseñaPostman1\",\r\n    \"nombre\": \"Post\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/{{PATH_ADMIN}}/register?adminKey=CLAVE123",
+							"host": [
+								"{{SERVER_IP}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"{{PATH_ADMIN}}",
+								"register"
+							],
+							"query": [
+								{
+									"key": "adminKey",
+									"value": "CLAVE123"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TALLER",
+			"item": []
+		},
+		{
+			"name": "REPARACIONES",
+			"item": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "SERVER_IP",
+			"value": "127.0.0.1",
+			"type": "string"
+		},
+		{
+			"key": "SERVER_PORT",
+			"value": "9009",
+			"type": "string"
+		},
+		{
+			"key": "PATH_CICLISTAS",
+			"value": "ciclistas",
+			"type": "string"
+		},
+		{
+			"key": "PATH_ADMIN",
+			"value": "admins",
+			"type": "string"
+		},
+		{
+			"key": "PATH_TALLER",
+			"value": "workshop",
+			"type": "string"
+		},
+		{
+			"key": "PATH_DUEÑOS_TALLER",
+			"value": "workshopOwner",
+			"type": "string"
+		}
+	]
+}
