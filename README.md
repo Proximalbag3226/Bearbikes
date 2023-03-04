@@ -5,7 +5,7 @@ Proyecto web fullstack con spring boot y react
 
 - [@Brnd08](https://github.com/Brnd08) github
 - [@Proximalbag3226](https://github.com/Proximalbag3226) github
-- @Anet
+- [@Anet](https://github.com/AnetQuiroz) github
 - [@Mau](https://github.com/Mau439yt) github
 
 
