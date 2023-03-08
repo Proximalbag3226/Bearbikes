@@ -2,9 +2,11 @@ import Textimg from "../textimg";
 const Inicio= (props) => {
     return(
         <div>
-			<br/>
+			<br/><center>
         <p class="tituloinicio">Bear Bikes</p>
+		</center>
 		<br/><br/>
+		<center>
 		<Textimg
 		idtext={"ciclo1"}
 		claseimg={"cicloimg"}
@@ -17,6 +19,7 @@ const Inicio= (props) => {
 		textotitulo={"¿Que es Bear Bikes?"}
 		textotexto={"Bear Bikes es un proyecto destinado a los ciclistas de la ciudad de Mexico, ya que proporcionamos opciones de reapracion de bicicletas,venta de articulos de bicicletas y un generador de rutas exclusivo para ciclistas."}
 		imagen1={"rep"}/>
+		</center>
         </div>
     );
 }

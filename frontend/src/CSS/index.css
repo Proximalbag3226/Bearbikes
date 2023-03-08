@@ -50,7 +50,7 @@ body{
 }
 
 .tituloinicio{
-  margin-left: 37%;
+  
   font-family: 'Courgette', cursive;
   color: #fff;
   font-size: 90px;
@@ -414,7 +414,6 @@ body{
     width: 40%;
     margin: 5%;
     margin-top: 0;
-    float: left;
   }
 
   .repa1{
@@ -424,7 +423,7 @@ body{
     align-items: center;
   }
 
-  #description{
+  #descripcion{
     width: 40%;
     margin: 5%;
     margin-top: 0;
