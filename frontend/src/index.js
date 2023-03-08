@@ -15,7 +15,6 @@ import Reforma from "./Paginas/Reforma";
 import Polanco from "./Paginas/Polanco";
 import Basilica from "./Paginas/Basilica";
 import Chapultepec from "./Paginas/Chapultepec";
-import Eleccion from "./Paginas/Eleccion";
 import Tienda from "./Paginas/Tienda";
 
 const router = createBrowserRouter([
@@ -26,10 +25,6 @@ const router = createBrowserRouter([
   {
     path: '/ciclistasform',
     element: <Ciclistasf/>
-  },
-  {
-    path: '/eleccion',
-    element: <Eleccion/>
   },
   {
     path: '/info',
