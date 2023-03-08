@@ -16,7 +16,8 @@ function Producto(props){
                 fontSize: "40px",
                 fontFamily: 'Oranienbaum',
                 marginBottom: '15px',}}>{props.precio}</h1>
-            <Boton/>
+            <Boton
+            boton={"Agregar"}/>
         </div>
     );
 }

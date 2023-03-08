@@ -21,8 +21,8 @@ function Principal(){
         <div className={"container-menu"}>
             <div className={"cont-menu"}>
                 <nav>
-                    <a href={"/eleccion"}>Registro</a>
-                    <a href={"/form"}>Inicio de sesion</a>
+                    <a href={"/ciclistasform"}>Registro</a>
+                    <a href={"/formciclistas"}>Inicio de sesion</a>
                     <a href={"/infot"}>Sitios turisticos</a>
                     <a href={"/form"}>Tienda</a>
                     <a href={"/form"}>Comercios</a>

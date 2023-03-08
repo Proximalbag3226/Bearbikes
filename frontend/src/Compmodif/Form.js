@@ -10,7 +10,7 @@ const Formulario = () => {
         nombre: "",
         apellido_pat: "",
         apellido_mat: "",
-        telefono: "",
+        numerocelular: "",
         email: "",
         password: "",
     });
@@ -24,7 +24,7 @@ const Formulario = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        fetch("http://26.157.218.13:9000/ciclistas/register", {
+        fetch("http://192.168.20.110:9009/ciclistas/register", {
             //La direccion del fecht se cambia por que me de el pendejo del brandon
             method: "POST",
             headers: {
@@ -60,25 +60,25 @@ const Formulario = () => {
                 <Inputs
                     handleChange={handleChange}
                     placeholder={"Apellido Paterno"}
-                    idt={"apellido_pat"}
-                    name={"apellido_pat"}
-                    value={formData.apellido_pat}
+                    idt={"apellidoPat"}
+                    name={"apellidoPat"}
+                    value={formData.apellidoPat}
                 />
                 <br />
                 <br />
                 <Inputs
                     handleChange={handleChange}
                     placeholder={"Apellido Materno"}
-                    idt={"apellido_mat"}
-                    name={"apellido_mat"}
-                    value={formData.apellido_mat}
+                    idt={"apellidoMat"}
+                    name={"apellidoMat"}
+                    value={formData.apellidoMat}
                 />
                 <br />
                 <br />
                 <Numero
-                    placeholder={"Celular"}
-                    name={"telefono"}
-                    value={formData.telefono}
+                    placeholder={"numerocelular"}
+                    name={"numerocelular"}
+                    value={formData.numerocelular}
                     change={handleChange}
                 />
                 <br />
@@ -94,7 +94,8 @@ const Formulario = () => {
                 <br />
                 <br />
                 <br />
-                <Boton/>
+                <Boton
+                boton={"listo"}/>
             </div>
         </form>
     );
