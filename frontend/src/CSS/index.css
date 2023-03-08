@@ -423,7 +423,15 @@ body{
     align-items: center;
   }
 
+  
+
   #descripcion{
+    width: 40%;
+    margin: 5%;
+    margin-top: 0;
+  }
+
+  #servicios{
     width: 40%;
     margin: 5%;
     margin-top: 0;

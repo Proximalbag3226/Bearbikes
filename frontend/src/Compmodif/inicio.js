@@ -19,6 +19,8 @@ const Inicio= (props) => {
 		textotitulo={"¿Que es Bear Bikes?"}
 		textotexto={"Bear Bikes es un proyecto destinado a los ciclistas de la ciudad de Mexico, ya que proporcionamos opciones de reapracion de bicicletas,venta de articulos de bicicletas y un generador de rutas exclusivo para ciclistas."}
 		imagen1={"rep"}/>
+		<Textimg idtext={"servicios"} claseimg={"repa1"} textotitulo={"¿Que servicios ofrecemos?"} textotexto={"Bear Bikes ofrece servicios especializados en la vida del ciclista, siendo un creador de rutas, un tienda de compra de refacciones, un visualizador de sitios turisticos, entre otros."} imagen1={"ser"}/>
+
 		</center>
         </div>
     );
