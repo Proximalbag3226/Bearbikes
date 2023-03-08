@@ -7,7 +7,7 @@ function Principal(){
                     <label htmlFor={"btn-menu"}>☰</label>
                 </div>
                 <div className={"logo"}>
-                    <h1>BeardBikes</h1>
+                    <h1>Bear Bikes</h1>
                 </div>
                 <nav className={"menu"}>
                     <a href="/">Inicio</a>
