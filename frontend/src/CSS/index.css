@@ -47,6 +47,7 @@ body{
     margin-top: 5%;
     color: #fff;
     font-family: 'Roboto Mono', monospace;
+    font-size: x-large;
 }
 
 .tituloinicio{
@@ -498,6 +499,22 @@ body{
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     background-color: black;
     border-radius: 15px;
+}
+
+.eleccion{
+    text-align: center;
+    align-items: center;
+}
+
+.eleccion a{
+    text-decoration: none;
+    outline: none;
+    font-family: 'Space Grotesk', sans-serif;
+    color: white;
+    font-size: 30px;
+    background-color: rgba(215, 32, 87, 0.18);
+    border-radius: 5px;
+    padding: 8px;
 }
 
 

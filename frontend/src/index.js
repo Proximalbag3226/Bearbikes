@@ -16,11 +16,16 @@ import Polanco from "./Paginas/Polanco";
 import Basilica from "./Paginas/Basilica";
 import Chapultepec from "./Paginas/Chapultepec";
 import Tienda from "./Paginas/Tienda";
+import Eleccion from "./Paginas/Eleccion";
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <BeardBikes/>
+  },
+  {
+    path: '/eleccion',
+    element: <Eleccion/>
   },
   {
     path: '/ciclistasform',

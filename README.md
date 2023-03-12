@@ -11,9 +11,10 @@ Proyecto web fullstack con spring boot y react
 
 ## Usage
 ### Frontend
-Para ejecutar el frontend entra a la carpeta fronted y ejecuta 
+Para ejecutar el frontend entra a la carpeta fronted y ejecuta los sighuiente comandos en el roden correspondiente 
 ```
 npm install
+npm install react-router-dom
 npm start
 ```
 

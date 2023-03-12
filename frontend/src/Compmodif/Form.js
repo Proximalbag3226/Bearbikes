@@ -76,7 +76,7 @@ const Formulario = () => {
                 <br />
                 <br />
                 <Numero
-                    placeholder={"numerocelular"}
+                    placeholder={"Numero celular"}
                     name={"numerocelular"}
                     value={formData.numerocelular}
                     change={handleChange}
