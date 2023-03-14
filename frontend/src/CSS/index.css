@@ -483,15 +483,21 @@ body{
 
 .product-container{
     width: 450px;
-    height: 450px;
+    height: 500px;
     text-align: center;
     align-items: center;
     margin: 5%;
+    padding: 10px;
+    background-color: rgba(38, 255, 0, 0.2);
+    border-radius: 20px;
 }
 
 .product-container img{
     width: 300px;
+    height: 300px;
+    border-radius: 20px;
     background-color: grey;
+    border: 5px solid rgb(0, 0, 0);
 }
 
 .product-container:hover {
