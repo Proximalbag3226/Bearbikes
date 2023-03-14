@@ -558,3 +558,10 @@ body{
 .leaflet-control-attribution {
   font-size: 10px;
 }
+
+.divaviso{
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 500px;
+  padding: 15px;
+  border-radius: 20px;
+}
