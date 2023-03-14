@@ -30,7 +30,7 @@ function Principal(){
                     <a href={"/tienda"}>Tienda bicicletas</a>
                     <a href={"/form"}>Talleres</a>
                     <a href={"/form"}>Reparaciones</a>
-                    <a href={"/form"}>Creador de rutas</a>
+                    <a href={"/rutas"}>Creador de rutas</a>
                     <a href={"/form"}>Avisos</a>
                 </nav>
                 <label htmlFor={"btn-menu"}>✖</label>
