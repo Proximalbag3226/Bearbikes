@@ -573,3 +573,7 @@ body{
   padding: 15px;
   border-radius: 20px;
 }
+
+.enlaces{
+  background-color: rgba(0, 0, 0, 0.75);
+}

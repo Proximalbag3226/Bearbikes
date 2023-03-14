@@ -4,13 +4,13 @@ import Inicio from "../Compmodif/inicio";
 const BeardBikes = () => {
     return(
         <div>
-        <div>
-          <Principal/>
+          <div>
+            <Principal/>
+          </div>
+          <div>
+            <Inicio/>
+          </div>
         </div>
-        <div>
-          <Inicio/>
-        </div>
-      </div>
     );
 }
 
