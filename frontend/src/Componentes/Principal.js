@@ -22,9 +22,9 @@ function Principal(){
             <div className={"cont-menu"}>
                 <nav>
                     <a href={"/eleccion"}>Registro</a>
-                    <a href={"/formciclistas"}>Inicio de sesion</a>
+                    <a href={"/login"}>Inicio de sesion</a>
                     <a href={"/infot"}>Sitios turisticos</a>
-                    <a href={"/form"}>Tienda</a>
+                    <a href={"/tienda"}>Tienda</a>
                     <a href={"/form"}>Comercios</a>
                     <a href={"/infob"}>Info bicicletas</a>
                     <a href={"/tienda"}>Tienda bicicletas</a>

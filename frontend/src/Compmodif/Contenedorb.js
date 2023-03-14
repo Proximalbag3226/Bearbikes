@@ -11,7 +11,7 @@ function Contenedorb() {
             <Tarjeta
                 lugar='Baterias Phylion'
                 imagen='bici'
-                href={"/baterias"}/>
+                href={"/bateria"}/>
             <Tarjeta
                 lugar='Equipamiento obligatorio'
                 imagen='equipo'

@@ -17,6 +17,10 @@ import Basilica from "./Paginas/Basilica";
 import Chapultepec from "./Paginas/Chapultepec";
 import Tienda from "./Paginas/Tienda";
 import Eleccion from "./Paginas/Eleccion";
+import Rutas from "./Paginas/Rutas";
+import Cuadro_b from "./Paginas/Cuadro_b";
+import Bateria from "./Paginas/Baterias";
+import Equipo from "./Paginas/Equipo";
 
 const router = createBrowserRouter([
   {
@@ -79,6 +83,22 @@ const router = createBrowserRouter([
     path: '/chapultepec',
     element: <Chapultepec/>
   },
+  {
+    path: '/rutas',
+    element: <Rutas/>
+  },
+  {
+    path:'/cuadro',
+    element: <Cuadro_b/>
+  },
+  {
+    path: '/bateria',
+    element: <Bateria/>
+  },
+  {
+    path: '/equipo',
+    element: <Equipo/>
+  }
 
 
 ]);
