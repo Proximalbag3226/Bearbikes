@@ -16,6 +16,7 @@ import Polanco from "./Paginas/Polanco";
 import Basilica from "./Paginas/Basilica";
 import Chapultepec from "./Paginas/Chapultepec";
 import Tienda from "./Paginas/Tienda";
+import Avisos from './Paginas/Avisos';
 
 const router = createBrowserRouter([
   {
@@ -74,8 +75,10 @@ const router = createBrowserRouter([
     path: '/chapultepec',
     element: <Chapultepec/>
   },
-
-
+  {
+    path: '/Avisos',
+    element: <Avisos/>
+  },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
