@@ -12,7 +12,7 @@ const Tienda = () =>{
             <center>
             <div className="productos">
                 <Producto
-                producto={"Amort. de suspencion"}
+                producto={"Amort. de suspensión"}
                 img1={"Amortiguadordesuspensión"}
                 precio={"$50"}/>
                 <Producto
