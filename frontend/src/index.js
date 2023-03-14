@@ -16,6 +16,7 @@ import Polanco from "./Paginas/Polanco";
 import Basilica from "./Paginas/Basilica";
 import Chapultepec from "./Paginas/Chapultepec";
 import Tienda from "./Paginas/Tienda";
+import Map from './Paginas/Rutas';
 
 const router = createBrowserRouter([
   {
@@ -74,6 +75,10 @@ const router = createBrowserRouter([
     path: '/chapultepec',
     element: <Chapultepec/>
   },
+  {
+    path: '/rutas',
+    element: <Map/>
+  }
 
 
 ]);
