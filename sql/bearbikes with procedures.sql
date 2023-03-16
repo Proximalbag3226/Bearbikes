@@ -38,7 +38,7 @@ create table TipoPersonas(
     tipo_persona varchar(15) not null
 );
 
-insert into TipoPersonas values (1, 'DUEÑO TALLER');
+insert into TipoPersonas values (1, 'DUEÑO_TALLER');
 insert into TipoPersonas values (2, 'CICLISTA');
 
 
@@ -117,16 +117,11 @@ create table Taller_Direccion(
 );
 
 
-create table Productos(
+create table Producto(
 	idProducto int auto_increment primary key,
     nombreProducto varchar(30),
     descripcionProducto varchar(200),
-    precioProducto int check(precioProducto > 0) not null,
-    imagenProducto LONGBLOB);
-    
-INSERT INTO productos (nombreProducto, precioProducto, imagenProducto) values ('dado', 50, LOAD_FILE('\\C:\\Users\\alumno\\Desktop\\dado.jpg'));
-DELETE FROM productos where productos.idProducto = 3;
-
+    imagenProducto BLOB);
 
 create table Chats(
 	id_chat int not null primary key auto_increment,
@@ -296,7 +291,7 @@ select usuarios.id_usuario as id, usuarios.email_usuario as email, usuarios.pass
     -- ------------------------------------------- SELECT CLAUSE para ADMINS by ID---------------------------------------------
 select usuarios.id_usuario as id, usuarios.email_usuario as email, usuarios.password_usuario as password, usuarios.account_status, administradores.nombre_admin as nombre, administradores.fecha_registro 
 	from usuarios, administradores 
-	where usuarios.id_usuario = administradores.id_admin;
+	where usuarios.id_usuario = administradores.id_admin and usuarios.id_usuario = 4;
     
 -- ------------------------------------------- SELECT CLAUSE para CICLISTAS ---------------------------------------------
 select usuarios.id_usuario as id, usuarios.email_usuario as email, usuarios.password_usuario as password, usuarios.account_status,
@@ -366,5 +361,17 @@ CALL login_usuario ('procedureCiclista@mysql.com', 'password',  @idUsuario, @ema
 SELECT @idUsuario AS id, @emailUsuario AS email, @passwordUsuario AS pass, @statusUsuario AS status, @roleUsuario AS role;
 
     
-
-show tables;
+    -- ------------------------------------------- SELECT CLAUSE para ROLES ---------------------------------------------
+SELECT tipoUsuarios.tipo_usuario AS role
+	FROM tipoUsuarios 
+    WHERE tipoUsuarios.tipo_usuario!='PERSONA'
+    UNION 
+    SELECT tipoPersonas.tipo_persona AS role
+    FROM tipoPersonas;
+        -- ------------------------------------------- SELECT CLAUSE para ROLES por Nombre rol ---------------------------------------------
+SELECT tipoUsuarios.tipo_usuario AS role
+	FROM tipoUsuarios 
+    WHERE tipoUsuarios.tipo_usuario='ADMINISTRADOR'
+    UNION 
+    SELECT tipoPersonas.tipo_persona AS role
+    FROM tipoPersonas WHERE tipoPersonas.tipo_persona = 'CICLISTA';
