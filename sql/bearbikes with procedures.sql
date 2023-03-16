@@ -375,3 +375,41 @@ SELECT tipoUsuarios.tipo_usuario AS role
     UNION 
     SELECT tipoPersonas.tipo_persona AS role
     FROM tipoPersonas WHERE tipoPersonas.tipo_persona = 'CICLISTA';
+    
+-- ------------------------------------------- find USER BY ID PROCEDURE----------------------------------------------------
+DROP procedure IF EXISTS find_user_by_id;
+    DELIMITER $$
+-- ---------------------- PROCEDURE USUARIO POR ID --------------------------------------------------------------- $$
+	CREATE PROCEDURE find_user_by_id (IN id varchar(30), OUT idUsuario int, OUT email varchar(30), OUT password varchar(25), OUT status varchar(15), OUT role varchar(15))
+		BEGIN     
+			
+			DECLARE tipoUsuario INT DEFAULT 1; -- Tipo usuario correspondiente a persona
+			DECLARE tipoPersona INT DEFAULT 2; -- Tipo persona correspondiente a ciclista
+            
+			SELECT usuarios.id_usuario, usuarios.email_usuario, usuarios.password_usuario, usuarios.account_status, usuarios.tipo_usuario 
+            into  idUsuario, email, password, status, tipoUsuario
+            FROM usuarios
+            where usuarios.id_usuario = id;
+            
+			IF tipoUsuario = 2 -- ADMINISTRADOR
+				THEN
+                    SELECT 'ADMINISTRADOR' into role;
+                ELSE -- PERSONA
+                    SELECT @tipoPersona := Personas.tipo_persona
+					From personas
+					where idUsuario = personas.id_persona;
+                    IF tipoPersona = 1 -- DUEÑO TALLER
+						THEN 
+							SELECT 'DUEÑO TALLER' INTO role;
+						ELSE
+							SELECT 'CICLISTA' INTO role;
+					END IF;
+			END IF;
+		END $$    
+DELIMITER ;
+
+
+CALL find_user_by_id (1,  @idUsuario, @emailUsuario, @passwordUsuario, @statusUsuario, @roleUsuario);
+
+SELECT @idUsuario AS id, @emailUsuario AS email, @passwordUsuario AS pass, @statusUsuario AS status, @roleUsuario AS role;
+
