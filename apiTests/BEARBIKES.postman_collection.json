@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "38324b9a-0384-4848-8060-e8bd1ba98331",
-		"name": "BEARBIKES",
+		"_postman_id": "81d74183-2069-4f37-9a0f-42074c0437d8",
+		"name": "BEARBIKES REQUESTS",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "26086390"
 	},
@@ -196,7 +196,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"email@postman.com\",\r\n    \"password\": \"contraseñaPostman1\",\r\n    \"nombre\": \"Post\"\r\n}",
+							"raw": "{\r\n    \"email\": \"email1@postman.com\",\r\n    \"password\": \"contraseñaPostman1\",\r\n    \"nombre\": \"Post\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
