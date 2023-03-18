@@ -16,7 +16,7 @@ create table Usuarios (
 	primary key (id_usuario),
     
 	email_usuario varchar(30) not null unique,
-	password_usuario varchar(25) not null,
+	password_usuario varchar(100) not null,
 	account_status varchar(25) not null default 'ACTIVA',
     
 	tipo_usuario int not null default 1 references TipoUsuarios(id_tipo_usuario),
@@ -413,3 +413,24 @@ CALL find_user_by_id (1,  @idUsuario, @emailUsuario, @passwordUsuario, @statusUs
 
 SELECT @idUsuario AS id, @emailUsuario AS email, @passwordUsuario AS pass, @statusUsuario AS status, @roleUsuario AS role;
 
+
+-- ------------------------------------- TABLA PARA ALMACENAR SESIONES JWT-----------------------------------
+
+create table Token (
+	id_token int auto_increment primary key,
+    id_usuario int not null,
+    token varchar (200) not null unique,
+    revocado boolean,
+    expirado boolean,
+    tipo varchar(10) default 'BEARER' check (tipo = 'BEARER'),
+    foreign key (id_usuario) references Usuarios(id_usuario)
+);
+
+INSERT INTO Token (id_usuario, token, revocado, expirado ) VALUES (1, 'ELTOKEN1_1234Z', FALSE, FALSE);
+INSERT INTO Token (id_usuario, token, revocado, expirado ) VALUES (2, 'ELTOKEN2_1234Z', FALSE, FALSE);
+SELECT * FROM Token;
+
+-- -------------------------------------------------- SELECT CLAUSE PARA TOKENS VALIDOS POR ID USUARIO --------------------
+SELECT * FROM token WHERE token.id_usuario = 3;
+-- -------------------------------------------------- SELECT CLAUSE PARA TOKENS VALIDOS POR TOKEN STRING --------------------
+SELECT * FROM token WHERE token.token= 'ELTOKEN2_1234Z';
