@@ -6,16 +6,16 @@ function Producto(props){
             <h3 style={{color: "white",
                 textAlign: "center",
                 fontSize: "40px",
-                fontFamily: 'Oranienbaum',
+                fontFamily: 'Roboto',
                 marginBottom: '15px',}}>{props.producto}</h3>
             <h3>
                 <img src={require(`../IMG/${props.img1}.jpg`)}/>
             </h3>
-            <h1 style={{color: "white",
+            <p style={{color: "white",
                 textAlign: "center",
-                fontSize: "40px",
-                fontFamily: 'Oranienbaum',
-                marginBottom: '15px',}}>{props.precio}</h1>
+                fontSize: "45px",
+                fontFamily: 'Franklin Gothic', 
+                fontWeight:'inherit',}}>{props.precio}</p>
             <Boton
             boton={"Agregar"}/>
         </div>

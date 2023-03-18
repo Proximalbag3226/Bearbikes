@@ -31,7 +31,7 @@ function Principal(){
                     <a href={"/form"}>Talleres</a>
                     <a href={"/form"}>Reparaciones</a>
                     <a href={"/form"}>Creador de rutas</a>
-                    <a href={"/form"}>Avisos</a>
+                    <a href={"/Avisos"}>Avisos</a>
                 </nav>
                 <label htmlFor={"btn-menu"}>✖</label>
             </div>

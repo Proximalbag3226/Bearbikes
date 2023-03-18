@@ -483,21 +483,97 @@ body{
 
 .product-container{
     width: 450px;
-    height: 450px;
+    height: 500px;
     text-align: center;
     align-items: center;
     margin: 5%;
+    padding: 10px;
+    background-color: rgba(80, 65, 85, 0.4);
+    border-radius: 20px;
 }
 
 .product-container img{
     width: 300px;
-    background-color: grey;
+    height: 300px;
+    border-radius: 20px;
+    background-color: rgb(0, 0, 0);
+    border: 5px solid rgb(0, 0, 0);
 }
 
 .product-container:hover {
+    transition-duration: 0.75s;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.5);
     border-radius: 15px;
+    animation-duration: 0.75s;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Righteous&family=Roboto:wght@300;400&family=Space+Mono&family=Ubuntu&family=Ubuntu+Mono&display=swap');
 
+:root {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo-mid {
+  height: 100px;
+  margin: 20px;
+}
+
+.logo-small {
+  height: 20px;
+  margin-bottom: 20px;
+}
+
+.map-component {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 2000px;
+  height: 1000px;
+  margin-left: 15%;
+  margin-top: 5%;
+}
+
+.map {
+  height: 1000px;
+  width: 2000px;
+  margin: 30px;
+  border: 1px solid gray;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: whitesmoke;
+  border-radius: 5px;
+}
+
+/* --- (4) Leaflet container with map dimensions (other properties optional) --- */
+.leaflet-container {
+  width: 2000px;
+  height: 1000px;
+  border-radius: 5px;
+}
+
+.leaflet-control-attribution {
+  font-size: 10px;
+}
+
+.divaviso{
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 500px;
+  padding: 15px;
+  border-radius: 20px;
+}
+
+.enlaces{
+  background-color: rgba(0, 0, 0, 0.75);
+}
