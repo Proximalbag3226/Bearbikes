@@ -2,3 +2,5 @@
 node_modules/
 # Idea files
 *.idea/
+# .env file 
+backend/src/main/resources/.env
