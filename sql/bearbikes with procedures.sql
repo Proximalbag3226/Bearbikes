@@ -16,7 +16,7 @@ create table Usuarios (
 	primary key (id_usuario),
     
 	email_usuario varchar(30) not null unique,
-	password_usuario varchar(100) not null,
+	password_usuario varchar(200) not null,
 	account_status varchar(25) not null default 'ACTIVA',
     
 	tipo_usuario int not null default 1 references TipoUsuarios(id_tipo_usuario),
@@ -206,7 +206,7 @@ DELIMITER $$
 
 -- ---------------------- PROCEDURE NUEVO CICLISTA --------------------------------------------------------------- $$
 	CREATE PROCEDURE insertar_ciclista 
-		(IN emailUsuario varchar(30), IN passwordUsuario varchar(25), IN nombreCiclista varchar(30), 
+		(IN emailUsuario varchar(30), IN passwordUsuario varchar(200), IN nombreCiclista varchar(30), 
 		IN apellidoPat varchar(30), IN apellidoMat varchar(30), IN numeroCelular varchar(10), IN tokenPersonalCiclista varchar(30),
 		OUT idUsuarioInsertado int)
 		BEGIN     
@@ -229,7 +229,7 @@ DELIMITER $$
     
 -- ---------------------- PROCEDURE NUEVO DUEÑO TALLER ---------------------------------------------------------------$$
     CREATE PROCEDURE insertar_dueño_taller 
-		(IN emailUsuario varchar(30), IN passwordUsuario varchar(25), IN nombreDueño varchar(30), IN apellidoPat varchar(30), 
+		(IN emailUsuario varchar(30), IN passwordUsuario varchar(200), IN nombreDueño varchar(30), IN apellidoPat varchar(30), 
 		IN apellidoMat varchar(30), IN numeroCelular varchar(10), IN RFCFisica varchar(15), OUT idUsuarioInsertado int)
 		BEGIN
 			DECLARE new_id INT DEFAULT 0; -- Id que se asignara al nuevo usuario y se retornara
@@ -248,7 +248,7 @@ DELIMITER $$
 		END $$
     
 -- ---------------------- PROCEDURE NUEVO ADMIN ---------------------------------------------------------------$$
-    CREATE PROCEDURE insertar_admin (IN emailUsuario varchar(30), IN passwordUsuario varchar(25), IN nombreAdmin varchar(20), OUT idUsuarioInsertado int)
+    CREATE PROCEDURE insertar_admin (IN emailUsuario varchar(30), IN passwordUsuario varchar(200), IN nombreAdmin varchar(20), OUT idUsuarioInsertado int)
 		BEGIN
 			DECLARE new_id INT DEFAULT 0; -- Id que se asignara al nuevo usuario y se retornara
 			DECLARE tipoUsuario INT DEFAULT 2; -- Tipo usuario correspondiente a Administrador
@@ -327,7 +327,7 @@ INSERT INTO mensajes (tipo_mensaje, id_chat, id_Emisor, contenido_mensaje) value
 DROP procedure IF EXISTS login_usuario;
     DELIMITER $$
 -- ---------------------- PROCEDURE LOGIN USUARIO --------------------------------------------------------------- $$
-	CREATE PROCEDURE login_usuario (IN emailUsuario varchar(30), IN passwordUsuario varchar(25), OUT id int, OUT email varchar(30), OUT password varchar(25), OUT status varchar(15), OUT role varchar(15))
+	CREATE PROCEDURE login_usuario (IN emailUsuario varchar(30), IN passwordUsuario varchar(200), OUT id int, OUT email varchar(30), OUT password varchar(200), OUT status varchar(15), OUT role varchar(15))
 		BEGIN     
 			DECLARE idUsuario INT DEFAULT 0; -- Id que se asignara al nuevo usuario y se retornara
 			DECLARE tipoUsuario INT DEFAULT 1; -- Tipo usuario correspondiente a persona
@@ -380,7 +380,7 @@ SELECT tipoUsuarios.tipo_usuario AS role
 DROP procedure IF EXISTS find_user_by_id;
     DELIMITER $$
 -- ---------------------- PROCEDURE USUARIO POR ID --------------------------------------------------------------- $$
-	CREATE PROCEDURE find_user_by_id (IN id varchar(30), OUT idUsuario int, OUT email varchar(30), OUT password varchar(25), OUT status varchar(15), OUT role varchar(15))
+	CREATE PROCEDURE find_user_by_id (IN id int, OUT idUsuario int, OUT email varchar(30), OUT password varchar(200), OUT status varchar(15), OUT role varchar(15))
 		BEGIN     
 			
 			DECLARE tipoUsuario INT DEFAULT 1; -- Tipo usuario correspondiente a persona
@@ -409,7 +409,7 @@ DROP procedure IF EXISTS find_user_by_id;
 DELIMITER ;
 
 
-CALL find_user_by_id (1,  @idUsuario, @emailUsuario, @passwordUsuario, @statusUsuario, @roleUsuario);
+CALL find_user_by_id (4,  @idUsuario, @emailUsuario, @passwordUsuario, @statusUsuario, @roleUsuario);
 
 SELECT @idUsuario AS id, @emailUsuario AS email, @passwordUsuario AS pass, @statusUsuario AS status, @roleUsuario AS role;
 
@@ -431,6 +431,6 @@ INSERT INTO Token (id_usuario, token, revocado, expirado ) VALUES (2, 'ELTOKEN2_
 SELECT * FROM Token;
 
 -- -------------------------------------------------- SELECT CLAUSE PARA TOKENS VALIDOS POR ID USUARIO --------------------
-SELECT * FROM token WHERE token.id_usuario = 3;
+SELECT * FROM token WHERE token.id_usuario = 4;
 -- -------------------------------------------------- SELECT CLAUSE PARA TOKENS VALIDOS POR TOKEN STRING --------------------
 SELECT * FROM token WHERE token.token= 'ELTOKEN2_1234Z';
