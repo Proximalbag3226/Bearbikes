@@ -41,8 +41,7 @@ public class TokenRepository {
     }
 
     public Optional<Token> findByToken(String token){
-       return Optional.ofNullable( (Token)
-               jdbcTemplate.queryForObject(SELECT_VALID_TOKENS_BY_TOKEN_STRING,new TokenMapper(), token));
+       return Optional.ofNullable( jdbcTemplate.queryForObject(SELECT_VALID_TOKENS_BY_TOKEN_STRING,new TokenMapper(), token));
     }
     
     
@@ -55,13 +54,13 @@ public class TokenRepository {
     public void save(Token storedToken){
         
         
-        Object args[] = {
+        Object[] args = {
             storedToken.getIdUsuario(),
             storedToken.getTokenString(),
             storedToken.isRevoked(),
             storedToken.isExpired()            
         };
-        int argsTypes[] = {
+        int[] argsTypes = {
             Types.INTEGER,
             Types.VARCHAR,
             Types.BOOLEAN,
@@ -69,7 +68,7 @@ public class TokenRepository {
         };
         
         jdbcTemplate.update(INSERT_NEW_TOKEN, args, argsTypes);
-    };
+    }
     
     public static class TokenMapper implements RowMapper<Token>{
 

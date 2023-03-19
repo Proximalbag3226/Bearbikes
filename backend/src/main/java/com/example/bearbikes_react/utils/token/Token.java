@@ -8,6 +8,7 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
+@AllArgsConstructor
 public class Token {
     private Integer id;
     private String tokenString;

@@ -2,6 +2,7 @@ package com.example.bearbikes_react.model.user;
 
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -11,6 +12,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Builder
+@AllArgsConstructor
 public class User implements UserDetails {
     private int id;
     private String email;
@@ -19,6 +21,7 @@ public class User implements UserDetails {
     private AccountStatus accountStatus;
     @Enumerated(EnumType.STRING)
     private UserRole role;
+
 
     public User() {
         // left intentionally blank for mapping purposes
