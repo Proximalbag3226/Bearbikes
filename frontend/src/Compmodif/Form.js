@@ -6,6 +6,7 @@ import Contra from "../Componentes/contra";
 import Boton from "../Componentes/botonr";
 
 const Formulario = () => {
+    const campos = ["nombre", "apellido_pat", "apellido_mat", "numerocelular", "email", "password"];
     const [formData, setFormData] = useState({
         nombre: "",
         apellido_pat: "",
@@ -25,7 +26,6 @@ const Formulario = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         fetch("http://192.168.20.110:9009/ciclistas/register", {
-            //La direccion del fecht se cambia por que me de el pendejo del brandon
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -35,6 +35,7 @@ const Formulario = () => {
             .then((response) => response.json())
             .then((data) => {
                 console.log("Success:", data);
+                localStorage.setItem("token", data.token);
             })
             .catch((error) => {
                 console.error("Error:", error);
@@ -76,7 +77,7 @@ const Formulario = () => {
                 <br />
                 <br />
                 <Numero
-                    placeholder={"Numero celular"}
+                    placeholder={"numerocelular"}
                     name={"numerocelular"}
                     value={formData.numerocelular}
                     change={handleChange}
@@ -95,7 +96,7 @@ const Formulario = () => {
                 <br />
                 <br />
                 <Boton
-                boton={"listo"}/>
+                    boton={"listo"}/>
             </div>
         </form>
     );
