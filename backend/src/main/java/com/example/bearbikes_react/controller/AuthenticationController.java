@@ -1,9 +1,9 @@
 package com.example.bearbikes_react.controller;
 
 import com.example.bearbikes_react.model.service.AuthenticationService;
-import com.example.bearbikes_react.utils.auth.AuthenticationResponse;
-import com.example.bearbikes_react.utils.auth.requests.Authenticate.AuthenticateRequest;
-import com.example.bearbikes_react.utils.auth.requests.Register.RegisterRequest;
+import com.example.bearbikes_react.utils.payload.user.authenticate.response.AuthenticationResponse;
+import com.example.bearbikes_react.utils.payload.user.authenticate.request.AuthenticateRequest;
+import com.example.bearbikes_react.utils.payload.user.register.request.RegisterRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -1,4 +1,4 @@
-package com.example.bearbikes_react.utils.auth;
+package com.example.bearbikes_react.utils.payload.user.authenticate.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthenticationResponse {
-  private String token;
-  private String message;
+public class AuthenticateRequest {
+  private String email;
+  private String password;
 }

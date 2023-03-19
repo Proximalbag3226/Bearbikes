@@ -1,4 +1,4 @@
-package com.example.bearbikes_react.utils.auth.requests.Register;
+package com.example.bearbikes_react.utils.payload.user.register.request;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
