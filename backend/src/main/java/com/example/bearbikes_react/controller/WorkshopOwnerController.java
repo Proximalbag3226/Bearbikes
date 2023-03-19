@@ -1,7 +1,7 @@
 package com.example.bearbikes_react.controller;
 
 import com.example.bearbikes_react.model.user.WorkshopOwner;
-import com.example.bearbikes_react.model.reporitory.WorkshopOwnerRepository;
+import com.example.bearbikes_react.model.repository.WorkshopOwnerRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

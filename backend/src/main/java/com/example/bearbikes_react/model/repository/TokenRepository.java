@@ -1,4 +1,4 @@
-package com.example.bearbikes_react.model.reporitory;
+package com.example.bearbikes_react.model.repository;
 
 import com.example.bearbikes_react.utils.token.Token;
 import com.example.bearbikes_react.utils.token.TokenType;
