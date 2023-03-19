@@ -91,7 +91,7 @@ public class AdminsRepository {
         Map<String, Object> result = addUserProcedureCall.execute(
                 newAdmin.getEmail(),
                 newAdmin.getPassword(),
-                newAdmin.getNombre()
+                newAdmin.getName()
         );
 
         int insertedAdminId = (int) result.getOrDefault("idUsuarioInsertado", -1);
@@ -119,7 +119,7 @@ public class AdminsRepository {
         Map<String, Object> result = addUserProcedureCall.execute(
                 newAdmin.getEmail(),
                 newAdmin.getPassword(),
-                newAdmin.getNombre()
+                newAdmin.getName()
         );
 
         int insertedAdminId = (int) result.getOrDefault("idUsuarioInsertado", -1);
@@ -139,7 +139,7 @@ public class AdminsRepository {
             admin.setPassword(rs.getString ("password"));
             // assign an enum corresponding to the varchar value of account_status
             admin.setAccountStatus(AccountStatus.valueOf(rs.getString ("account_status")));
-            admin.setNombre(rs.getString ("nombre"));
+            admin.setName(rs.getString ("nombre"));
             admin.setRegisterDate(rs.getDate ("fecha_registro"));
             return admin;
         }

@@ -1,22 +1,18 @@
 package com.example.bearbikes_react.model.user;
 
-public class WorkshopOwner {
-    private int id;
-    private String email;
-    private String password;
+public class WorkshopOwner extends User {
+    private static final UserRole ROLE = UserRole.DUEÑO_TALLER;
     private String nombre;
     private String apellidoPat;
     private String apellidoMat;
     private String numerocelular;
     private String rfcFisica;
-    private AccountStatus accountStatus;
 
     public WorkshopOwner() {
     }
 
     public WorkshopOwner(String email, String password, String nombre, String apellidoPat, String apellidoMat, String numerocelular, String rfcFisica) {
-        this.email = email;
-        this.password = password;
+        super(email, password, ROLE);
         this.nombre = nombre;
         this.apellidoPat = apellidoPat;
         this.apellidoMat = apellidoMat;
@@ -24,51 +20,19 @@ public class WorkshopOwner {
         this.rfcFisica = rfcFisica;
     }
 
-    public AccountStatus getAccountStatus() {
-        return accountStatus;
-    }
-
-    public void setAccountStatus(AccountStatus accountStatus) {
-        this.accountStatus = accountStatus;
-    }
-
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("WorkshopOwnerId{");
-        sb.append("id=").append(id);
-        sb.append(", email='").append(email).append('\'');
-        sb.append(", password='").append(password).append('\'');
+        final StringBuilder sb = new StringBuilder("WorkshopOwner{");
+        sb.append("id=").append(super.getId());
+        sb.append(", email='").append(super.getEmail()).append('\'');
+        sb.append(", password='").append(super.getPassword()).append('\'');
         sb.append(", nombre='").append(nombre).append('\'');
         sb.append(", apellidoPat='").append(apellidoPat).append('\'');
         sb.append(", apellidoMat='").append(apellidoMat).append('\'');
         sb.append(", numerocelular='").append(numerocelular).append('\'');
-        sb.append(", RFC_Fisica='").append(rfcFisica).append('\'');
+        sb.append(", rfcFisica='").append(rfcFisica).append('\'');
         sb.append('}');
         return sb.toString();
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getNombre() {

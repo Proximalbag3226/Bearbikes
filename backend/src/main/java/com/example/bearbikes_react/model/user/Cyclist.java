@@ -1,31 +1,24 @@
 package com.example.bearbikes_react.model.user;
 
-public class Cyclist {
-    private int id;
-    private String email;
-    private String password;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+public class Cyclist extends User {
+    private static final UserRole ROLE = UserRole.CICLISTA;
+
     private String nombre;
     private String apellidoPat;
     private String apellidoMat;
     private String numerocelular;
     private String tokenPersonal;
 
-    private AccountStatus accountStatus;
-
-    public AccountStatus getAccountStatus() {
-        return accountStatus;
+    public Cyclist(String email, String password, String nombre) {
+        super(email, password, ROLE);
+        this.nombre = nombre;
     }
 
-    public void setAccountStatus(AccountStatus estadoCuenta) {
-        this.accountStatus = estadoCuenta;
-    }
-
-    public Cyclist(){
-
-    }
     public Cyclist(String email, String password, String nombre, String apellidoPat, String apellidoMat, String numerocelular, String tokenPersonal) {
-        this.email = email;
-        this.password = password;
+        super(email, password, ROLE);
         this.nombre = nombre;
         this.apellidoPat = apellidoPat;
         this.apellidoMat = apellidoMat;
@@ -36,9 +29,9 @@ public class Cyclist {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Ciclist{");
-        sb.append("id=").append(id);
-        sb.append(", email='").append(email).append('\'');
-        sb.append(", password='").append(password).append('\'');
+        sb.append("id=").append(super.getId());
+        sb.append(", email='").append(super.getEmail()).append('\'');
+        sb.append(", password='").append(super.getPassword()).append('\'');
         sb.append(", nombre='").append(nombre).append('\'');
         sb.append(", apellidoPat='").append(apellidoPat).append('\'');
         sb.append(", apellidoMat='").append(apellidoMat).append('\'');
@@ -46,30 +39,6 @@ public class Cyclist {
         sb.append(", tokenPersonal='").append(tokenPersonal).append('\'');
         sb.append('}');
         return sb.toString();
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getNombre() {

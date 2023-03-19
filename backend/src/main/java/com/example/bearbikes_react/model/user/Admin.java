@@ -2,23 +2,18 @@ package com.example.bearbikes_react.model.user;
 
 import java.sql.Date;
 
-public class Admin {
-    private int id;
-    private String email;
-    private String password;
-    private String nombre;
-    private AccountStatus accountStatus;
+public class Admin extends User {
+    private static final UserRole ROLE = UserRole.ADMINISTRADOR;
+    private String name;
 
     private Date registerDate;
 
     public Admin() {
     }
 
-    public Admin(String email, String password, String nombre) {
-        this.email = email;
-        this.password = password;
-        this.nombre = nombre;
-        this.accountStatus = AccountStatus.ACTIVA;
+    public Admin(String email, String password, String name) {
+        super(email, password, ROLE);
+        this.name = name;
     }
 
     public Date getRegisterDate() {
@@ -30,53 +25,31 @@ public class Admin {
     }
 
     public AccountStatus getAccountStatus() {
-        return accountStatus;
+        return super.getAccountStatus();
     }
 
-    public void setAccountStatus(AccountStatus accountStatus) {
-        this.accountStatus = accountStatus;
+    public void setAccountStatus(AccountStatus accounStatus) {
+        super.setAccountStatus(accounStatus);
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Admin{");
-        sb.append("id=").append(id);
-        sb.append(", email='").append(email).append('\'');
-        sb.append(", password='").append(password).append('\'');
-        sb.append(", nombre='").append(nombre).append('\'');
+        sb.append("id=").append(super.getId());
+        sb.append(", email='").append(super.getEmail()).append('\'');
+        sb.append(", password='").append(super.getPassword()).append('\'');
+        sb.append(", nombre='").append(name).append('\'');
+        sb.append(", registerDate='").append(registerDate).append('\'');
         sb.append('}');
         return sb.toString();
     }
 
-    public int getId() {
-        return id;
+
+    public String getName() {
+        return name;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setName(String name) {
+        this.name = name;
     }
 }
