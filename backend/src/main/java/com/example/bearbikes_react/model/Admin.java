@@ -7,7 +7,7 @@ public class Admin {
     private String email;
     private String password;
     private String nombre;
-    private AccounStatus accounStatus;
+    private AccountStatus accountStatus;
 
     private Date registerDate;
 
@@ -18,7 +18,7 @@ public class Admin {
         this.email = email;
         this.password = password;
         this.nombre = nombre;
-        this.accounStatus = AccounStatus.ACTIVA;
+        this.accountStatus = AccountStatus.ACTIVA;
     }
 
     public Date getRegisterDate() {
@@ -29,12 +29,12 @@ public class Admin {
         this.registerDate = registerDate;
     }
 
-    public AccounStatus getAccounStatus() {
-        return accounStatus;
+    public AccountStatus getAccountStatus() {
+        return accountStatus;
     }
 
-    public void setAccounStatus(AccounStatus accounStatus) {
-        this.accounStatus = accounStatus;
+    public void setAccountStatus(AccountStatus accountStatus) {
+        this.accountStatus = accountStatus;
     }
 
     @Override

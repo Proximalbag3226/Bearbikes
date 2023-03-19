@@ -10,14 +10,14 @@ public class Cyclist {
     private String numerocelular;
     private String tokenPersonal;
 
-    private AccounStatus accounStatus;
+    private AccountStatus accountStatus;
 
-    public AccounStatus getAccounStatus() {
-        return accounStatus;
+    public AccountStatus getAccountStatus() {
+        return accountStatus;
     }
 
-    public void setAccounStatus(AccounStatus estadoCuenta) {
-        this.accounStatus = estadoCuenta;
+    public void setAccountStatus(AccountStatus estadoCuenta) {
+        this.accountStatus = estadoCuenta;
     }
 
     public Cyclist(){

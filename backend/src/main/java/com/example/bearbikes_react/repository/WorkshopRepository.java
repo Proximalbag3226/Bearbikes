@@ -1,8 +1,6 @@
 package com.example.bearbikes_react.repository;
 
-import com.example.bearbikes_react.model.AccounStatus;
 import com.example.bearbikes_react.model.Workshop;
-import com.example.bearbikes_react.model.WorkshopOwner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.*;
 import org.springframework.jdbc.support.GeneratedKeyHolder;

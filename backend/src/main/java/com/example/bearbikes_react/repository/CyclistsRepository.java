@@ -1,6 +1,6 @@
 package com.example.bearbikes_react.repository;
 
-import com.example.bearbikes_react.model.AccounStatus;
+import com.example.bearbikes_react.model.AccountStatus;
 import com.example.bearbikes_react.model.Cyclist;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -104,7 +104,7 @@ public class CyclistsRepository {
             cyclist.setEmail(rs.getString ("email"));
             cyclist.setPassword(rs.getString ("password"));
             // assign an enum corresponding to the varchar value of account_status
-            cyclist.setAccounStatus(AccounStatus.valueOf(rs.getString ("account_status")));
+            cyclist.setAccountStatus(AccountStatus.valueOf(rs.getString ("account_status")));
             cyclist.setNombre(rs.getString ("nombre"));
             cyclist.setApellidoPat(rs.getString ("apellido_pat"));
             cyclist.setApellidoMat(rs.getString ("apellido_mat"));

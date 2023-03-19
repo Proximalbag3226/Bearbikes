@@ -9,7 +9,7 @@ public class WorkshopOwner {
     private String apellidoMat;
     private String numerocelular;
     private String rfcFisica;
-    private AccounStatus accounStatus;
+    private AccountStatus accountStatus;
 
     public WorkshopOwner() {
     }
@@ -24,12 +24,12 @@ public class WorkshopOwner {
         this.rfcFisica = rfcFisica;
     }
 
-    public AccounStatus getAccounStatus() {
-        return accounStatus;
+    public AccountStatus getAccountStatus() {
+        return accountStatus;
     }
 
-    public void setAccounStatus(AccounStatus accounStatus) {
-        this.accounStatus = accounStatus;
+    public void setAccountStatus(AccountStatus accountStatus) {
+        this.accountStatus = accountStatus;
     }
 
     @Override

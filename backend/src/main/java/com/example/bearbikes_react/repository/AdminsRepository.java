@@ -1,6 +1,6 @@
 package com.example.bearbikes_react.repository;
 
-import com.example.bearbikes_react.model.AccounStatus;
+import com.example.bearbikes_react.model.AccountStatus;
 import com.example.bearbikes_react.model.Admin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -138,7 +138,7 @@ public class AdminsRepository {
             admin.setEmail(rs.getString ("email"));
             admin.setPassword(rs.getString ("password"));
             // assign an enum corresponding to the varchar value of account_status
-            admin.setAccounStatus(AccounStatus.valueOf(rs.getString ("account_status")));
+            admin.setAccountStatus(AccountStatus.valueOf(rs.getString ("account_status")));
             admin.setNombre(rs.getString ("nombre"));
             admin.setRegisterDate(rs.getDate ("fecha_registro"));
             return admin;
