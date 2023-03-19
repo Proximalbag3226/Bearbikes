@@ -1,7 +1,7 @@
 package com.example.bearbikes_react.controller;
 
-import com.example.bearbikes_react.model.Admin;
-import com.example.bearbikes_react.repository.AdminsRepository;
+import com.example.bearbikes_react.model.user.Admin;
+import com.example.bearbikes_react.model.reporitory.AdminsRepository;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import org.springframework.http.HttpStatus;

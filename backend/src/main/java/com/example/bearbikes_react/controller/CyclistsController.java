@@ -1,12 +1,12 @@
 package com.example.bearbikes_react.controller;
 
-import com.example.bearbikes_react.model.Cyclist;
-import com.example.bearbikes_react.repository.CyclistsRepository;
+import com.example.bearbikes_react.model.user.Cyclist;
+import com.example.bearbikes_react.model.reporitory.CyclistsRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static com.example.bearbikes_react.utilities.Utils.generateRandomToken;
+import static com.example.bearbikes_react.utils.Utils.generateRandomToken;
 
 @RestController
 @RequestMapping("/ciclistas")
