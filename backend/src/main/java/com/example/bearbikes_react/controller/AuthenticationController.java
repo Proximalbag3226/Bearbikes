@@ -4,6 +4,7 @@ import com.example.bearbikes_react.model.service.AuthenticationService;
 import com.example.bearbikes_react.utils.payload.user.authenticate.response.AuthenticationResponse;
 import com.example.bearbikes_react.utils.payload.user.authenticate.request.AuthenticateRequest;
 import com.example.bearbikes_react.utils.payload.user.register.request.RegisterRequest;
+import com.example.bearbikes_react.utils.payload.user.register.response.RegisterResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,9 +22,8 @@ public class AuthenticationController {
     private final AuthenticationService service;
 
     @PostMapping("/register")
-    public ResponseEntity<AuthenticationResponse> register(@RequestBody RegisterRequest request) {
+    public ResponseEntity<RegisterResponse> register(@RequestBody RegisterRequest request) {
         try {
-            System.out.println(request);
             return ResponseEntity.ok(service.register(request));
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -32,9 +32,7 @@ public class AuthenticationController {
 
     @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody AuthenticateRequest request) {
-        System.out.println(request);
         return ResponseEntity.ok(service.authenticate(request));
     }
-
 
 }

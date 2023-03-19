@@ -9,6 +9,7 @@ import com.example.bearbikes_react.utils.payload.user.register.request.RegisterA
 import com.example.bearbikes_react.utils.payload.user.register.request.RegisterCyclistRequest;
 import com.example.bearbikes_react.utils.payload.user.register.request.RegisterRequest;
 import com.example.bearbikes_react.utils.payload.user.register.request.RegisterWorkshopOwnerRequest;
+import com.example.bearbikes_react.utils.payload.user.register.response.RegisterResponse;
 import com.example.bearbikes_react.utils.token.Token;
 import com.example.bearbikes_react.utils.token.TokenType;
 import lombok.RequiredArgsConstructor;
@@ -31,7 +32,7 @@ public class AuthenticationService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
-    public AuthenticationResponse register(RegisterRequest request) throws SQLException {
+    public RegisterResponse register(RegisterRequest request) throws SQLException {
         User user;
         User registeredUser;
         String encodedPassword = passwordEncoder.encode(request.getPassword());
@@ -91,7 +92,7 @@ public class AuthenticationService {
         if(registeredUser == null || registeredUser.getId() == -1)
             throw new RuntimeException("No se puedo añadir el usuario");
 
-        return AuthenticationResponse.builder()
+        return RegisterResponse.builder()
                 .message("Registro Exitoso")
                 .build();
     }
