@@ -1,5 +1,12 @@
 package com.example.bearbikes_react.model.user;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@NoArgsConstructor
+@Getter
+@Setter
 public class WorkshopOwner extends User {
     private static final UserRole ROLE = UserRole.DUEÑO_TALLER;
     private String nombre;
@@ -7,9 +14,6 @@ public class WorkshopOwner extends User {
     private String apellidoMat;
     private String numerocelular;
     private String rfcFisica;
-
-    public WorkshopOwner() {
-    }
 
     public WorkshopOwner(String email, String password, String nombre, String apellidoPat, String apellidoMat, String numerocelular, String rfcFisica) {
         super(email, password, ROLE);
@@ -33,45 +37,5 @@ public class WorkshopOwner extends User {
         sb.append(", rfcFisica='").append(rfcFisica).append('\'');
         sb.append('}');
         return sb.toString();
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getApellidoPat() {
-        return apellidoPat;
-    }
-
-    public void setApellidoPat(String apellidoPat) {
-        this.apellidoPat = apellidoPat;
-    }
-
-    public String getApellidoMat() {
-        return apellidoMat;
-    }
-
-    public void setApellidoMat(String apellidoMat) {
-        this.apellidoMat = apellidoMat;
-    }
-
-    public String getNumerocelular() {
-        return numerocelular;
-    }
-
-    public void setNumerocelular(String numerocelular) {
-        this.numerocelular = numerocelular;
-    }
-
-    public String getRfcFisica() {
-        return rfcFisica;
-    }
-
-    public void setRfcFisica(String tokenPersonal) {
-        this.rfcFisica = tokenPersonal;
     }
 }

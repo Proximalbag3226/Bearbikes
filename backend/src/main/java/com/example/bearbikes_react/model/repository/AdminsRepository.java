@@ -20,10 +20,8 @@ import java.util.Map;
 @Repository
 public class AdminsRepository {
     private final JdbcTemplate jdbcTemplate;
-
     protected static final String SELECT_ADMINISTRATORS_QUERY;
     protected static final String SELECT_ADMINISTRATORS_BY_ID_QUERY;
-
 
     static {
         SELECT_ADMINISTRATORS_QUERY = "SELECT " +
@@ -82,9 +80,8 @@ public class AdminsRepository {
      * using a given Admin object
      * @param newAdmin Admin object to insert
      * @return the id of the new Administrator in the database, or -1 if an exception happened
-     * @throws SQLException
      */
-    public int addNew(Admin newAdmin)throws SQLException{
+    public int addNew(Admin newAdmin){
         SimpleJdbcCall addUserProcedureCall
                 = new SimpleJdbcCall(jdbcTemplate)
                 .withProcedureName("insertar_admin")

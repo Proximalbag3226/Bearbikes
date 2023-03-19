@@ -1,35 +1,21 @@
 package com.example.bearbikes_react.model.user;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import java.sql.Date;
 
+@NoArgsConstructor
+@Getter
+@Setter
 public class Admin extends User {
     private static final UserRole ROLE = UserRole.ADMINISTRADOR;
     private String name;
-
     private Date registerDate;
-
-    public Admin() {
-    }
 
     public Admin(String email, String password, String name) {
         super(email, password, ROLE);
         this.name = name;
-    }
-
-    public Date getRegisterDate() {
-        return registerDate;
-    }
-
-    public void setRegisterDate(Date registerDate) {
-        this.registerDate = registerDate;
-    }
-
-    public AccountStatus getAccountStatus() {
-        return super.getAccountStatus();
-    }
-
-    public void setAccountStatus(AccountStatus accounStatus) {
-        super.setAccountStatus(accounStatus);
     }
 
     @Override
@@ -43,7 +29,6 @@ public class Admin extends User {
         sb.append('}');
         return sb.toString();
     }
-
 
     public String getName() {
         return name;

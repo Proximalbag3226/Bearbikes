@@ -23,11 +23,9 @@ import java.sql.SQLException;
 @RequiredArgsConstructor
 public class AuthenticationService {
     private final UserRepository userRepository;
-
     private final AdminsRepository adminsRepository;
     private final CyclistsRepository cyclistsRepository;
     private final WorkshopOwnerRepository workshopOwnerRepository;
-
     private final TokenRepository tokenRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
@@ -90,27 +88,13 @@ public class AuthenticationService {
             default -> throw new RuntimeException("No se puedo añadir el usuario");
 
         }
-//        var jwtToken = jwtService.generateToken(user);
-//        saveUserToken(registeredUser, jwtToken);
+        if(registeredUser == null || registeredUser.getId() == -1)
+            throw new RuntimeException("No se puedo añadir el usuario");
+
         return AuthenticationResponse.builder()
                 .message("Registro Exitoso")
                 .build();
     }
-
-//    public AuthenticationResponse register(RegisterRequest request) throws SQLException {
-//        var user = User.builder()
-//                .email(request.getEmail())
-//                .password(passwordEncoder.encode(request.getPassword()))
-//                .role(UserRole.ADMINISTRADOR)
-//                .build();
-//
-//        var savedUser = repository.saveUser(user);
-//        var jwtToken = jwtService.generateToken(user);
-//        saveUserToken(savedUser, jwtToken);
-//        return AuthenticationResponse.builder()
-//                .token(jwtToken)
-//                .build();
-//    }
 
     public AuthenticationResponse authenticate(AuthenticateRequest request) {
         authenticationManager.authenticate(
@@ -119,8 +103,7 @@ public class AuthenticationService {
                         request.getPassword()
                 )
         );
-        var user = userRepository.findUserByEmail(request.getEmail())
-                .orElseThrow();
+        var user = userRepository.findUserByEmail(request.getEmail()).orElseThrow();
         var jwtToken = jwtService.generateToken(user);
         revokeAllUserTokens(user);
         saveUserToken(user, jwtToken);
@@ -133,7 +116,7 @@ public class AuthenticationService {
     private void saveUserToken(User user, String jwtToken) {
         var token = Token.builder()
                 .idUsuario(user.getId())
-                .token(jwtToken)
+                .tokenString(jwtToken)
                 .tokenType(TokenType.BEARER)
                 .expired(false)
                 .revoked(false)

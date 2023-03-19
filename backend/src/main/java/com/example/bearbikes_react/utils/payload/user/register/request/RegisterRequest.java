@@ -14,7 +14,8 @@ import lombok.Setter;
 @JsonSubTypes({
         @JsonSubTypes.Type(value = RegisterAdminRequest.class, name = "admin"),
         @JsonSubTypes.Type(value = RegisterCyclistRequest.class, name = "ciclista"),
-        @JsonSubTypes.Type(value = RegisterWorkshopOwnerRequest.class, name = "dueño_taller")})
+        @JsonSubTypes.Type(value = RegisterWorkshopOwnerRequest.class, name = "dueño_taller")
+})
 @Getter
 @Setter
 @NoArgsConstructor
@@ -22,10 +23,4 @@ public abstract class RegisterRequest {
   private String name;
   private String email;
   private String password;
-
-  public RegisterRequest(String name, String email, String password) {
-    this.name = name;
-    this.email = email;
-    this.password = password;
-  }
 }

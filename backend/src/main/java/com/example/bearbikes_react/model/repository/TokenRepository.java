@@ -57,7 +57,7 @@ public class TokenRepository {
         
         Object args[] = {
             storedToken.getIdUsuario(),
-            storedToken.getToken(),
+            storedToken.getTokenString(),
             storedToken.isRevoked(),
             storedToken.isExpired()            
         };
@@ -78,7 +78,7 @@ public class TokenRepository {
             Token token = new Token();
             token.setId(rs.getInt("id_token"));
             token.setIdUsuario(rs.getInt("id_usuario"));
-            token.setToken(rs.getString("token"));
+            token.setTokenString(rs.getString("token"));
             token.setRevoked(rs.getBoolean("revocado"));
             token.setExpired(rs.getBoolean("expirado"));
             token.setTokenType(TokenType.valueOf(rs.getString("tipo")));

@@ -1,8 +1,12 @@
 package com.example.bearbikes_react.model.user;
 
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @NoArgsConstructor
+@Getter
+@Setter
 public class Cyclist extends User {
     private static final UserRole ROLE = UserRole.CICLISTA;
 
@@ -11,11 +15,6 @@ public class Cyclist extends User {
     private String apellidoMat;
     private String numerocelular;
     private String tokenPersonal;
-
-    public Cyclist(String email, String password, String nombre) {
-        super(email, password, ROLE);
-        this.nombre = nombre;
-    }
 
     public Cyclist(String email, String password, String nombre, String apellidoPat, String apellidoMat, String numerocelular, String tokenPersonal) {
         super(email, password, ROLE);

@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 @Getter
 @Setter
 @NoArgsConstructor
@@ -19,13 +18,4 @@ public class RegisterWorkshopOwnerRequest extends RegisterRequest {
     private String apellidoMat;
     private String celular;
     private String rfc;
-
-
-    public RegisterWorkshopOwnerRequest(String name, String email, String password, String apellidoPat, String apellidoMat, String celular, String rfc) {
-        super(name, email, password);
-        this.apellidoPat = apellidoPat;
-        this.apellidoMat = apellidoMat;
-        this.celular = celular;
-        this.rfc = rfc;
-    }
 }

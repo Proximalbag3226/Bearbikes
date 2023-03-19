@@ -6,15 +6,12 @@ import lombok.Builder;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 
-
 @Builder
 public class User implements UserDetails {
-
     private int id;
     private String email;
     private String password;
@@ -24,28 +21,12 @@ public class User implements UserDetails {
     private UserRole role;
 
     public User() {
-    }
-
-    public User(int id, String email, String password, AccountStatus accountStatus, UserRole role) {
-        this.id = id;
-        this.email = email;
-        this.password = password;
-        this.accountStatus = accountStatus;
-        this.role = role;
+        // left intentionally blank for mapping purposes
     }
 
     public User(String email, String password, UserRole role) {
-        this.id = id;
         this.email = email;
         this.password = password;
-        this.accountStatus = accountStatus;
-        this.role = role;
-    }
-
-    public User(String email, String password, AccountStatus accountStatus, UserRole role) {
-        this.email = email;
-        this.password = password;
-        this.accountStatus = accountStatus;
         this.role = role;
     }
 
