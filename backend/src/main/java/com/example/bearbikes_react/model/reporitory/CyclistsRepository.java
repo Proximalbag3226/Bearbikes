@@ -63,9 +63,9 @@ public class CyclistsRepository {
      * Makes a call to a stored procedure in the database in order to add a new row in the ciclistas table
      * using a given Ciclist object
      * @param newCyclist Ciclist object to insert
-     * @return the id of the new Ciclist in the database, or -1 if an exception happened
+     * @return a Ciclist object with his assigned id, or -1 if an exception happened
      */
-    public int addNew(Cyclist newCyclist){
+    public Cyclist addNew(Cyclist newCyclist){
         SimpleJdbcCall addUserProcedureCall
                 = new SimpleJdbcCall(jdbcTemplate)
                 .withProcedureName("insertar_ciclista")
@@ -90,7 +90,7 @@ public class CyclistsRepository {
         );
         int insertedCiclistId = (int) result.getOrDefault("idUsuarioInsertado", -1);
         newCyclist.setId(insertedCiclistId);
-        return insertedCiclistId;
+        return newCyclist;
     }
 
     /**

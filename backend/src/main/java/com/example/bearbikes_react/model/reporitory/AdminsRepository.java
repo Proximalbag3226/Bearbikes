@@ -21,8 +21,8 @@ import java.util.Map;
 public class AdminsRepository {
     private final JdbcTemplate jdbcTemplate;
 
-    private static final String SELECT_ADMINISTRATORS_QUERY;    
-    private static final String SELECT_ADMINISTRATORS_BY_ID_QUERY;
+    protected static final String SELECT_ADMINISTRATORS_QUERY;
+    protected static final String SELECT_ADMINISTRATORS_BY_ID_QUERY;
 
 
     static {
@@ -56,6 +56,7 @@ public class AdminsRepository {
         String countUsersQuery = "SELECT COUNT(*) FROM administradores";
         return jdbcTemplate.queryForObject(countUsersQuery, Integer.class);
     }
+    
     /**
      * Makes a query to the database to get all the registered adminsitrators
      * it uses the AdminsRepository.AdminMapper to map the query results in to
@@ -63,20 +64,25 @@ public class AdminsRepository {
      * @return a list containing the cyclists
      */
     public List<Admin> getAll(){
-        return jdbcTemplate.query(SELECT_ADMINISTRATORS_QUERY, new AdminsRepository.AdminMapper());
+        return jdbcTemplate.query(SELECT_ADMINISTRATORS_QUERY, new AdminMapper());
     }
     
+    /**
+     * Retrieves the Admin with the given id
+     * @param idUsuario id to search
+     * @return Admin Object
+     */
         public Admin getById(int idUsuario){
-        return jdbcTemplate.queryForObject(SELECT_ADMINISTRATORS_BY_ID_QUERY,new AdminsRepository.AdminMapper(), idUsuario);
+        return jdbcTemplate.queryForObject(SELECT_ADMINISTRATORS_BY_ID_QUERY,new AdminMapper(), idUsuario);
     }
         
 
     /**
      * Makes a call to a stored procedure in the database in order to add a new row in the administradores table
-     * using a given Ciclist object
-     * @param newAdmin Ciclist object to insert
-     * @return the id of the new Ciclist in the database, or -1 if an exception happened
-     * @throws java.sql.SQLException
+     * using a given Admin object
+     * @param newAdmin Admin object to insert
+     * @return the id of the new Administrator in the database, or -1 if an exception happened
+     * @throws SQLException
      */
     public int addNew(Admin newAdmin)throws SQLException{
         SimpleJdbcCall addUserProcedureCall
@@ -99,7 +105,7 @@ public class AdminsRepository {
         return insertedAdminId;
     }
 
-    public int addNew(Admin newAdmin, String adminPass)throws SQLException{
+    public Admin addNew(Admin newAdmin, String adminPass)throws SQLException{
         String addQuery = "SELECT COUNT(*) FROM CLAVE_ADMINISTRADOR WHERE clave = (?);";
 
         int keyCoincidences  = jdbcTemplate.queryForObject(addQuery,Integer.class,  adminPass);
@@ -124,17 +130,17 @@ public class AdminsRepository {
 
         int insertedAdminId = (int) result.getOrDefault("idUsuarioInsertado", -1);
         newAdmin.setId(insertedAdminId);
-        return insertedAdminId;
+        return newAdmin;
     }
     
     /**
      * RowMapper implementation for map resulting select queries for Administrators using the SELECT_CYCLIST_QUERY String
      * of AdminRepository class
      */
-    class AdminMapper implements RowMapper<Admin> {
+    static class AdminMapper implements RowMapper<Admin> {
         public Admin mapRow(ResultSet rs, int rowNum) throws SQLException {
             Admin admin = new Admin();
-            admin.setId(rs.getInt("id"));
+            admin.setId(rs.getInt("idUsuario"));
             admin.setEmail(rs.getString ("email"));
             admin.setPassword(rs.getString ("password"));
             // assign an enum corresponding to the varchar value of account_status

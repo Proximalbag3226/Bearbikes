@@ -44,12 +44,7 @@ public class AdminController {
         // http://localhost:9000/admins/register?adminKey=kkadsfkldfsh
 
         try {
-            int addedAdminId = adminsRepository.addNew(newAdmin, clave);
-            if (addedAdminId != -1) {
-                return new ResponseEntity(adminsRepository.getById(addedAdminId), HttpStatus.OK);
-            } else {
-                throw new Exception("Ocurrio un problema al añadirlo");
-            }
+                return new ResponseEntity(adminsRepository.addNew(newAdmin, clave), HttpStatus.OK);
 
         } catch (Exception e) {
             System.out.println(e.getMessage());

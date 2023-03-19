@@ -65,7 +65,7 @@ public class WorkshopOwnerRepository {
      * @param newWorkshopOwner WorkshopOwner object to insert
      * @return the id of the new WorkshopOwner in the database, or -1 if an exception happened
      */
-    public int addNew(WorkshopOwner newWorkshopOwner) {
+    public WorkshopOwner addNew(WorkshopOwner newWorkshopOwner) {
         SimpleJdbcCall addUserProcedureCall
                 = new SimpleJdbcCall(jdbcTemplate)
                 .withProcedureName("insertar_dueño_taller")
@@ -91,7 +91,7 @@ public class WorkshopOwnerRepository {
         int insertedWorkshopOwnerId = (int) result.getOrDefault("idUsuarioInsertado", -1);
 
         newWorkshopOwner.setId(insertedWorkshopOwnerId);
-        return insertedWorkshopOwnerId;
+        return newWorkshopOwner;
     }
     
     /**
