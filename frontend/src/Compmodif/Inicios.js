@@ -1,8 +1,9 @@
-import { handleSubmit, handleChange } from '../Compmodif/Functionform';
-import Inputs from '../Componentes/Campos';
-import Contra from '../Componentes/contra';
+import { Functionform } from './Functionform';
+import Inputs from "../Componentes/Campos";
+import Contra from "../Componentes/contra";
 
 function Inicios(){
+    const { formData, handleChange, handleSubmit } = Functionform();
     return(
         <form onSubmit={handleSubmit}>  
         <h1 className={"titulo"}>Complete los campos</h1>
