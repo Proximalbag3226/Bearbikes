@@ -210,6 +210,7 @@ DELIMITER $$
 		IN apellidoPat varchar(30), IN apellidoMat varchar(30), IN numeroCelular varchar(10), IN tokenPersonalCiclista varchar(30),
 		OUT idUsuarioInsertado int)
 		BEGIN     
+			
 			DECLARE new_id INT DEFAULT 0; -- Id que se asignara al nuevo usuario y se retornara
 			DECLARE tipoUsuario INT DEFAULT 1; -- Tipo usuario correspondiente a persona
 			DECLARE tipoPersona INT DEFAULT 2; -- Tipo persona correspondiente a ciclista
@@ -269,20 +270,20 @@ DELIMITER ;
 
 CALL insertar_ciclista ('procedureCiclista@mysql.com', 'password', 'ciclista procedure', 'Paterno','Materno','5615548192', 'UN_TOKEN_BIEN_SEGURO',  @idUsuarioInsertado);
 SELECT @idUsuarioInsertado AS id_ciclista_nuevo;
-SELECT * from Usuarios where tipo_usuario = 1; -- CICLISTA 
-SELECT * from Personas where tipo_usuario = 1 and tipo_persona = 2; -- USUARIO Y CICLISTA 
-SELECT * from Ciclistas where tipo_persona = 2; -- CICLISTA 
+SELECT * from Usuarios where tipo_usuario = 1; -- PERSONA
+SELECT * from Personas where tipo_usuario = 1 and tipo_persona = 2; -- PERSONA Y CICLISTA 
+SELECT * from Ciclistas; -- CICLISTA 
 
 CALL insertar_dueño_taller ('procedureDueñoTaller@mysql.com', 'password', 'dueño Procedure', 'Paterno','Materno','5615548192', 'UN_RFC',  @idUsuarioInsertado);
 SELECT @idUsuarioInsertado AS id_dueño_nuevo;
-SELECT * from Usuarios where tipo_usuario = 1; -- CICLISTA 
-SELECT * from Personas where tipo_usuario = 1 and tipo_persona = 1; -- USUARIO Y CICLISTA 
-SELECT * from Dueñotaller where tipo_persona = 1; -- DUEÑO TALLER 
+SELECT * from Usuarios where tipo_usuario = 1; -- PERSONA
+SELECT * from Personas where tipo_usuario = 1 and tipo_persona = 1; -- PERSONA Y DUEÑO TALLER  
+SELECT * from Dueñotaller; -- DUEÑO TALLER 
 
 CALL insertar_admin ('procedureAdmin@mysql.com', 'password', 'Procedure Admin',  @idUsuarioInsertado);
 SELECT @idUsuarioInsertado AS id_admin_nuevo;
-SELECT * from Usuarios where tipo_usuario = 2; -- usuario tipo admin 
-SELECT * from Administradores where tipo_usuario = 2  ; -- admin 
+SELECT * from Usuarios where tipo_usuario = 2; -- ADMIN
+SELECT * from Administradores; -- admin 
 
 -- ------------------------------------------- SELECT CLAUSE para ADMINS ---------------------------------------------
 select usuarios.id_usuario as id, usuarios.email_usuario as email, usuarios.password_usuario as password, usuarios.account_status, administradores.nombre_admin as nombre, administradores.fecha_registro 
