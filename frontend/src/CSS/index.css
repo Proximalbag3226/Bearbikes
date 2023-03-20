@@ -489,21 +489,29 @@ body{
 
 .product-container{
     width: 450px;
-    height: 450px;
+    height: 500px;
     text-align: center;
     align-items: center;
     margin: 5%;
+    padding: 10px;
+    background-color: rgba(80, 65, 85, 0.4);
+    border-radius: 20px;
 }
 
 .product-container img{
     width: 300px;
-    background-color: grey;
+    height: 300px;
+    border-radius: 20px;
+    background-color: rgb(0, 0, 0);
+    border: 5px solid rgb(0, 0, 0);
 }
 
 .product-container:hover {
+    transition-duration: 0.75s;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.5);
     border-radius: 15px;
+    animation-duration: 0.75s;
 }
 
 .eleccion{
@@ -577,4 +585,15 @@ body{
 
 .leaflet-control-attribution {
   font-size: 10px;
+}
+
+.divaviso{
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 500px;
+  padding: 15px;
+  border-radius: 20px;
+}
+
+.enlaces{
+  background-color: rgba(0, 0, 0, 0.75);
 }

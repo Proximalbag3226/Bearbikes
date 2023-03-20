@@ -7,9 +7,12 @@ const Tienda = () =>{
             <div>
                 <Principal/>
             </div>
+            <br/>
+            <p style={{color:"#FFFFFF",textAlign:"center", fontWeight:"bold", fontSize:"50px"}}>¡Bienvenido a la tienda!</p>
+            <center>
             <div className="productos">
                 <Producto
-                producto={"Amortiguador de suspencion"}
+                producto={"Amort. de suspensión"}
                 img1={"Amortiguadordesuspensión"}
                 precio={"$50"}/>
                 <Producto
@@ -41,6 +44,7 @@ const Tienda = () =>{
                 img1={"tapasdeextremodebarra"}
                 precio={"$50"}/>
             </div>
+            </center>
         </div>
     );
 }

@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "38324b9a-0384-4848-8060-e8bd1ba98331",
-		"name": "BEARBIKES",
+		"_postman_id": "90567eb0-928d-4205-9222-92ceb3c07f9d",
+		"name": "BEARBIKES REQUESTS Copy",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "26086390"
 	},
@@ -54,7 +54,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"email@postman.com\",\r\n    \"password\": \"contraseñaPostman1\",\r\n    \"nombre\": \"Post\",\r\n    \"apellidoPat\": \"Man\",\r\n    \"apellidoMat\": \"Request\",\r\n    \"celular\": \"5533175289\"\r\n}",
+							"raw": "{\r\n    \"type\" : \"ciclista\",\r\n    \"email\": \"email@postman.com\",\r\n    \"password\": \"contraseñaPostman1\",\r\n    \"nombre\": \"Post\",\r\n    \"apellidoPat\": \"Man\",\r\n    \"apellidoMat\": \"Request\",\r\n    \"celular\": \"5533175289\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -125,7 +125,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"email@postman.com\",\r\n    \"password\": \"contraseñaPostman1\",\r\n    \"nombre\": \"Post\",\r\n    \"apellidoPat\": \"Man\",\r\n    \"apellidoMat\": \"Request\",\r\n    \"celular\": \"5533175289\",\r\n    \"rfc\": \"1234567890ABCDE\"\r\n}",
+							"raw": "{\r\n    \"type\" : \"dueño_taller\",\r\n    \"email\": \"email@postman.com\",\r\n    \"password\": \"contraseñaPostman1\",\r\n    \"nombre\": \"Post\",\r\n    \"apellidoPat\": \"Man\",\r\n    \"apellidoMat\": \"Request\",\r\n    \"celular\": \"5533175289\",\r\n    \"rfc\": \"1234567890ABCDE\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -196,7 +196,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"email@postman.com\",\r\n    \"password\": \"contraseñaPostman1\",\r\n    \"nombre\": \"Post\"\r\n}",
+							"raw": "{\r\n    \"type\" : \"admin\",\r\n    \"email\": \"email1@postman.com\",\r\n    \"password\": \"contraseñaPostman1\",\r\n    \"nombre\": \"Post\",\r\n    \"adminKey\" : \"CLAVE123\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -204,7 +204,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/{{PATH_ADMIN}}/register?adminKey=CLAVE123",
+							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/{{PATH_ADMIN}}/register",
 							"host": [
 								"{{SERVER_IP}}"
 							],
@@ -212,12 +212,6 @@
 							"path": [
 								"{{PATH_ADMIN}}",
 								"register"
-							],
-							"query": [
-								{
-									"key": "adminKey",
-									"value": "CLAVE123"
-								}
 							]
 						}
 					},
@@ -232,6 +226,110 @@
 		{
 			"name": "REPARACIONES",
 			"item": []
+		},
+		{
+			"name": "JWT",
+			"item": [
+				{
+					"name": "Secured Resource Request Copy",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbWFpbDFAcG9zdG1hbi5jb20iLCJpYXQiOjE2NzkxODUzNDQsImV4cCI6MTY3OTE4Njc4NH0.RmVdhmsZNxOCwYC14HLLtTGrsQc3s82FkT1pED4XL2A",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/api/v1/demo-controller",
+							"host": [
+								"{{SERVER_IP}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"api",
+								"v1",
+								"demo-controller"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Authentication Request",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbWFpbDFAcG9zdG1hbi5jb20iLCJpYXQiOjE2NzkxMDQwMDEsImV4cCI6MTY3OTEwNTQ0MX0.gj7Gg8y8wYhEUwgtZ5z8hbuDzyeggo9ZeRxRIKm_-Yk",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"email1@postman.com\",\r\n    \"password\": \"contraseñaPostman1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/api/v1/auth/authenticate?",
+							"host": [
+								"{{SERVER_IP}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"authenticate"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registrar Administradores Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\" : \"admin\",\r\n    \"email\": \"email1@postman.com\",\r\n    \"password\": \"contraseñaPostman1\",\r\n    \"name\": \"Post\",\r\n    \"adminKey\" : \"CLAVE123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/api/v1/auth/register",
+							"host": [
+								"{{SERVER_IP}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"event": [
