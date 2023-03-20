@@ -1,4 +1,25 @@
+import {useEffect, useState} from "react";
+import jwtDecode from "jwt-decode";
+import jwt_decode from "jwt-decode";
+
+const getUserInfo = () => {
+    const token = localStorage.getItem("token");
+    if (token) {
+        const decoded = jwt_decode(token);
+        return decoded;
+    }
+    return null;
+};
+
 function Principal(){
+    const [userInfo, setUserInfo] = useState(null);
+
+    useEffect(() => {
+        const user = getUserInfo();
+        if (user) {
+            setUserInfo(user);
+        }
+    }, []);
     return (
         <div>
         <header className={"header"}>
@@ -13,6 +34,11 @@ function Principal(){
                     <a href="/">Inicio</a>
                     <a href="prueba1/src/Componentes/Principal">Nosotros</a>
                     <a href="src/componentes/Principal#">Contacto</a>
+                    {userInfo ? (
+                        <a>Bienvenido, {userInfo.username}!</a>
+                    ) : (
+                        <a>Bienvenido, identifiquese</a>
+                    )}
                 </nav>
             </div>
         </header>

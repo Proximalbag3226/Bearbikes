@@ -5,8 +5,7 @@ import Email from "../Componentes/email";
 import Contra from "../Componentes/contra";
 import Boton from "../Componentes/botonr";
 
-const Formulario = () => {
-    const campos = ["nombre", "apellido_pat", "apellido_mat", "numerocelular", "email", "password"];
+const Formulario = (props) => {
     const [formData, setFormData] = useState({
         nombre: "",
         apellido_pat: "",
