@@ -16,20 +16,13 @@ import Polanco from "./Paginas/Polanco";
 import Basilica from "./Paginas/Basilica";
 import Chapultepec from "./Paginas/Chapultepec";
 import Tienda from "./Paginas/Tienda";
-import Eleccion from "./Paginas/Eleccion";
-import Rutas from "./Paginas/Rutas";
-import Cuadro_b from "./Paginas/Cuadro_b";
-import Bateria from "./Paginas/Baterias";
-import Equipo from "./Paginas/Equipo";
+import Map from './Paginas/Rutas';
+import Aviso from './Paginas/Avisos';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <BeardBikes/>
-  },
-  {
-    path: '/eleccion',
-    element: <Eleccion/>
   },
   {
     path: '/ciclistasform',
@@ -85,19 +78,11 @@ const router = createBrowserRouter([
   },
   {
     path: '/rutas',
-    element: <Rutas/>
+    element: <Map/>
   },
   {
-    path:'/cuadro',
-    element: <Cuadro_b/>
-  },
-  {
-    path: '/bateria',
-    element: <Bateria/>
-  },
-  {
-    path: '/equipo',
-    element: <Equipo/>
+    path: '/avisos',
+    element: <Aviso/>
   }
 
 
