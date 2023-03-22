@@ -7,7 +7,7 @@ export function Tarjeta(props) {
                 <figure>
                     <img src={require(`../IMG/info-${props.imagen}.jpg`)}/>
                     <div className={"capita"}>
-                        <br/><br/><br/><br/>
+                        <br/><br/>
                         <a href={props.href}>{props.lugar}</a>
                     </div>
                 </figure>

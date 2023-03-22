@@ -4,6 +4,7 @@ import Numero from "../Componentes/numero";
 import Email from "../Componentes/email";
 import Contra from "../Componentes/contra";
 import Boton from "../Componentes/botonr";
+import { registerUser } from "../Componentes/Register";
 
 const Formulario = () => {
     const [formData, setFormData] = useState({
@@ -22,23 +23,14 @@ const Formulario = () => {
         });
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        fetch("http://192.168.20.110:9009/ciclistas/register", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(formData)
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log("Success:", data);
-                localStorage.setItem("token", data.token);
-            })
-            .catch((error) => {
-                console.error("Error:", error);
-            });
+        try {
+            const data = await registerUser(formData);
+            console.log("Success:", data);
+        } catch (error) {
+            console.error("Error:", error);
+        }
     };
 
     return (

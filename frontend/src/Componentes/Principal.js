@@ -1,3 +1,6 @@
+import { useEffect, useState } from "react";
+import jwt_decode from "jwt-decode";
+
 function Principal(){
     return (
         <div>
@@ -13,11 +16,6 @@ function Principal(){
                     <a href="/">Inicio</a>
                     <a href="prueba1/src/Componentes/Principal">Nosotros</a>
                     <a href="src/componentes/Principal#">Contacto</a>
-                    {userInfo ? (
-                        <a>Bienvenido, {userInfo.username}!</a>
-                    ) : (
-                        <a>Bienvenido, identifiquese</a>
-                    )}
                 </nav>
             </div>
         </header>
@@ -26,10 +24,10 @@ function Principal(){
         <div className={"container-menu"}>
             <div className={"cont-menu"}>
                 <nav>
-                    <a href={"/ciclistasform"}>Registro</a>
-                    <a href={"/formciclistas"}>Inicio de sesion</a>
+                    <a href={"/eleccion"}>Registro</a>
+                    <a href={"/login"}>Inicio de sesion</a>
                     <a href={"/infot"}>Sitios turisticos</a>
-                    <a href={"/form"}>Tienda</a>
+                    <a href={"/tienda"}>Tienda</a>
                     <a href={"/form"}>Comercios</a>
                     <a href={"/infob"}>Info bicicletas</a>
                     <a href={"/tienda"}>Tienda bicicletas</a>
