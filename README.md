@@ -17,9 +17,13 @@ npm install
 npm start
 ```
 
-### Frontend
+### Backend
 Para ejecutar el backend entra a la carpeta backend y ejecuta 
 ```
 mvn spring:boot run
+```
+* Si tienes problemas con maven al encontrar el plugin de spring boot ejecuta:
+```
+mvn org.springframework.boot:spring-boot-maven-plugin:run
 ```
 O si no tienes una instalacion local de maven puedes abrir la carpeta como proyecto de neatbeans y ejecutar desde ahi la clase com.example.bearbikes_react.BearbikesReactApplication
