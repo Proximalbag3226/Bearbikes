@@ -1,6 +1,7 @@
 import { Functionform } from './Functionform';
 import Inputs from "../Componentes/Campos";
 import Contra from "../Componentes/contra";
+import Boton from "../Componentes/botonr";
 
 function Inicios(){
     const { formData, handleChange, handleSubmit } = Functionform();
@@ -8,7 +9,7 @@ function Inicios(){
         <form onSubmit={handleSubmit}>  
         <h1 className={"titulo"}>Complete los campos</h1>
         <div className={"inputss"} id={"inputss"}>
-            <br />
+            <br/>
             <Inputs
                 handleChange={handleChange}
                 placeholder={"Correo"}
@@ -23,6 +24,9 @@ function Inicios(){
                     data={formData.password}
                     change={handleChange}
                 />
+            <br/>
+            <Boton
+            boton={"Entrar"}/>
         </div>
     </form>
     );

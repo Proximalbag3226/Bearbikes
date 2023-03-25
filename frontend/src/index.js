@@ -20,7 +20,7 @@ import Map from './Paginas/Rutas';
 import Aviso from './Paginas/Avisos';
 import Cuadro_b from './Paginas/Cuadro_b';
 import Eleccion from './Paginas/Eleccion';
-import login from './Paginas/Login';
+import Login from './Paginas/Login';
 
 const router = createBrowserRouter([
   {
@@ -101,7 +101,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/login',
-    element: <login/>
+    element: <Login/>
   }
 
 
