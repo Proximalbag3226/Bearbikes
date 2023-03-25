@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { registerUser } from "../Componentes/Register";
+import { registerUser } from "./Register";
 
 export function Functionform(){
     const [formData, setFormData] = useState({
