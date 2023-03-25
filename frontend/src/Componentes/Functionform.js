@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { registerUser } from "../Componentes/Register";
+import { registerUser } from "./Register";
 
-function Functionform(){
+export function Functionform(){
     const [formData, setFormData] = useState({
-        nombre: "",
-        apellido_pat: "",
-        apellido_mat: "",
-        numerocelular: "",
+        type: 'ciclista',
+        name: "",
+        apellidoPat: "",
+        apellidoMat: "",
+        celular: "",
         email: "",
         password: "",
     });
@@ -18,7 +19,7 @@ function Functionform(){
         });
     };
 
-    const handleSubmit = async (event) => {
+     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
             const data = await registerUser(formData);
@@ -27,6 +28,5 @@ function Functionform(){
             console.error("Error:", error);
         }
     };
+    return {handleChange, handleSubmit, formData};
 }
-
-export { Functionform };

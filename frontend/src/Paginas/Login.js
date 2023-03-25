@@ -1,6 +1,6 @@
 import Inicios from "../Compmodif/Inicios";
 
-function login(){
+function Login() {
     return(
         <div>
             <Inicios/>
@@ -8,4 +8,4 @@ function login(){
     );
 }
 
-export default login
+export default Login

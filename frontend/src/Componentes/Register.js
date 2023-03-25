@@ -1,5 +1,7 @@
+import variables from "../Compmodif/constantes";
+
 export const registerUser = (formData) => {
-    return fetch("http://192.168.20.110:9009/ciclistas/register", {
+    return fetch(`http://192.168.20.110:9009/${variables.registrar}`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
