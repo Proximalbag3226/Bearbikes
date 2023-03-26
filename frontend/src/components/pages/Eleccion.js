@@ -9,11 +9,13 @@ const Eleccion = () => {
             <div className={"eleccion"}>
                 <p className={"titulo"}>ELIGE TU TIPO DE USUARIO</p>
                 <br/><br/>
-                <a href="/ciclistasform">Ciclista</a>
+                <a href="/registroCiclista">Ciclista</a>
                 <br/><br/>
-                <a href="">Administrador</a>
+                <a href="/registroAdmin">Administrador</a>
                 <br/><br/>
-                <a href="">Dueño de taller</a>
+                <a href="/registroDueñoTaller">Dueño de taller</a>
+                <br/><br/>
+                <a href="/registroDueñoComercio">Dueño de Comercio</a>
             </div>
         </div>
     );

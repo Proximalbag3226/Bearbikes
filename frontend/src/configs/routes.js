@@ -3,7 +3,12 @@ import { createBrowserRouter } from 'react-router-dom';
 
 import Inicio from './../components/pages/homePage';
 import BeardBikes from './../components/pages/beardbikes';
-import Ciclistasf from './../components/pages/Ciclistasf';
+
+import RegistroCiclista from '../components/pages/registros/RegistroCiclista';
+import RegistroAdmin from '../components/pages/registros/RegistroAdmin';
+import RegistroDueñoTaller from '../components/pages/registros/RegistroDueñoTaller';
+import RegistroDueñoComercio from '../components/pages/registros/RegistroDueñoComercio';
+
 import Infot from './../components/pages/infot';
 import Infob from './../components/pages/Infob';
 
@@ -32,8 +37,20 @@ const router = createBrowserRouter([
       element: <BeardBikes/>
     },
     {
-      path: '/ciclistasform',
-      element: <Ciclistasf/>
+      path: '/registroCiclista',
+      element: <RegistroCiclista/>
+    },
+    {
+      path: '/registroAdmin',
+      element: <RegistroAdmin/>
+    },
+    {
+      path: '/registroDueñoTaller',
+      element: <RegistroDueñoTaller/>
+    },
+    {
+      path: '/registroDueñoComercio',
+      element: <RegistroDueñoComercio/>
     },
     {
       path: '/info',

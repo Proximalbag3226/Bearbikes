@@ -1,7 +1,7 @@
-import Menu from "../common/menu";
-import FormularioRegistro from "../forms/register/registerForm";
+import Menu from "../../common/menu";
+import FormularioRegistro from "../../forms/register/registerForm";
 
-const Ciclistasf = () => {
+const RegistroCiclista = () => {
     return(
         <div>
         <div>
@@ -14,4 +14,4 @@ const Ciclistasf = () => {
     );
 }
 
-export default Ciclistasf
+export default RegistroCiclista

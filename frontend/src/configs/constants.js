@@ -1,7 +1,7 @@
 
 const apiHost = "127.0.0.1";
 const apiPort = 9009;
-export const dominioApi = `http://${apiHost}:${apiPort}`;
+export const dominioApi = `${apiHost}:${apiPort}`;
 
 const apiUrl = "api/v1"
 
