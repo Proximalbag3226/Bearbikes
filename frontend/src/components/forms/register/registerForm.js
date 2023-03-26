@@ -1,4 +1,4 @@
-import FormFunction from './formFunction';
+import FormFunction from './registerFormFunction';
 import {
     EmailInput,
     PasswordInput,
