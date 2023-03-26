@@ -1,5 +1,5 @@
 import FormFunction from './loginFormFunction';
-import {EmailInput, PasswordInput} from '../inputs/inputConLabel';
+import {EmailInput, PasswordInput, SubmitButton} from '../inputs/inputConLabel';
 
 
 const FormularioLogin = () => {
@@ -30,4 +30,4 @@ const FormularioLogin = () => {
     );
 };
 
-export default FormularioRegistro;
+export default FormularioLogin;

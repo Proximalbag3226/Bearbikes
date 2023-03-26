@@ -7,6 +7,7 @@ const InputConLabel = ({ label, styles, ...rest }) => {
                 {label}
             </label>
             <input className={"inputs input-" + rest.type}  {...rest} />
+            <br/><br/>
         </div>
     );
 }
@@ -230,7 +231,7 @@ export const RfcPersonaFisicaInput = (props) => {
                     minLength: props.minLength || "",
                     styles: props.styles
                 })
-            }
+            }            
         </div>
         
     );

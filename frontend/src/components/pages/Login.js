@@ -1,9 +1,14 @@
-import Inicios from "../forms/inicioSesionForm";
+
+import Menu from "../common/menu";
+import FormularioLogin from "../forms/login/loginForm";
 
 function Login() {
     return(
         <div>
-            <Inicios/>
+            <div>
+                <Menu/>
+            </div>
+            <FormularioLogin/>
         </div>
     );
 }

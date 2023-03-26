@@ -25,7 +25,7 @@ import Chapultepec from './../components/pages/places/Chapultepec';
 
 import Tienda from './../components/pages/Tienda';
 import Map from './../components/pages/Rutas';
-import Aviso from './../components/pages/Avisos';
+import Avisos from './../components/pages/Avisos';
 import Cuadro_b from './../components/pages/Cuadro_b';
 import Eleccion from './../components/pages/Eleccion';
 import Login from './../components/pages/Login';
@@ -106,7 +106,7 @@ const router = createBrowserRouter([
     },
     {
       path: '/avisos',
-      element: <Aviso/>
+      element: <Avisos/>
     },
     {
       path: '/tienda',

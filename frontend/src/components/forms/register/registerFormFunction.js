@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {RegisterRequest} from "..authRequests";
+import {RegisterRequest} from "../authRequests";
 
 function FormFunction(formValues){
     console.log("formValues: ", formValues);

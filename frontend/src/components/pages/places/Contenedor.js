@@ -2,7 +2,7 @@ import Tarjeta from "./Tarjeta";
 
 function Contenedor() {
     return(
-        <div>
+        <div className="contenedor-tarjetas">
             <Tarjeta
                 lugar='Zocalo'
                 imagen='zocalo'

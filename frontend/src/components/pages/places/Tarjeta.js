@@ -2,7 +2,7 @@ import '../../../assets/css/Tarjetas.css';
 
 export function Tarjeta(props) {
     return (
-        <div className={"img"}>
+        <div className={"img img-tarjeta"}>
             <div className={"contenedor"}>
                 <figure>
                     <img src={require(`../../../assets/img/info-${props.imagen}.jpg`)}/>

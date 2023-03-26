@@ -76,7 +76,6 @@ const FormularioRegistro = (props) => {
                     value={formData.name}
                     handleChange={handleChange}
                 />
-                <br /><br />
                 <ApellidoPatInput
                     value={formData.apellidoPat}
                     handleChange={handleChange}
@@ -87,7 +86,6 @@ const FormularioRegistro = (props) => {
                         }
                     }
                 />
-                <br /><br />
                 <ApellidoMatInput
                     value={formData.apellidoMat}
                     handleChange={handleChange}
@@ -98,7 +96,6 @@ const FormularioRegistro = (props) => {
                         }
                     }
                 />
-                <br /><br />
                 <CelularInput
                     data={formData.celular}
                     handleChange={handleChange}
@@ -109,18 +106,14 @@ const FormularioRegistro = (props) => {
                         }
                     }
                 />
-                <br /><br />
                 <EmailInput
                     value={formData.email}
                     handleChange={handleChange} />
-                <br /><br />
                 <PasswordInput
                     value={formData.password}
                     handleChange={handleChange}
                 />
-                <br /><br /><br />
-                <SubmitButton
-                    text={"Registrar"} />
+                <SubmitButton text={"Registrar"} />
             </div>
         </form>
     );
