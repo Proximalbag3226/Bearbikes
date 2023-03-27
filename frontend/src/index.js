@@ -1,26 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './CSS/index.css'
-import Inicio from './Compmodif/inicio';
+import Inicio from './Modificados/inicio';
 import BeardBikes from './Paginas/beardbikes';
-import Ciclistasf from './Paginas/Ciclistasf';
+import Ciclistasf from './Paginas/Registro/Ciclistasf';
 import { createBrowserRouter, RouterProvider} from "react-router-dom";
-import Infot from "./Paginas/infot";
-import Infob from "./Paginas/Infob";
-import Bellasartes from "./Paginas/Bellasartes";
-import Zocalo from "./Paginas/Zocalo";
-import Torre from "./Paginas/Torre";
-import Xochimilco from "./Paginas/Xochimilco";
-import Reforma from "./Paginas/Reforma";
-import Polanco from "./Paginas/Polanco";
-import Basilica from "./Paginas/Basilica";
-import Chapultepec from "./Paginas/Chapultepec";
+import Infot from "./Paginas/Sitios/infot";
+import Infob from "./Paginas/Infobicicletas/Infob";
+import Bellasartes from "./Paginas/Sitios/Bellasartes";
+import Zocalo from "./Paginas/Sitios/Zocalo";
+import Torre from "./Paginas/Sitios/Torre";
+import Xochimilco from "./Paginas/Sitios/Xochimilco";
+import Reforma from "./Paginas/Sitios/Reforma";
+import Polanco from "./Paginas/Sitios/Polanco";
+import Basilica from "./Paginas/Sitios/Basilica";
+import Chapultepec from "./Paginas/Sitios/Chapultepec";
 import Tienda from "./Paginas/Tienda";
 import Map from './Paginas/Rutas';
 import Aviso from './Paginas/Avisos';
-import Cuadro_b from './Paginas/Cuadro_b';
-import Eleccion from './Paginas/Eleccion';
-import Login from './Paginas/Login';
+import Cuadro_b from './Paginas/Infobicicletas/Cuadro_b';
+import Eleccion from './Paginas/Registro/Eleccion';
+import Login from './Paginas/Registro/Login';
 
 const router = createBrowserRouter([
   {

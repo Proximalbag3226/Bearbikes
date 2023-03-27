@@ -1,5 +1,5 @@
-import Principal from "../Componentes/Principal";
-import Infos from "../Componentes/Infos"
+import Principal from "../../Componentes/Principal";
+import Infos from "../../Componentes/Infos"
 
 const Cuadro_b = () => {
     return(

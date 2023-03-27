@@ -1,4 +1,4 @@
-import variables from "../Compmodif/constantes";
+import variables from "./constantes";
 
 export const registerUser = (formData) => {
     return fetch(`http://192.168.20.110:9009/${variables.registrar}`, {
@@ -18,3 +18,4 @@ export const registerUser = (formData) => {
             console.error("Error:", error);
         });
 };
+

@@ -1,4 +1,4 @@
-import Principal from "../Componentes/Principal";
+import Principal from "../../Componentes/Principal";
 
 const Eleccion = () => {
     return(
@@ -11,9 +11,9 @@ const Eleccion = () => {
                 <br/><br/>
                 <a href="/ciclistasform">Ciclista</a>
                 <br/><br/>
-                <a href="">Administrador</a>
+                <a href="frontend/src/Paginas/Registro/Eleccion">Administrador</a>
                 <br/><br/>
-                <a href="">Dueño de taller</a>
+                <a href="frontend/src/Paginas/Registro/Eleccion">Dueño de taller</a>
             </div>
         </div>
     );

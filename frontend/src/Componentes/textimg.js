@@ -5,7 +5,7 @@ function Textimg(props){
             <br/><br/>
             <p className={"texto0"}>{props.textotexto}</p>
             <br/>
-            <img className={props.claseimg} src={require(`../src/IMG/bici-${props.imagen1}.jpg`)}/>
+            <img className={props.claseimg} src={require(`../IMG/bici-${props.imagen1}.jpg`)}/>
         </div>
     );
 }

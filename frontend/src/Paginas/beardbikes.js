@@ -1,5 +1,5 @@
 import Principal from "../Componentes/Principal";
-import Inicio from "../Compmodif/inicio";
+import Inicio from "../Modificados/inicio";
 
 const BeardBikes = () => {
     return(

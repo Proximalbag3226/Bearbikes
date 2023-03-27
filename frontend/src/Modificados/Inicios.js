@@ -1,4 +1,4 @@
-import { Functionform } from '../Componentes/Functionform';
+import { Functionform } from '../Funciones/Functionform';
 import Inputs from "../Componentes/Campos";
 import Contra from "../Componentes/contra";
 import Boton from "../Componentes/botonr";

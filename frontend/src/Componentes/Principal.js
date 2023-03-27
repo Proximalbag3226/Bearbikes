@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import jwt_decode from "jwt-decode";
 
 function Principal(){
+    const token = localStorage.getItem('token');
     return (
         <div>
         <header className={"header"}>
