@@ -1,5 +1,6 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
+import { redirect } from 'react-router-dom';
 
 import Inicio from './../components/pages/homePage';
 import BeardBikes from './../components/pages/beardbikes';
@@ -24,11 +25,13 @@ import Basilica from './../components/pages/places/Basilica';
 import Chapultepec from './../components/pages/places/Chapultepec';
 
 import Tienda from './../components/pages/Tienda';
-import Map from './../components/pages/Rutas';
+//import Map from './../components/pages/Rutas';
+//import Rutas from '../components/pages/rutas/CreadorRutas';
 import Avisos from './../components/pages/Avisos';
 import Cuadro_b from './../components/pages/Cuadro_b';
 import Eleccion from './../components/pages/Eleccion';
 import Login from './../components/pages/Login';
+import RoutingMachine from '../components/pages/rutas/Rutas';
 
 
 const router = createBrowserRouter([
@@ -102,7 +105,7 @@ const router = createBrowserRouter([
     },
     {
       path: '/rutas',
-      element: <Map/>
+      element: <RoutingMachine />
     },
     {
       path: '/avisos',
