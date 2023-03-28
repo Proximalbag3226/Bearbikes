@@ -1,7 +1,7 @@
 import variables from "./constantes";
 
 export const registerUser = (formData) => {
-    return fetch(`http://192.168.20.110:9009/${variables.registrar}`, {
+    return fetch(`http://192.168.20.110:${variables.apiPort}/${variables.registrar}/auth/register`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

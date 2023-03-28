@@ -11,9 +11,11 @@ const Eleccion = () => {
                 <br/><br/>
                 <a href="/ciclistasform">Ciclista</a>
                 <br/><br/>
-                <a href="frontend/src/Paginas/Registro/Eleccion">Administrador</a>
+                <a href="/adminform">Administrador</a>
                 <br/><br/>
-                <a href="frontend/src/Paginas/Registro/Eleccion">Dueño de taller</a>
+                <a href="/dueñoTallerForm">Dueño de taller</a>
+                <br/><br/>
+                <a href="/dueñoComercioForm">Dueño de comercio</a>
             </div>
         </div>
     );

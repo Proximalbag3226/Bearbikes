@@ -1,17 +1,17 @@
 import Principal from "../../Componentes/Principal";
 import Formulario from "../../Modificados/Formc";
 
-const Ciclistasf = () => {
+const Dueño_comercio = () => {
     return(
         <div>
         <div>
           <Principal/>
         </div>
         <div>
-          <Formulario tipoUsuario="ciclista"/>
+          <Formulario tipoUsuario={"dueño_comercio"}/>
         </div>
       </div>
     );
 }
 
-export default Ciclistasf
+export default Dueño_comercio

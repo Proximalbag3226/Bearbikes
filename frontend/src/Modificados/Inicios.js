@@ -1,10 +1,10 @@
-import { Functionform } from '../Funciones/Functionform';
+import  FormFunction  from '../Funciones/Functionform';
 import Inputs from "../Componentes/Campos";
 import Contra from "../Componentes/contra";
 import Boton from "../Componentes/botonr";
 
 function Inicios(){
-    const { formData, handleChange, handleSubmit } = Functionform();
+    const { formData, handleChange, handleSubmit } = FormFunction   ();
     return(
         <form onSubmit={handleSubmit}>  
         <h1 className={"titulo"}>Complete los campos</h1>

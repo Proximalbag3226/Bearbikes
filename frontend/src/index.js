@@ -21,6 +21,9 @@ import Aviso from './Paginas/Avisos';
 import Cuadro_b from './Paginas/Infobicicletas/Cuadro_b';
 import Eleccion from './Paginas/Registro/Eleccion';
 import Login from './Paginas/Registro/Login';
+import Admin from './Paginas/Registro/Adminf';
+import Dueño_comercio from './Paginas/Registro/Comercio';
+import Dueño_taller from './Paginas/Registro/Tallerf';
 
 const router = createBrowserRouter([
   {
@@ -30,6 +33,18 @@ const router = createBrowserRouter([
   {
     path: '/ciclistasform',
     element: <Ciclistasf/>
+  },
+  {
+    path: '/adminform',
+    element: <Admin/>
+  },
+  {
+    path: '/dueñoTallerForm',
+    element: <Dueño_taller/>
+  },
+  {
+    path: '/dueñoComercioForm',
+    element: <Dueño_comercio/>
   },
   {
     path: '/info',
