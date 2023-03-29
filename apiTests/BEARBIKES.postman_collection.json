@@ -13,7 +13,13 @@
 					"name": "Contar Ciclistas",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbWFpbEBwb3N0bWFuLmNvbSIsImlhdCI6MTY4MDA3NjQxMywiZXhwIjoxNjgwMTYyODEzfQ.w5LcFacL4mwaQdeGqJVlJd0q9a4pbk8WtMwWYNCLD-Y",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/{{PATH_CICLISTAS}}/count",
 							"host": [
@@ -32,7 +38,13 @@
 					"name": "Obtener Ciclistas",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbWFpbEBwb3N0bWFuLmNvbSIsImlhdCI6MTY4MDA3NjQxMywiZXhwIjoxNjgwMTYyODEzfQ.w5LcFacL4mwaQdeGqJVlJd0q9a4pbk8WtMwWYNCLD-Y",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/{{PATH_CICLISTAS}}/getAll",
 							"host": [
@@ -54,7 +66,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"type\" : \"ciclista\",\r\n    \"email\": \"email@postman.com\",\r\n    \"password\": \"contraseñaPostman1\",\r\n    \"nombre\": \"Post\",\r\n    \"apellidoPat\": \"Man\",\r\n    \"apellidoMat\": \"Request\",\r\n    \"celular\": \"5533175289\"\r\n}",
+							"raw": "{\r\n    \"type\" : \"ciclista\",\r\n    \"email\": \"email@postman.com\",\r\n    \"password\": \"contraseñaPostman1\",\r\n    \"name\": \"Post\",\r\n    \"apellidoPat\": \"Man\",\r\n    \"apellidoMat\": \"Request\",\r\n    \"celular\": \"5533175289\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -62,14 +74,52 @@
 							}
 						},
 						"url": {
-							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/{{PATH_CICLISTAS}}/register",
+							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/api/v1/auth/register",
 							"host": [
 								"{{SERVER_IP}}"
 							],
 							"port": "{{SERVER_PORT}}",
 							"path": [
-								"{{PATH_CICLISTAS}}",
+								"api",
+								"v1",
+								"auth",
 								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "loginCiclista",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"email@postman.com\",\r\n    \"password\": \"contraseñaPostman1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/api/v1/auth/authenticate?",
+							"host": [
+								"{{SERVER_IP}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"authenticate"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
 							]
 						}
 					},
@@ -84,9 +134,15 @@
 					"name": "Contar dueños taller",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkdWXDsW90YWxsZXJAcG9zdG1hbi5jb20iLCJpYXQiOjE2ODAwNzgyMzUsImV4cCI6MTY4MDE2NDYzNX0.rsKN0Im9xzni8gTxqwfeBqBbR6pkqyrrCrnWzBcbsWU",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/{{PATH_DUEÑOS_TALLER}}/count",
+							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/{{PATH_DUEÑOS_TALLER}}/count?",
 							"host": [
 								"{{SERVER_IP}}"
 							],
@@ -94,6 +150,12 @@
 							"path": [
 								"{{PATH_DUEÑOS_TALLER}}",
 								"count"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
 							]
 						}
 					},
@@ -103,7 +165,13 @@
 					"name": "Obtener Dueños taller",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkdWXDsW90YWxsZXJAcG9zdG1hbi5jb20iLCJpYXQiOjE2ODAwNzgyMzUsImV4cCI6MTY4MDE2NDYzNX0.rsKN0Im9xzni8gTxqwfeBqBbR6pkqyrrCrnWzBcbsWU",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/{{PATH_DUEÑOS_TALLER}}/getAll",
 							"host": [
@@ -125,7 +193,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"type\" : \"dueño_taller\",\r\n    \"email\": \"email@postman.com\",\r\n    \"password\": \"contraseñaPostman1\",\r\n    \"nombre\": \"Post\",\r\n    \"apellidoPat\": \"Man\",\r\n    \"apellidoMat\": \"Request\",\r\n    \"celular\": \"5533175289\",\r\n    \"rfc\": \"1234567890ABCDE\"\r\n}",
+							"raw": "{\r\n    \"type\" : \"dueño_taller\",\r\n    \"email\": \"dueñotaller@postman.com\",\r\n    \"password\": \"contraseñaPostman1\",\r\n    \"name\": \"Post\",\r\n    \"apellidoPat\": \"Man\",\r\n    \"apellidoMat\": \"Request\",\r\n    \"celular\": \"5533175289\",\r\n    \"rfc\": \"1234567890ABCDE\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -133,14 +201,179 @@
 							}
 						},
 						"url": {
-							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/{{PATH_DUEÑOS_TALLER}}/register",
+							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/api/v1/auth/register",
 							"host": [
 								"{{SERVER_IP}}"
 							],
 							"port": "{{SERVER_PORT}}",
 							"path": [
-								"{{PATH_DUEÑOS_TALLER}}",
+								"api",
+								"v1",
+								"auth",
 								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "loginDueño taller",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"dueñotaller@postman.com\",\r\n    \"password\": \"contraseñaPostman1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/api/v1/auth/authenticate?",
+							"host": [
+								"{{SERVER_IP}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"authenticate"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DUEÑOS COMERCIO",
+			"item": [
+				{
+					"name": "Contar dueños taller",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkdWXDsW9jb21lcmNpb0Bwb3N0bWFuLmNvbSIsImlhdCI6MTY4MDA4MDA3NywiZXhwIjoxNjgwMTY2NDc3fQ.c1Y8Q4bw3CtTp3DpvdEWRkaE2g8DGh80L4tuJaWTKo8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/{{PATH_DUEÑOS_COMERCIO}}/count?",
+							"host": [
+								"{{SERVER_IP}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"{{PATH_DUEÑOS_COMERCIO}}",
+								"count"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Dueños taller",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkdWXDsW9jb21lcmNpb0Bwb3N0bWFuLmNvbSIsImlhdCI6MTY4MDA4MDA3NywiZXhwIjoxNjgwMTY2NDc3fQ.c1Y8Q4bw3CtTp3DpvdEWRkaE2g8DGh80L4tuJaWTKo8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/{{PATH_DUEÑOS_COMERCIO}}/getAll",
+							"host": [
+								"{{SERVER_IP}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"{{PATH_DUEÑOS_COMERCIO}}",
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registrar Dueños taller",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\" : \"dueño_comercio\",\r\n    \"email\": \"dueñocomercio@postman.com\",\r\n    \"password\": \"contraseñaPostman1\",\r\n    \"name\": \"Post\",\r\n    \"apellidoPat\": \"Man\",\r\n    \"apellidoMat\": \"Request\",\r\n    \"celular\": \"5533175289\",\r\n    \"rfc\": \"1234567890ABCDE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/api/v1/auth/register",
+							"host": [
+								"{{SERVER_IP}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "loginDueño taller",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"dueñocomercio@postman.com\",\r\n    \"password\": \"contraseñaPostman1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/api/v1/auth/authenticate?",
+							"host": [
+								"{{SERVER_IP}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"authenticate"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
 							]
 						}
 					},
@@ -155,7 +388,13 @@
 					"name": "Contar Administradores",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBwb3N0bWFuLmNvbSIsImlhdCI6MTY4MDA3ODU5NCwiZXhwIjoxNjgwMTY0OTk0fQ.EWhj3RfdKlqgE63HT1qrftkZaB-eh_76FfWLZiBWM5I",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/{{PATH_ADMIN}}/count",
 							"host": [
@@ -174,6 +413,134 @@
 					"name": "Obtener Administradores",
 					"request": {
 						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBwb3N0bWFuLmNvbSIsImlhdCI6MTY4MDA3ODU5NCwiZXhwIjoxNjgwMTY0OTk0fQ.EWhj3RfdKlqgE63HT1qrftkZaB-eh_76FfWLZiBWM5I",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/{{PATH_ADMIN}}/getAll",
+							"host": [
+								"{{SERVER_IP}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"{{PATH_ADMIN}}",
+								"getAll"
+							],
+							"query": [
+								{
+									"key": "Authorization",
+									"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBwb3N0bWFuLmNvbSIsImlhdCI6MTY4MDA3ODU5NCwiZXhwIjoxNjgwMTY0OTk0fQ.EWhj3RfdKlqgE63HT1qrftkZaB-eh_76FfWLZiBWM5I",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registrar Administradores",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\" : \"admin\",\r\n    \"email\": \"admin@postman.com\",\r\n    \"password\": \"contraseñaPostman1\",\r\n    \"name\": \"Post\",\r\n    \"adminKey\" : \"CLAVE123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/api/v1/auth/register",
+							"host": [
+								"{{SERVER_IP}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "loginAdmin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin@postman.com\",\r\n    \"password\": \"contraseñaPostman1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/api/v1/auth/authenticate?",
+							"host": [
+								"{{SERVER_IP}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"authenticate"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TALLER",
+			"item": [
+				{
+					"name": "Contar Talleres",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkdWXDsW90YWxsZXJAcG9zdG1hbi5jb20iLCJpYXQiOjE2ODAwODA0MDIsImV4cCI6MTY4MDE2NjgwMn0.tTtRNH4OBMx6P2ZL0drEpMr1AzPvlieiJ63rXLVHOcc",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/{{PATH_TALLER}}/count",
+							"host": [
+								"{{SERVER_IP}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"{{PATH_TALLER}}",
+								"count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Administradores Copy",
+					"request": {
+						"method": "GET",
 						"header": [],
 						"url": {
 							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/{{PATH_ADMIN}}/getAll",
@@ -190,13 +557,13 @@
 					"response": []
 				},
 				{
-					"name": "Registrar Administradores",
+					"name": "Registrar Administradores Copy",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"type\" : \"admin\",\r\n    \"email\": \"email1@postman.com\",\r\n    \"password\": \"contraseñaPostman1\",\r\n    \"nombre\": \"Post\",\r\n    \"adminKey\" : \"CLAVE123\"\r\n}",
+							"raw": "{\r\n    \"type\" : \"admin\",\r\n    \"email\": \"admin@postman.com\",\r\n    \"password\": \"contraseñaPostman1\",\r\n    \"name\": \"Post\",\r\n    \"adminKey\" : \"CLAVE123\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -204,24 +571,58 @@
 							}
 						},
 						"url": {
-							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/{{PATH_ADMIN}}/register",
+							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/api/v1/auth/register",
 							"host": [
 								"{{SERVER_IP}}"
 							],
 							"port": "{{SERVER_PORT}}",
 							"path": [
-								"{{PATH_ADMIN}}",
+								"api",
+								"v1",
+								"auth",
 								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "loginDueño taller",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"dueñotaller@postman.com\",\r\n    \"password\": \"contraseñaPostman1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/api/v1/auth/authenticate?",
+							"host": [
+								"{{SERVER_IP}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"authenticate"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
 							]
 						}
 					},
 					"response": []
 				}
 			]
-		},
-		{
-			"name": "TALLER",
-			"item": []
 		},
 		{
 			"name": "REPARACIONES",
@@ -379,8 +780,24 @@
 			"type": "string"
 		},
 		{
+			"key": "PATH_COMERCIO",
+			"value": "commerce",
+			"type": "string"
+		},
+		{
 			"key": "PATH_DUEÑOS_TALLER",
 			"value": "workshopOwner",
+			"type": "string"
+		},
+		{
+			"key": "PATH_API",
+			"value": "",
+			"type": "string",
+			"disabled": true
+		},
+		{
+			"key": "PATH_DUEÑOS_COMERCIO",
+			"value": "commerceOwner",
 			"type": "string"
 		}
 	]
