@@ -1,7 +1,8 @@
-package com.example.bearbikes_react.model.repository;
+package com.example.bearbikes_react.model.repository.user;
 
 import com.example.bearbikes_react.model.user.AccountStatus;
 import com.example.bearbikes_react.model.user.Admin;
+import com.example.bearbikes_react.model.user.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -137,13 +138,14 @@ public class AdminsRepository {
     static class AdminMapper implements RowMapper<Admin> {
         public Admin mapRow(ResultSet rs, int rowNum) throws SQLException {
             Admin admin = new Admin();
-            admin.setId(rs.getInt("idUsuario"));
+            admin.setId(rs.getInt("id"));
             admin.setEmail(rs.getString ("email"));
             admin.setPassword(rs.getString ("password"));
             // assign an enum corresponding to the varchar value of account_status
             admin.setAccountStatus(AccountStatus.valueOf(rs.getString ("account_status")));
             admin.setName(rs.getString ("nombre"));
             admin.setRegisterDate(rs.getDate ("fecha_registro"));
+            admin.setRole(UserRole.ADMINISTRADOR);
             return admin;
         }
     }

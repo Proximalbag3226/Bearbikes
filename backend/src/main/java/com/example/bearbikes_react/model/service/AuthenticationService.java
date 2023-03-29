@@ -1,14 +1,13 @@
 package com.example.bearbikes_react.model.service;
 
 import com.example.bearbikes_react.model.repository.*;
+import com.example.bearbikes_react.model.repository.user.*;
 import com.example.bearbikes_react.model.user.*;
 import com.example.bearbikes_react.utils.Utils;
+import com.example.bearbikes_react.utils.payload.establishment.register.request.RegisterCommerceRequest;
 import com.example.bearbikes_react.utils.payload.user.authenticate.response.AuthenticationResponse;
 import com.example.bearbikes_react.utils.payload.user.authenticate.request.AuthenticateRequest;
-import com.example.bearbikes_react.utils.payload.user.register.request.RegisterAdminRequest;
-import com.example.bearbikes_react.utils.payload.user.register.request.RegisterCyclistRequest;
-import com.example.bearbikes_react.utils.payload.user.register.request.RegisterRequest;
-import com.example.bearbikes_react.utils.payload.user.register.request.RegisterWorkshopOwnerRequest;
+import com.example.bearbikes_react.utils.payload.user.register.request.*;
 import com.example.bearbikes_react.utils.payload.user.register.response.RegisterResponse;
 import com.example.bearbikes_react.utils.token.Token;
 import com.example.bearbikes_react.utils.token.TokenType;
@@ -27,6 +26,8 @@ public class AuthenticationService {
     private final AdminsRepository adminsRepository;
     private final CyclistsRepository cyclistsRepository;
     private final WorkshopOwnerRepository workshopOwnerRepository;
+
+    private final CommerceOwnerRepository commerceOwnerRepository;
     private final TokenRepository tokenRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
@@ -45,6 +46,8 @@ public class AuthenticationService {
             role = "cyclist";
         else if (request instanceof RegisterWorkshopOwnerRequest)
             role = "workshopOwner";
+        else if (request instanceof RegisterCommerceOwnerRequest)
+            role = "commerceOwner";
         else
             throw new RuntimeException("Invalid RegisterRequest");
 
@@ -84,6 +87,20 @@ public class AuthenticationService {
                       workshopOwnerRequest.getRfc()
               );
                 registeredUser = workshopOwnerRepository.addNew((WorkshopOwner) user);
+
+            }
+            case "commerceOwner" ->{
+                RegisterCommerceOwnerRequest workshopOwnerRequest = (RegisterCommerceOwnerRequest) request;
+                user = new CommerceOwner(
+                        workshopOwnerRequest.getEmail(),
+                        encodedPassword,
+                        workshopOwnerRequest.getName(),
+                        workshopOwnerRequest.getApellidoPat(),
+                        workshopOwnerRequest.getApellidoMat(),
+                        workshopOwnerRequest.getCelular(),
+                        workshopOwnerRequest.getRfc()
+                );
+                registeredUser = commerceOwnerRepository.addNew((CommerceOwner) user);
 
             }
             default -> throw new RuntimeException("No se puedo añadir el usuario");

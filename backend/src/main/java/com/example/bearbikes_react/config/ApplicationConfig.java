@@ -1,6 +1,6 @@
 package com.example.bearbikes_react.config;
 
-import com.example.bearbikes_react.model.repository.UserRepository;
+import com.example.bearbikes_react.model.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

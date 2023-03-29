@@ -17,11 +17,11 @@ import java.util.function.Function;
 
 @Service
 public class JwtService {
-    @Value("jwt.secret")
-    private static String secretKey;
+    @Value("${jwt.secret}")
+    private String secretKey;
 
-    @Value("jwt.life.ms")
-    private static long jwtLife;
+    @Value("${jwt.life.ms}")
+    private long jwtLife;
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
