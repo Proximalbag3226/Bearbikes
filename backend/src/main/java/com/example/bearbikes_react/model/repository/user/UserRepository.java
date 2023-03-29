@@ -1,4 +1,4 @@
-package com.example.bearbikes_react.model.repository;
+package com.example.bearbikes_react.model.repository.user;
 
 import com.example.bearbikes_react.model.user.AccountStatus;
 import com.example.bearbikes_react.model.user.User;
@@ -24,7 +24,7 @@ public class UserRepository {
     protected static final String SELECT_USER_ID_BY_EMAIL;
 
     static {
-        SELECT_USER_ID_BY_EMAIL = "SELECT usuarios.id_usuario AS email " + "FROM usuarios " + "WHERE usuarios.email_usuario = (?);";
+        SELECT_USER_ID_BY_EMAIL = "SELECT usuarios.id_usuario AS id FROM usuarios WHERE usuarios.email_usuario = (?);";
     }
 
     private final JdbcTemplate jdbcTemplate;

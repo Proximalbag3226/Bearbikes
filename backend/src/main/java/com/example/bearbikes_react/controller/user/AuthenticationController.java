@@ -1,4 +1,4 @@
-package com.example.bearbikes_react.controller;
+package com.example.bearbikes_react.controller.user;
 
 import com.example.bearbikes_react.model.service.AuthenticationService;
 import com.example.bearbikes_react.utils.payload.user.authenticate.response.AuthenticationResponse;
@@ -26,6 +26,7 @@ public class AuthenticationController {
     @PostMapping("/register")
     public ResponseEntity<RegisterResponse> register(@RequestBody RegisterRequest request) {
         try {
+            System.out.println("PETICION REGISTRO RECIBIDA || " + request);
             return ResponseEntity.ok(service.register(request));
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -34,6 +35,7 @@ public class AuthenticationController {
 
     @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody AuthenticateRequest request) {
+        System.out.println("PETICION LOGIN RECIBIDA || " + request);
         return ResponseEntity.ok(service.authenticate(request));
     }
 

@@ -12,7 +12,8 @@ import lombok.Setter;
 @JsonSubTypes({
         @JsonSubTypes.Type(value = RegisterAdminRequest.class, name = "admin"),
         @JsonSubTypes.Type(value = RegisterCyclistRequest.class, name = "ciclista"),
-        @JsonSubTypes.Type(value = RegisterWorkshopOwnerRequest.class, name = "dueño_taller")
+        @JsonSubTypes.Type(value = RegisterWorkshopOwnerRequest.class, name = "dueño_taller"),
+        @JsonSubTypes.Type(value = RegisterCommerceOwnerRequest.class, name = "dueño_comercio")
 })
 public class RegisterCyclistRequest extends RegisterRequest{
   private String apellidoPat;
