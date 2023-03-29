@@ -1,50 +1,42 @@
-// --- (1), (2) & (3): install and import ---
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, Polyline } from 'react-leaflet';
 import { Icon } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import Principal from '../Componentes/Principal';
-// --- ---------------------------------- ---
+import { useState } from 'react';
 
 export function Map() {
-  // Berlin coordinates
-  const position = [19.42847, -99.12766]
+  const position = [19.42847, -99.12766];
+  const [route, setRoute] = useState([]);
 
-  // --- (6) Create a custom marker ---
   const customIcon = new Icon({
     iconUrl: '/icons8-select-24.png',
     iconSize: [20, 20],
-    // iconAnchor: [1, 1],
-    // popupAnchor: [-0, -76]
-  })
+  });
+
+  const handleMapClick = (e) => {
+    const { latlng } = e;
+    setRoute((prevRoute) => [...prevRoute, latlng]);
+  };
 
   return (
-    <div>
-    <Principal/>
-    <section className='map-component' >
-      {/* --- (5) Add leaflet map container --- */}
-      <div className='map'>
-      <MapContainer center={position} zoom={14} scrollWheelZoom={true}>
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          // --- (7) Alternative map style (attribution and url copied from the leaflet extras website) ---
-          // attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
-          // url='https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png'
-          // --- -------------------------------------------------------------------------------------- ---
-        />
-        <Marker position={position}
-          icon={customIcon}
-        >
-          <Popup>
-            🐻🍻🎉
-          </Popup>
-        </Marker>
-      </MapContainer>
-      {/* --- ---------------------------- --- */}
+      <div>
+        <Principal />
+        <section className='map-component'>
+          <div className='map'>
+            <MapContainer center={position} zoom={14} scrollWheelZoom={true} onClick={handleMapClick}>
+              <TileLayer
+                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                  url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+              />
+              <Marker position={position} icon={customIcon}>
+                <Popup>🐻🍻🎉</Popup>
+              </Marker>
+              <Polyline pathOptions={{ color: 'red' }} positions={route} />
+            </MapContainer>
+          </div>
+        </section>
       </div>
-    </section>
-    </div>
-  )
+  );
 }
 
 export default Map;

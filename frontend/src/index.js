@@ -16,7 +16,7 @@ import Polanco from "./Paginas/Sitios/Polanco";
 import Basilica from "./Paginas/Sitios/Basilica";
 import Chapultepec from "./Paginas/Sitios/Chapultepec";
 import Tienda from "./Paginas/Tienda";
-import Map from './Paginas/Rutas';
+import Mapa from './Paginas/Rutas';
 import Aviso from './Paginas/Avisos';
 import Cuadro_b from './Paginas/Infobicicletas/Cuadro_b';
 import Eleccion from './Paginas/Registro/Eleccion';
@@ -96,7 +96,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/rutas',
-    element: <Map/>
+    element: <Mapa/>
   },
   {
     path: '/avisos',
