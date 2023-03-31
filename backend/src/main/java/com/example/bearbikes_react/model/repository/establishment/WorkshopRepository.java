@@ -73,7 +73,7 @@ public class WorkshopRepository {
 
 
     public Workshop getById(int workshopId){
-        return jdbcTemplate.queryForObject(SELECT_ALL_WORKSHOPS_QUERY, new WorkshopMapper(), workshopId);
+        return jdbcTemplate.queryForObject(SELECT_WORKSHOP_BY_ID_QUERY, new WorkshopMapper(), workshopId);
     }
 
     /**
@@ -86,6 +86,11 @@ public class WorkshopRepository {
         return jdbcTemplate.query(SELECT_ALL_WORKSHOPS_QUERY, new WorkshopMapper());
     }
 
+
+    public int getAddressIdForWorkshop(int idEstablishment){
+        String query = "SELECT direcciones.id_direccion FROM direcciones WHERE direcciones.id_direccion = (?)";
+        return jdbcTemplate.queryForObject(query, Integer.class, idEstablishment);
+    }
 
     /**
      * Makes a query to the database in order to add a new row in the taller table
@@ -111,6 +116,7 @@ public class WorkshopRepository {
                         new SqlParameter("codigoPostal", Types.VARCHAR),
                         new SqlParameter("alcaldia", Types.VARCHAR),
                         new SqlParameter("ciudad", Types.VARCHAR),
+                        new SqlOutParameter("idDireccionInsertada", Types.INTEGER),
                         new SqlOutParameter("idEstablecimiento", Types.INTEGER)
                 );
         final Address workshopAddress = newWorkshop.getDireccion();
@@ -130,8 +136,8 @@ public class WorkshopRepository {
         );
 
         int workshopInsertedId =  (int) result.getOrDefault("idEstablecimiento", -1);
-        newWorkshop.setId(workshopInsertedId);
-        return newWorkshop;
+
+        return getById(workshopInsertedId);
     }
 
 
@@ -140,10 +146,10 @@ public class WorkshopRepository {
      * RowMapper implementation for map resulting select queries for WorshopOwners using the SELECT_WORKSHOP_OWNER_QUERY String
      * of WorshopOwnerRepository class
      */
-
     class WorkshopMapper implements RowMapper<Workshop> {
         public Workshop mapRow(ResultSet rs, int rowNum) throws SQLException {
             Address workshopAddress = new Address();
+            workshopAddress.setIdDireccion(getAddressIdForWorkshop(rs.getInt("id_establecimiento")));
             workshopAddress.setCalle(rs.getString("calle"));
             workshopAddress.setNumeroExterior(rs.getString("numero_exterior"));
             workshopAddress.setNumeroInterior(rs.getString("numero_interior"));

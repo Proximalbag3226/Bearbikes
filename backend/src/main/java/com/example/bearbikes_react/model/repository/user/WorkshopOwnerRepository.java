@@ -25,13 +25,13 @@ public class WorkshopOwnerRepository {
     static {
         SELECT_ALL_WORKSHOP_OWNERS_QUERY =
                 """
-                select 
-                    usuarios.id_usuario as id, usuarios.email_usuario as email, usuarios.password_usuario as password, usuarios.account_status,
+                SELECT 
+                    usuarios.id_usuario AS id, usuarios.email_usuario AS email, usuarios.password_usuario AS password, usuarios.account_status,
                     personas.nombre, personas.apellido_pat, personas.apellido_mat, personas.numero_celular,
-                    empresarios.Rfc_fisica as rfc
-                from 
+                    empresarios.Rfc_fisica AS rfc
+                FROM 
                     usuarios, personas, empresarios
-                where 
+                WHERE 
                     usuarios.id_usuario = personas.id_persona and personas.id_persona = empresarios.id_empresario and empresarios.tipo_empresario = 1;
                 """.stripIndent();
     }

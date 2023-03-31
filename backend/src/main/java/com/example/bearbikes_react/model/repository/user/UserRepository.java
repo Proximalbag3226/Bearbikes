@@ -24,7 +24,8 @@ public class UserRepository {
     protected static final String SELECT_USER_ID_BY_EMAIL;
 
     static {
-        SELECT_USER_ID_BY_EMAIL = "SELECT usuarios.id_usuario AS id FROM usuarios WHERE usuarios.email_usuario = (?);";
+        SELECT_USER_ID_BY_EMAIL =
+                "SELECT usuarios.id_usuario AS id FROM usuarios WHERE usuarios.email_usuario = (?);";
     }
 
     private final JdbcTemplate jdbcTemplate;
