@@ -105,7 +105,7 @@ const Formulario = (props) => {
                     value={formData.password}
                     handleChange={handleChange}
                 />
-                <SubmitButton text={"Registrar"} />
+                <SubmitButton text={"Registrar"}/>
             </div>
         </form>
     );

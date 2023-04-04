@@ -50,7 +50,7 @@ export const PasswordInput = (props) => {
 export const SubmitButton = (props) => {
     return (
         <div>
-            <button type="submit" className="button-85 submit" role="button">
+            <button type={"submit"} className={"button-85 submit"} role={"button"}>
                 {props.text}
             </button>
         </div>
@@ -66,7 +66,7 @@ export const CelularInput = (props) => {
                     id: "celular",
                     name: "celular",
                     type: "tel",
-                    placeholder: "5533175289",
+                    placeholder: "Numero celular",
                     value: props.value,
                     onChange: props.handleChange,
                     maxLength: "10",
@@ -110,7 +110,7 @@ export const ApellidoMatInput = (props) => {
                     id: "apellidoMat",
                     name: "apellidoMat",
                     type: "text",
-                    placeholder: "ej. Ramirez",
+                    placeholder: "Apellido Materno",
                     value: props.value || "",
                     onChange: props.handleChange,
                     maxLength: props.maxLength || "",
@@ -131,7 +131,7 @@ export const ApellidoPatInput = (props) => {
                     id: "apellidoPat",
                     name: "apellidoPat",
                     type: "text",
-                    placeholder: "ej. Perez",
+                    placeholder: "Apellido Paterno",
                     value: props.value || "",
                     onChange: props.handleChange,
                     maxLength: props.maxLength || "",
@@ -175,7 +175,7 @@ export const AdminKeyInput = (props) => {
                     id: "adminKey",
                     name: "adminKey",
                     type: "text",
-                    placeholder: "ej. AdminKey1234",
+                    placeholder: "Llave de Admin",
                     value: props.value || "",
                     onChange: props.handleChange,
                     maxLength: props.maxLength || "",
@@ -213,7 +213,7 @@ export const RfcPersonaFisicaInput = (props) => {
                     id: "rfc",
                     name: "rfc",
                     type: "text",
-                    placeholder: "ej. RFCPRUEBA123",
+                    placeholder: "RFC",
                     value: props.value || "",
                     onChange: props.handleChange,
                     maxLength: props.maxLength || "",

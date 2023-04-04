@@ -1,32 +1,29 @@
-import  FormFunction  from '../Funciones/Functionform';
-import Inputs from "../Componentes/Campos";
-import Contra from "../Componentes/contra";
-import Boton from "../Componentes/botonr";
+import { Formlogin } from '../Funciones/Functionform';
+import {
+    EmailInput,
+    PasswordInput,
+    SubmitButton,
+} from '../Componentes/Inputs';
 
 function Inicios(){
-    const { formData, handleChange, handleSubmit } = FormFunction   ();
+    const formInitialData = new Map();
+    formInitialData.set("type", "");
+    formInitialData.set("email", "");
+    formInitialData.set("password", "");
+    const { formData, handleChange, handleSubmit } = Formlogin(formInitialData);
     return(
         <form onSubmit={handleSubmit}>  
         <h1 className={"titulo"}>Complete los campos</h1>
         <div className={"inputss"} id={"inputss"}>
             <br/>
-            <Inputs
-                handleChange={handleChange}
-                placeholder={"Correo"}
-                idt={"email"}
-                name={"email"}
-                value={formData.email}
-            />
-            <br/>
-            <br/>
-            <Contra
-                    placeholder={"Contraseña"}
-                    data={formData.password}
-                    change={handleChange}
+            <EmailInput
+                    value={formData.email}
+                    handleChange={handleChange} />
+                <PasswordInput
+                    value={formData.password}
+                    handleChange={handleChange}
                 />
-            <br/>
-            <Boton
-            boton={"Entrar"}/>
+                <SubmitButton text={"Registrar"}/>
         </div>
     </form>
     );

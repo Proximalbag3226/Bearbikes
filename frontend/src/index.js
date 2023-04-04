@@ -24,6 +24,9 @@ import Login from './Paginas/Registro/Login';
 import Admin from './Paginas/Registro/Adminf';
 import Dueño_comercio from './Paginas/Registro/Comercio';
 import Dueño_taller from './Paginas/Registro/Tallerf';
+import { redirect } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
+import { isAuthenticated } from './Funciones/Permitir_acceso';
 
 const router = createBrowserRouter([
   {
