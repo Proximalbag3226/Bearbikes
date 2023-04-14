@@ -50,6 +50,10 @@ public class CyclistsRepository {
         return jdbcTemplate.queryForObject(countUsersQuery, Integer.class);
     }
 
+    public boolean isCyclistTokenAvailable(String tokenPersonal) {
+        String countUsersByEmail = "SELECT COUNT(*) FROM ciclistas where ciclistas.token_personal_ciclista = (?);";
+        return jdbcTemplate.queryForObject(countUsersByEmail, Integer.class, tokenPersonal) != 0;
+    }
     /**
      * Makes a query to the database to get all the registered cyclists
      * it uses the CyclistsRepository.CyclistMapper to map the query results in to

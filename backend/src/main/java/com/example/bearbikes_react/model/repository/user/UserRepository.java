@@ -64,7 +64,12 @@ public class UserRepository {
             e.printStackTrace();
         }
 
-        return Optional.of(newUser);
+        return Optional.ofNullable(newUser);
+    }
+
+    public boolean isEmailAvailable(String email) {
+        String countUsersByEmail = "SELECT COUNT(*) FROM usuarios where usuarios.email_usuario = (?);";
+        return jdbcTemplate.queryForObject(countUsersByEmail, Integer.class, email) == 0;
     }
 
 

@@ -1,5 +1,6 @@
 package com.example.bearbikes_react.model.service;
 
+import com.example.bearbikes_react.model.user.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -33,7 +34,9 @@ public class JwtService {
     }
 
     public String generateToken(UserDetails userDetails) {
-        return generateToken(new HashMap<>(), userDetails);
+        Map<String, Object> extraClaims = new HashMap<>();
+        extraClaims.put("role", ((User) userDetails).getRole());
+        return generateToken(extraClaims, userDetails);
     }
 
     public String generateToken(

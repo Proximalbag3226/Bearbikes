@@ -17,6 +17,11 @@
         <java.version>19</java.version>
     </properties>
     <dependencies>
+        <!-- Spring dependency for fields validation -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
         <!-- JDBC dependency to conect with database source -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
