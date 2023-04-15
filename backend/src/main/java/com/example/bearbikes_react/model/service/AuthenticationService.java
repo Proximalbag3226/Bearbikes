@@ -99,6 +99,12 @@ public class AuthenticationService {
             }
             case "workshopOwner" -> {
                 RegisterWorkshopOwnerRequest workshopOwnerRequest = (RegisterWorkshopOwnerRequest) request;
+                if (!workshopOwnerRepository.isRfcFisicaAvailable(workshopOwnerRequest.getRfc())) {
+                    return RegisterResponse.builder()
+                            .message("No se puedo registrar el Usuario")
+                            .cause("Ya existe un Dueño de _Taller registrado con el rfc " + workshopOwnerRequest.getRfc())
+                            .build();
+                }
                 user = new WorkshopOwner(
                         workshopOwnerRequest.getEmail(),
                         encodedPassword,

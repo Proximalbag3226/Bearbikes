@@ -4,6 +4,7 @@ import com.example.bearbikes_react.model.user.AccountStatus;
 import com.example.bearbikes_react.model.user.User;
 import com.example.bearbikes_react.model.user.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.SqlOutParameter;
@@ -35,7 +36,7 @@ public class UserRepository {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-    Optional<Integer> findIdByEmail(String email) {
+    Optional<Integer> findIdByEmail(String email) throws DataAccessException {
         Integer idUser = jdbcTemplate.queryForObject(SELECT_USER_ID_BY_EMAIL, Integer.class, email);
         return Optional.ofNullable(idUser);
     }
