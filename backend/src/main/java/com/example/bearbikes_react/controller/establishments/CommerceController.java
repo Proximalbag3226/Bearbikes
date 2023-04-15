@@ -34,7 +34,7 @@ public class CommerceController {
     public ResponseEntity<?> registerNewAdmin(@RequestBody RegisterCommerceRequest newCommerceRequest) {
 
         try {
-            System.out.printf("%n ***%-40s ===> %60s %n%n", "PETICIoN REGISTRO RECIBIDA", newCommerceRequest);
+            System.out.printf("%n ***%-40s ===> %60s %n", "PETICIÓN REGISTRO RECIBIDA", newCommerceRequest);
             String emailSesionActiva = SecurityContextHolder.getContext().getAuthentication().getName();
             System.out.println("Active session email " + emailSesionActiva);
 
