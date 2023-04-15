@@ -16,6 +16,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -38,7 +39,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull FilterChain filterChain) throws ServletException, IOException {
-            String authHeader = request.getHeader("Authorization");
+        String authHeader = request.getHeader("Authorization");
+        if (new AntPathRequestMatcher("/api/v1/auth/**").matches(request)) { // if the request is a register or login request we do not need jwt auth
+            filterChain.doFilter(request, response);
+            return;
+        }
         try {
 
             if (isAuthHeaderValid(authHeader)) { // check if request has a valid auth Header
@@ -59,13 +64,16 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                     }
                 }
             }
+
         } catch (JwtException | JsonParseException e) {
-            System.out.printf(
-                    "%nPetición No Autenticada Rechazada De Tipo '%s' en la URL '%s' desde la siguiente IP => %s con el siguiente Authorization header '%s'%n",
-                    request.getMethod(),
-                    UriComponentsBuilder.fromHttpRequest(new ServletServerHttpRequest(request)).build().toUriString(),
+            String requestInfo = String.format(
+                    "%6s %-50s ORIGEN: %-12s TOKEN: %s",
+                    request.getMethod(), UriComponentsBuilder.fromHttpRequest(new ServletServerHttpRequest(request)).build().toUriString(),
                     request.getRemoteAddr(),
-                    authHeader == null ? "Sin Auth Header" : authHeader);
+                    authHeader == null ? "Sin Auth Header" : authHeader
+            );
+            System.out.printf("%n ***%-40s ===> %s %n", "PETICIÓN RECHAZADA",  requestInfo );
+
         }
         filterChain.doFilter(request, response);
     }

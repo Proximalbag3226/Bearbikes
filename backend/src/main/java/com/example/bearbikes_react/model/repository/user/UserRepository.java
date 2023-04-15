@@ -61,7 +61,6 @@ public class UserRepository {
             UserMapper userMapper = new UserMapper();
             newUser = userMapper.mapProcedureResult(result);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
             e.printStackTrace();
         }
 
