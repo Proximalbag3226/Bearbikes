@@ -66,7 +66,10 @@ public class AuthenticationService {
                 RegisterAdminRequest adminRequest = (RegisterAdminRequest) request;
                 if (!adminsRepository.isAdminKeyValid(adminRequest.getAdminKey())) {
                     return RegisterResponse.builder()
-                            .message("La llave del administrador '$providedKey' no coincide con la registrada.".replace("$providedKey", adminRequest.getAdminKey()))
+                            .message("No se puedo registrar el Usuario")
+                            .cause(
+                                    "La llave del administrador '$providedKey' no coincide con la registrada."
+                                            .replace("$providedKey", adminRequest.getAdminKey()))
                             .build();
                 }
                 user = new Admin(
@@ -102,7 +105,7 @@ public class AuthenticationService {
                 if (!workshopOwnerRepository.isRfcFisicaAvailable(workshopOwnerRequest.getRfc())) {
                     return RegisterResponse.builder()
                             .message("No se puedo registrar el Usuario")
-                            .cause("Ya existe un Dueño de _Taller registrado con el rfc " + workshopOwnerRequest.getRfc())
+                            .cause("Ya existe un Dueño de Taller registrado con el rfc " + workshopOwnerRequest.getRfc())
                             .build();
                 }
                 user = new WorkshopOwner(
@@ -118,15 +121,21 @@ public class AuthenticationService {
 
             }
             case "commerceOwner" -> {
-                RegisterCommerceOwnerRequest workshopOwnerRequest = (RegisterCommerceOwnerRequest) request;
+                RegisterCommerceOwnerRequest commerceOwnerRequest = (RegisterCommerceOwnerRequest) request;
+                if (!commerceOwnerRepository.isRfcFisicaAvailable(commerceOwnerRequest.getRfc())) {
+                    return RegisterResponse.builder()
+                            .message("No se puedo registrar el Usuario")
+                            .cause("Ya existe un Dueño de Comercio registrado con el rfc " + commerceOwnerRequest.getRfc())
+                            .build();
+                }
                 user = new CommerceOwner(
-                        workshopOwnerRequest.getEmail(),
+                        commerceOwnerRequest.getEmail(),
                         encodedPassword,
-                        workshopOwnerRequest.getName(),
-                        workshopOwnerRequest.getApellidoPat(),
-                        workshopOwnerRequest.getApellidoMat(),
-                        workshopOwnerRequest.getCelular(),
-                        workshopOwnerRequest.getRfc()
+                        commerceOwnerRequest.getName(),
+                        commerceOwnerRequest.getApellidoPat(),
+                        commerceOwnerRequest.getApellidoMat(),
+                        commerceOwnerRequest.getCelular(),
+                        commerceOwnerRequest.getRfc()
                 );
                 registeredUser = commerceOwnerRepository.addNew((CommerceOwner) user);
 

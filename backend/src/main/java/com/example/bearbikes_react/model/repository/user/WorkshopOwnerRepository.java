@@ -99,7 +99,12 @@ public class WorkshopOwnerRepository {
         newWorkshopOwner.setId(insertedWorkshopOwnerId);
         return newWorkshopOwner;
     }
-    
+
+    public boolean isRfcFisicaAvailable(String rfc) {
+        String countUsersByEmail = "SELECT COUNT(*) FROM Empresarios where empresarios.rfc_fisica = (?);";
+        return jdbcTemplate.queryForObject(countUsersByEmail, Integer.class, rfc) == 0;
+    }
+
     /**
      * RowMapper implementation for map resulting select queries for WorshopOwners using the SELECT_WORKSHOP_OWNER_QUERY String
      * of WorshopOwnerRepository class
