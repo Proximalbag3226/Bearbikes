@@ -21,12 +21,12 @@ public class CommerceController {
     }
 
     @GetMapping(value = {"/count"})
-    public int countRegisteredWorkshopOwners() {
+    public int countRegisteredCommerces() {
         return commerceRepository.count();
     }
 
     @GetMapping(value = {"/getAll"})
-    public List<Commerce> getRegisteredWorkshopOwners() {
+    public List<Commerce> getRegisteredCommerces() {
         return commerceRepository.getAll();
     }
 
