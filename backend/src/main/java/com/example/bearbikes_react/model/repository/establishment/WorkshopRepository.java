@@ -20,37 +20,39 @@ public class WorkshopRepository {
     static {
         SELECT_ALL_WORKSHOPS_QUERY =
                                 """
-                                SELECT
-                                    Establecimientos.id_establecimiento, Establecimientos.nombre_establecimiento, Establecimientos.rfc_moral, Establecimientos.tipo_establecimiento,
-                                    Personas.nombre as nombre_dueño, Personas.numero_celular as celular_dueño,
-                                    Usuarios.email_usuario as correo_dueño,
-                                    Direcciones.calle , Direcciones.numero_exterior, Direcciones.numero_interior, Direcciones.colonia, Direcciones.codigo_postal, Direcciones.alcaldia, Direcciones.ciudad, Direcciones.tipo_direccion,
-                                    Talleres.calificacion_taller, Talleres.cantidad_empleados
-                                FROM
-                                    Establecimientos, Personas, Usuarios, Direcciones,  Talleres
-                                WHERE
-                                    Establecimientos.id_establecimiento = Talleres.id_taller AND
-                                    Establecimientos.id_dueño_establecimiento = Personas.id_persona AND
-                                    Personas.id_persona = Usuarios.id_usuario AND
-                                    Establecimientos.id_direccion = Direcciones.id_direccion;
-                                """.stripIndent();
+                                        SELECT
+                                            Establecimientos.id_establecimiento, Establecimientos.nombre_establecimiento, Establecimientos.rfc_moral, Establecimientos.tipo_establecimiento,
+                                            Personas.nombre as nombre_dueño, Personas.numero_celular as celular_dueño,
+                                            Usuarios.email_usuario as correo_dueño,
+                                            Direcciones.calle , Direcciones.numero_exterior, Direcciones.numero_interior, Direcciones.colonia, Direcciones.codigo_postal, Direcciones.alcaldia, Direcciones.ciudad, Direcciones.tipo_direccion,
+                                            Talleres.calificacion_taller, Talleres.cantidad_empleados
+                                        FROM
+                                            Establecimientos, Personas, Usuarios, Direcciones,  Talleres
+                                        WHERE
+                                            Establecimientos.id_establecimiento = Talleres.id_taller AND
+                                            Establecimientos.tipo_establecimiento = 'TALLER' AND
+                                            Establecimientos.id_dueño_establecimiento = Personas.id_persona AND
+                                            Personas.id_persona = Usuarios.id_usuario AND
+                                            Establecimientos.id_direccion = Direcciones.id_direccion;
+                                        """.stripIndent();
         SELECT_WORKSHOP_BY_ID_QUERY =
                                 """
-                                SELECT
-                                    Establecimientos.id_establecimiento, Establecimientos.nombre_establecimiento, Establecimientos.rfc_moral, Establecimientos.tipo_establecimiento,
-                                    Personas.nombre as nombre_dueño, Personas.numero_celular as celular_dueño,
-                                    Usuarios.email_usuario as correo_dueño,
-                                    Direcciones.calle , Direcciones.numero_exterior, Direcciones.numero_interior, Direcciones.colonia, Direcciones.codigo_postal, Direcciones.alcaldia, Direcciones.ciudad, Direcciones.tipo_direccion,
-                                    Talleres.calificacion_taller, Talleres.cantidad_empleados
-                                FROM
-                                    Establecimientos, Personas, Usuarios, Direcciones,  Talleres
-                                WHERE
-                                    Establecimientos.id_establecimiento =  (?) AND
-                                    Establecimientos.id_establecimiento = Talleres.id_taller AND
-                                    Establecimientos.id_dueño_establecimiento = Personas.id_persona AND
-                                    Personas.id_persona = Usuarios.id_usuario AND
-                                    Establecimientos.id_direccion = Direcciones.id_direccion;
-                                """.stripIndent();
+                                        SELECT
+                                            Establecimientos.id_establecimiento, Establecimientos.nombre_establecimiento, Establecimientos.rfc_moral, Establecimientos.tipo_establecimiento,
+                                            Personas.nombre as nombre_dueño, Personas.numero_celular as celular_dueño,
+                                            Usuarios.email_usuario as correo_dueño,
+                                            Direcciones.calle , Direcciones.numero_exterior, Direcciones.numero_interior, Direcciones.colonia, Direcciones.codigo_postal, Direcciones.alcaldia, Direcciones.ciudad, Direcciones.tipo_direccion,
+                                            Talleres.calificacion_taller, Talleres.cantidad_empleados
+                                        FROM
+                                            Establecimientos, Personas, Usuarios, Direcciones,  Talleres
+                                        WHERE
+                                            Establecimientos.id_establecimiento =  (?) AND
+                                            Establecimientos.tipo_establecimiento = 'TALLER' AND
+                                            Establecimientos.id_establecimiento = Talleres.id_taller AND
+                                            Establecimientos.id_dueño_establecimiento = Personas.id_persona AND
+                                            Personas.id_persona = Usuarios.id_usuario AND
+                                            Establecimientos.id_direccion = Direcciones.id_direccion;
+                                        """.stripIndent();
     }
 
     private final JdbcTemplate jdbcTemplate;

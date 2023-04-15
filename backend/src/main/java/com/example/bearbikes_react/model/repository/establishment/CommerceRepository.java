@@ -25,7 +25,7 @@ public class CommerceRepository {
     static {
         SELECT_ALL_COMMERCES_QUERY =
                 """
-                        SELECT 
+                        SELECT
                             Establecimientos.id_establecimiento, Establecimientos.nombre_establecimiento, Establecimientos.rfc_moral, Establecimientos.tipo_establecimiento,
                             Personas.nombre as nombre_dueño, Personas.numero_celular as celular_dueño,
                             Usuarios.email_usuario as correo_dueño,
@@ -33,13 +33,14 @@ public class CommerceRepository {
                         FROM
                             Establecimientos, Personas, Usuarios, Direcciones
                         WHERE
-                            Establecimientos.id_dueño_establecimiento = Personas.id_persona AND 
-                            Personas.id_persona = Usuarios.id_usuario AND 
-                            Establecimientos.id_direccion = Direcciones.id_direccion; 
+                            Establecimientos.id_dueño_establecimiento = Personas.id_persona AND
+                            Establecimientos.tipo_establecimiento = 'COMERCIO' AND
+                            Personas.id_persona = Usuarios.id_usuario AND
+                            Establecimientos.id_direccion = Direcciones.id_direccion;
                         """.stripIndent();
         SELECT_COMMERCE_BY_ID_QUERY =
                 """
-                        SELECT 
+                        SELECT
                             Establecimientos.id_establecimiento, Establecimientos.nombre_establecimiento, Establecimientos.rfc_moral, Establecimientos.tipo_establecimiento,
                             Personas.nombre as nombre_dueño, Personas.numero_celular as celular_dueño,
                             Usuarios.email_usuario as correo_dueño,
@@ -47,10 +48,11 @@ public class CommerceRepository {
                         FROM
                             Establecimientos, Personas, Usuarios, Direcciones
                         WHERE
-                            Establecimientos.id_establecimiento =  (?) AND 
-                            Establecimientos.id_dueño_establecimiento = Personas.id_persona AND 
-                            Personas.id_persona = Usuarios.id_usuario AND 
-                            Establecimientos.id_direccion = Direcciones.id_direccion; 
+                            Establecimientos.id_establecimiento =  (?) AND
+                            Establecimientos.tipo_establecimiento = 'COMERCIO' AND
+                            Establecimientos.id_dueño_establecimiento = Personas.id_persona AND
+                            Personas.id_persona = Usuarios.id_usuario AND
+                            Establecimientos.id_direccion = Direcciones.id_direccion;
                         """.stripIndent();
     }
 

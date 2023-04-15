@@ -531,7 +531,8 @@ SELECT -- select del taller insertado
 FROM
 	Establecimientos, Personas, Usuarios, Direcciones,  Talleres
 WHERE 
-	Establecimientos.id_establecimiento =  @idEstablecimientoInsertado AND 
+	Establecimientos.id_establecimiento =  @idEstablecimientoInsertado AND
+    Establecimientos.tipo_establecimiento = 'TALLER' AND
     Establecimientos.id_establecimiento = Talleres.id_taller AND
 	Establecimientos.id_dueño_establecimiento = Personas.id_persona AND
     Personas.id_persona = Usuarios.id_usuario AND 
@@ -564,6 +565,7 @@ FROM
 	Establecimientos, Personas, Usuarios, Direcciones
 WHERE 
 	Establecimientos.id_establecimiento =  @idComercioInsertado AND 
+    Establecimientos.tipo_establecimiento = 'COMERCIO' AND
 	Establecimientos.id_dueño_establecimiento = Personas.id_persona AND
     Personas.id_persona = Usuarios.id_usuario AND 
     Establecimientos.id_direccion = Direcciones.id_direccion;
