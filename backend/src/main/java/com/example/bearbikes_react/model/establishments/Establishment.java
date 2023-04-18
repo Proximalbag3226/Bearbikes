@@ -1,7 +1,10 @@
 package com.example.bearbikes_react.model.establishments;
 
 import com.example.bearbikes_react.model.locations.Address;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Setter
@@ -13,9 +16,7 @@ public abstract class Establishment {
     protected String nombreEstablecimiento;
     protected String rfcMoral;
     protected Address direccion;
-
     protected String nombreDueño;
-
     protected String celularDueño;
 
     public Establishment(String emailDueñoEstablecimiento, String nombreEstablecimiento, String rfcMoral, Address direccion) {
@@ -23,6 +24,10 @@ public abstract class Establishment {
         this.nombreEstablecimiento = nombreEstablecimiento;
         this.rfcMoral = rfcMoral;
         this.direccion = direccion;
+    }
+
+    public void setIdDireccion(int id) {
+        this.direccion.setIdDireccion(id);
     }
 
 

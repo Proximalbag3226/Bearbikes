@@ -7,10 +7,12 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString
 
 @JsonSubTypes({
         @JsonSubTypes.Type(value = RegisterCommerceRequest.class, name = "comercio"),

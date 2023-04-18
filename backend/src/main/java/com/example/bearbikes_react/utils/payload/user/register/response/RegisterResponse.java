@@ -11,4 +11,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class RegisterResponse {
   private String message;
+  private String cause;
 }

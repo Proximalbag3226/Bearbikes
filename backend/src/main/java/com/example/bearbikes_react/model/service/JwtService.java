@@ -1,8 +1,8 @@
 package com.example.bearbikes_react.model.service;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import com.example.bearbikes_react.model.user.User;
+import com.fasterxml.jackson.core.JsonParseException;
+import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
@@ -23,17 +23,19 @@ public class JwtService {
     @Value("${jwt.life.ms}")
     private long jwtLife;
 
-    public String extractUsername(String token) {
+    public String extractUsername(String token) throws JwtException, JsonParseException {
         return extractClaim(token, Claims::getSubject);
     }
 
-    public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
+    public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) throws JwtException, JsonParseException{
         final Claims claims = extractAllClaims(token);
         return claimsResolver.apply(claims);
     }
 
     public String generateToken(UserDetails userDetails) {
-        return generateToken(new HashMap<>(), userDetails);
+        Map<String, Object> extraClaims = new HashMap<>();
+        extraClaims.put("role", ((User) userDetails).getRole());
+        return generateToken(extraClaims, userDetails);
     }
 
     public String generateToken(
@@ -50,20 +52,20 @@ public class JwtService {
                 .compact();
     }
 
-    public boolean isTokenValid(String token, UserDetails userDetails) {
+    public boolean isTokenValid(String token, UserDetails userDetails) throws JwtException, JsonParseException {
         final String username = extractUsername(token);
         return (username.equals(userDetails.getUsername())) && !isTokenExpired(token);
     }
 
-    private boolean isTokenExpired(String token) {
+    private boolean isTokenExpired(String token)  throws JwtException, JsonParseException {
         return extractExpiration(token).before(new Date());
     }
 
-    private Date extractExpiration(String token) {
+    private Date extractExpiration(String token)  throws JwtException, JsonParseException {
         return extractClaim(token, Claims::getExpiration);
     }
 
-    private Claims extractAllClaims(String token) {
+    private Claims extractAllClaims(String token) throws JwtException, JsonParseException {
         return Jwts
                 .parserBuilder()
                 .setSigningKey(getSignInKey())

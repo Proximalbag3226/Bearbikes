@@ -4,6 +4,7 @@ import com.example.bearbikes_react.model.user.AccountStatus;
 import com.example.bearbikes_react.model.user.User;
 import com.example.bearbikes_react.model.user.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.SqlOutParameter;
@@ -24,7 +25,8 @@ public class UserRepository {
     protected static final String SELECT_USER_ID_BY_EMAIL;
 
     static {
-        SELECT_USER_ID_BY_EMAIL = "SELECT usuarios.id_usuario AS id FROM usuarios WHERE usuarios.email_usuario = (?);";
+        SELECT_USER_ID_BY_EMAIL =
+                "SELECT usuarios.id_usuario AS id FROM usuarios WHERE usuarios.email_usuario = (?);";
     }
 
     private final JdbcTemplate jdbcTemplate;
@@ -34,7 +36,7 @@ public class UserRepository {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-    Optional<Integer> findIdByEmail(String email) {
+    Optional<Integer> findIdByEmail(String email) throws DataAccessException {
         Integer idUser = jdbcTemplate.queryForObject(SELECT_USER_ID_BY_EMAIL, Integer.class, email);
         return Optional.ofNullable(idUser);
     }
@@ -59,11 +61,15 @@ public class UserRepository {
             UserMapper userMapper = new UserMapper();
             newUser = userMapper.mapProcedureResult(result);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
             e.printStackTrace();
         }
 
-        return Optional.of(newUser);
+        return Optional.ofNullable(newUser);
+    }
+
+    public boolean isEmailAvailable(String email) {
+        String countUsersByEmail = "SELECT COUNT(*) FROM usuarios where usuarios.email_usuario = (?);";
+        return jdbcTemplate.queryForObject(countUsersByEmail, Integer.class, email) == 0;
     }
 
 

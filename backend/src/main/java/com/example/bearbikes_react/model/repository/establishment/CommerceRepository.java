@@ -1,7 +1,6 @@
 package com.example.bearbikes_react.model.repository.establishment;
 
 import com.example.bearbikes_react.model.establishments.Commerce;
-import com.example.bearbikes_react.model.establishments.Workshop;
 import com.example.bearbikes_react.model.locations.Address;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -26,7 +25,7 @@ public class CommerceRepository {
     static {
         SELECT_ALL_COMMERCES_QUERY =
                 """
-                        SELECT 
+                        SELECT
                             Establecimientos.id_establecimiento, Establecimientos.nombre_establecimiento, Establecimientos.rfc_moral, Establecimientos.tipo_establecimiento,
                             Personas.nombre as nombre_dueño, Personas.numero_celular as celular_dueño,
                             Usuarios.email_usuario as correo_dueño,
@@ -34,13 +33,14 @@ public class CommerceRepository {
                         FROM
                             Establecimientos, Personas, Usuarios, Direcciones
                         WHERE
-                            Establecimientos.id_dueño_establecimiento = Personas.id_persona AND 
-                            Personas.id_persona = Usuarios.id_usuario AND 
-                            Establecimientos.id_direccion = Direcciones.id_direccion; 
+                            Establecimientos.id_dueño_establecimiento = Personas.id_persona AND
+                            Establecimientos.tipo_establecimiento = 'COMERCIO' AND
+                            Personas.id_persona = Usuarios.id_usuario AND
+                            Establecimientos.id_direccion = Direcciones.id_direccion;
                         """.stripIndent();
         SELECT_COMMERCE_BY_ID_QUERY =
                 """
-                        SELECT 
+                        SELECT
                             Establecimientos.id_establecimiento, Establecimientos.nombre_establecimiento, Establecimientos.rfc_moral, Establecimientos.tipo_establecimiento,
                             Personas.nombre as nombre_dueño, Personas.numero_celular as celular_dueño,
                             Usuarios.email_usuario as correo_dueño,
@@ -48,10 +48,11 @@ public class CommerceRepository {
                         FROM
                             Establecimientos, Personas, Usuarios, Direcciones
                         WHERE
-                            Establecimientos.id_establecimiento =  (?) AND 
-                            Establecimientos.id_dueño_establecimiento = Personas.id_persona AND 
-                            Personas.id_persona = Usuarios.id_usuario AND 
-                            Establecimientos.id_direccion = Direcciones.id_direccion; 
+                            Establecimientos.id_establecimiento =  (?) AND
+                            Establecimientos.tipo_establecimiento = 'COMERCIO' AND
+                            Establecimientos.id_dueño_establecimiento = Personas.id_persona AND
+                            Personas.id_persona = Usuarios.id_usuario AND
+                            Establecimientos.id_direccion = Direcciones.id_direccion;
                         """.stripIndent();
     }
 
@@ -74,7 +75,7 @@ public class CommerceRepository {
 
 
     public Commerce getById(int workshopId) {
-        return jdbcTemplate.queryForObject(SELECT_ALL_COMMERCES_QUERY, new CommerceMapper(), workshopId);
+        return jdbcTemplate.queryForObject(SELECT_COMMERCE_BY_ID_QUERY, new CommerceMapper(), workshopId);
     }
 
     /**
@@ -88,6 +89,10 @@ public class CommerceRepository {
         return jdbcTemplate.query(SELECT_ALL_COMMERCES_QUERY, new CommerceMapper());
     }
 
+    public int getAddressIdForWorkshop(int idEstablishment) {
+        String query = "SELECT direcciones.id_direccion FROM direcciones WHERE direcciones.id_direccion = (?)";
+        return jdbcTemplate.queryForObject(query, Integer.class, idEstablishment);
+    }
 
     /**
      * Makes a query to the database in order to add a new row in the taller table
@@ -112,6 +117,7 @@ public class CommerceRepository {
                         new SqlParameter("codigoPostal", Types.VARCHAR),
                         new SqlParameter("alcaldia", Types.VARCHAR),
                         new SqlParameter("ciudad", Types.VARCHAR),
+                        new SqlOutParameter("idDireccionInsertada", Types.INTEGER),
                         new SqlOutParameter("idEstablecimiento", Types.INTEGER)
                 );
         final Address workshopAddress = newCommerce.getDireccion();
@@ -126,12 +132,14 @@ public class CommerceRepository {
                 workshopAddress.getCodigoPostal(),
                 workshopAddress.getAlcaldia(),
                 workshopAddress.getCiudad()
-
         );
 
-        int workshopInsertedId = (int) result.getOrDefault("idEstablecimiento", -1);
-        newCommerce.setId(workshopInsertedId);
-        return newCommerce;
+        int commerceInsertedId = (int) result.getOrDefault("idEstablecimiento", -1);
+//        int commerceAddressId =  (int) result.getOrDefault("idDireccionInsertada", -1);
+//        newCommerce.setId(commerceInsertedId);
+//        newCommerce.setIdDireccion(commerceAddressId);
+        return getById(commerceInsertedId);
+//        return newCommerce;
     }
 
 
@@ -143,6 +151,7 @@ public class CommerceRepository {
     class CommerceMapper implements RowMapper<Commerce> {
         public Commerce mapRow(ResultSet rs, int rowNum) throws SQLException {
             Address commerceAddress = new Address();
+            commerceAddress.setIdDireccion(getAddressIdForWorkshop(rs.getInt("id_establecimiento")));
             commerceAddress.setCalle(rs.getString("calle"));
             commerceAddress.setNumeroExterior(rs.getString("numero_exterior"));
             commerceAddress.setNumeroInterior(rs.getString("numero_interior"));

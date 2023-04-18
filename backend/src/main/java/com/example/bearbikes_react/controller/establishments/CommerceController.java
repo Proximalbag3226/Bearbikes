@@ -21,12 +21,12 @@ public class CommerceController {
     }
 
     @GetMapping(value = {"/count"})
-    public int countRegisteredWorkshopOwners() {
+    public int countRegisteredCommerces() {
         return commerceRepository.count();
     }
 
     @GetMapping(value = {"/getAll"})
-    public List<Commerce> getRegisteredWorkshopOwners() {
+    public List<Commerce> getRegisteredCommerces() {
         return commerceRepository.getAll();
     }
 
@@ -34,6 +34,7 @@ public class CommerceController {
     public ResponseEntity<?> registerNewAdmin(@RequestBody RegisterCommerceRequest newCommerceRequest) {
 
         try {
+            System.out.printf("%n ***%-40s ===> %60s %n", "PETICIÓN REGISTRO RECIBIDA", newCommerceRequest);
             String emailSesionActiva = SecurityContextHolder.getContext().getAuthentication().getName();
             System.out.println("Active session email " + emailSesionActiva);
 
