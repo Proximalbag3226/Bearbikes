@@ -1,7 +1,8 @@
-package com.example.bearbikes_react.model.repository;
+package com.example.bearbikes_react.model.repository.user;
 
 import com.example.bearbikes_react.model.user.AccountStatus;
 import com.example.bearbikes_react.model.user.Cyclist;
+import com.example.bearbikes_react.model.user.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -28,7 +29,7 @@ public class CyclistsRepository {
                 "personas.nombre, personas.apellido_pat, personas.apellido_mat, personas.numero_celular, " +
                 "ciclistas.token_personal_ciclista AS token " +
                 "FROM usuarios, personas, ciclistas " +
-                "WHERE usuarios.id_usuario = personas.id_persona AND personas.id_persona = ciclistas.id_ciclista";
+                "WHERE usuarios.id_usuario = personas.id_persona AND personas.id_persona = ciclistas.id_ciclista;";
     }
 
     @Autowired
@@ -49,6 +50,10 @@ public class CyclistsRepository {
         return jdbcTemplate.queryForObject(countUsersQuery, Integer.class);
     }
 
+    public boolean isCyclistTokenAvailable(String tokenPersonal) {
+        String countUsersByEmail = "SELECT COUNT(*) FROM ciclistas where ciclistas.token_personal_ciclista = (?);";
+        return jdbcTemplate.queryForObject(countUsersByEmail, Integer.class, tokenPersonal) != 0;
+    }
     /**
      * Makes a query to the database to get all the registered cyclists
      * it uses the CyclistsRepository.CyclistMapper to map the query results in to
@@ -110,6 +115,7 @@ public class CyclistsRepository {
             cyclist.setApellidoMat(rs.getString ("apellido_mat"));
             cyclist.setNumerocelular(rs.getString ("numero_celular"));
             cyclist.setTokenPersonal(rs.getString ("token"));
+            cyclist.setRole(UserRole.CICLISTA);
             return cyclist;
         }
     }

@@ -3,6 +3,8 @@ package com.example.bearbikes_react.model.repository;
 import com.example.bearbikes_react.utils.token.Token;
 import com.example.bearbikes_react.utils.token.TokenType;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -41,7 +43,13 @@ public class TokenRepository {
     }
 
     public Optional<Token> findByToken(String token){
-       return Optional.ofNullable( jdbcTemplate.queryForObject(SELECT_VALID_TOKENS_BY_TOKEN_STRING,new TokenMapper(), token));
+        Token retrievedToken = null;
+        try{
+            retrievedToken = (jdbcTemplate.queryForObject(SELECT_VALID_TOKENS_BY_TOKEN_STRING, new TokenMapper(), token));
+        }catch(DataAccessException e){
+            System.out.println("No valid tokens were found for token String =>" + token);
+        }
+        return Optional.ofNullable(retrievedToken);
     }
     
     

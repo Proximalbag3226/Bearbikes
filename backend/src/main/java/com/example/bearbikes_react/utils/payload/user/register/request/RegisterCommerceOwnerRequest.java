@@ -17,8 +17,9 @@ import lombok.ToString;
         @JsonSubTypes.Type(value = RegisterWorkshopOwnerRequest.class, name = "dueño_taller"),
         @JsonSubTypes.Type(value = RegisterCommerceOwnerRequest.class, name = "dueño_comercio")
 })
-public class RegisterCyclistRequest extends RegisterRequest{
-  private String apellidoPat;
-  private String apellidoMat;
-  private String celular;
+public class RegisterCommerceOwnerRequest extends RegisterRequest {
+    private String apellidoPat;
+    private String apellidoMat;
+    private String celular;
+    private String rfc;
 }

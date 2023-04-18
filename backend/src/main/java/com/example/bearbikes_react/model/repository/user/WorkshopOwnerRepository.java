@@ -1,6 +1,7 @@
-package com.example.bearbikes_react.model.repository;
+package com.example.bearbikes_react.model.repository.user;
 
 import com.example.bearbikes_react.model.user.AccountStatus;
+import com.example.bearbikes_react.model.user.UserRole;
 import com.example.bearbikes_react.model.user.WorkshopOwner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -19,15 +20,20 @@ import java.util.Map;
 
 @Repository
 public class WorkshopOwnerRepository {
-    private static final String SELECT_WORKSHOP_OWNER_QUERY;
+    private static final String SELECT_ALL_WORKSHOP_OWNERS_QUERY;
 
     static {
-        SELECT_WORKSHOP_OWNER_QUERY = "SELECT " +
-                "usuarios.id_usuario AS id, usuarios.email_usuario AS email, usuarios.password_usuario AS password, usuarios.account_status, " +
-                "personas.nombre, personas.apellido_pat, personas.apellido_mat, personas.numero_celular, " +
-                "dueñotaller.RFC_fisica AS rfc " +
-                "FROM usuarios, personas, dueñotaller " +
-                "WHERE usuarios.id_usuario = personas.id_persona AND personas.id_persona = dueñotaller.id_dueño_taller;";
+        SELECT_ALL_WORKSHOP_OWNERS_QUERY =
+                """
+                SELECT 
+                    usuarios.id_usuario AS id, usuarios.email_usuario AS email, usuarios.password_usuario AS password, usuarios.account_status,
+                    personas.nombre, personas.apellido_pat, personas.apellido_mat, personas.numero_celular,
+                    empresarios.Rfc_fisica AS rfc
+                FROM 
+                    usuarios, personas, empresarios
+                WHERE 
+                    usuarios.id_usuario = personas.id_persona and personas.id_persona = empresarios.id_empresario and empresarios.tipo_empresario = 1;
+                """.stripIndent();
     }
 
     private final JdbcTemplate jdbcTemplate;
@@ -43,7 +49,7 @@ public class WorkshopOwnerRepository {
      * @return the number of cyclists in the database
      */
     public int count() {
-        String countUsersQuery = "SELECT COUNT(*) FROM dueñotaller";
+        String countUsersQuery = "SELECT COUNT(*) FROM empresarios WHERE empresarios.tipo_empresario = 1";
         return jdbcTemplate.queryForObject(countUsersQuery, Integer.class);
     }
 
@@ -54,7 +60,7 @@ public class WorkshopOwnerRepository {
      * @return a list containing the WorshopOwners
      */
     public List<WorkshopOwner> getAll(){
-        return jdbcTemplate.query(SELECT_WORKSHOP_OWNER_QUERY, new WorkshopOwnerMapper());
+        return jdbcTemplate.query(SELECT_ALL_WORKSHOP_OWNERS_QUERY, new WorkshopOwnerMapper());
     }
 
 
@@ -93,7 +99,12 @@ public class WorkshopOwnerRepository {
         newWorkshopOwner.setId(insertedWorkshopOwnerId);
         return newWorkshopOwner;
     }
-    
+
+    public boolean isRfcFisicaAvailable(String rfc) {
+        String countUsersByEmail = "SELECT COUNT(*) FROM Empresarios where empresarios.rfc_fisica = (?);";
+        return jdbcTemplate.queryForObject(countUsersByEmail, Integer.class, rfc) == 0;
+    }
+
     /**
      * RowMapper implementation for map resulting select queries for WorshopOwners using the SELECT_WORKSHOP_OWNER_QUERY String
      * of WorshopOwnerRepository class
@@ -111,6 +122,7 @@ public class WorkshopOwnerRepository {
             workshopOwner.setApellidoMat(rs.getString("apellido_mat"));
             workshopOwner.setNumerocelular(rs.getString("numero_celular"));
             workshopOwner.setRfcFisica(rs.getString("rfc"));
+            workshopOwner.setRole(UserRole.DUEÑO_TALLER);
             return workshopOwner;
         }
     }
