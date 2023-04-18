@@ -13,6 +13,7 @@ function Principal() {
     }
     return null;
   };
+  console.log(getUserInfo.apply())
 
   const [userInfo, setUserInfo] = useState(null);
   return (
@@ -52,7 +53,7 @@ function Principal() {
             <a href={"/form"}>Talleres</a>
             <a href={"/form"}>Reparaciones</a>
             <a href={"/rutas"}>Creador de rutas</a>
-            <a href={"/form"}>Avisos</a>
+            <a href={"/avisos"}>Avisos</a>
           </nav>
           <label htmlFor={"btn-menu"}>✖</label>
         </div>

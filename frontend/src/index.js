@@ -15,7 +15,6 @@ import Reforma from "./Paginas/Sitios/Reforma";
 import Polanco from "./Paginas/Sitios/Polanco";
 import Basilica from "./Paginas/Sitios/Basilica";
 import Chapultepec from "./Paginas/Sitios/Chapultepec";
-import Tienda from "./Paginas/Tienda";
 import Mapa from './Paginas/Rutas';
 import Aviso from './Paginas/Avisos';
 import Cuadro_b from './Paginas/Infobicicletas/Cuadro_b';
@@ -27,6 +26,9 @@ import Dueño_taller from './Paginas/Registro/Tallerf';
 import { redirect } from "react-router-dom";
 import { Route, Routes } from "react-router-dom";
 import { isAuthenticated } from './Funciones/Permitir_acceso';
+import Tienda from './Paginas/Tienda/Componentes/Tienda';
+import { CarritoProvider } from './Paginas/Tienda/Componentes/Carritocontext';
+import Carrito from './Paginas/Tienda/Componentes/Carrito';
 
 const router = createBrowserRouter([
   {
@@ -120,14 +122,20 @@ const router = createBrowserRouter([
   {
     path: '/login',
     element: <Login/>
+  },
+  {
+    path: '/carrito',
+    element: <Carrito/>
+  },
+  {
+    path: '/tienda',
+    element: <Tienda/>
   }
-
-
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <CarritoProvider>
     <RouterProvider router={router}/>
-  </React.StrictMode>
+  </CarritoProvider>
 );

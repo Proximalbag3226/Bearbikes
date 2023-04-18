@@ -21,6 +21,7 @@ export function Map() {
   return (
       <div>
         <Principal />
+        <h1 className='titulo'>Rutas de Ciclismo</h1>
         <section className='map-component'>
           <div className='map'>
             <MapContainer center={position} zoom={14} scrollWheelZoom={true} onClick={handleMapClick}>

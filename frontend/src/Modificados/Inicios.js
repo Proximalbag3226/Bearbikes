@@ -23,7 +23,7 @@ function Inicios(){
                     value={formData.password}
                     handleChange={handleChange}
                 />
-                <SubmitButton text={"Registrar"}/>
+                <SubmitButton text={"Iniciar Sesion"}/>
         </div>
     </form>
     );
