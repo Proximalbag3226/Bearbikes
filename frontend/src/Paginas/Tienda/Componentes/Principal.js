@@ -31,8 +31,8 @@ function Principal() {
             <a href={"/form"}>Comercios</a>
             <a href={"/infob"}>Info bicicletas</a>
             <a href={"/tienda"}>Tienda bicicletas</a>
-            <a href={"/form"}>Talleres</a>
-            <a href={"/form"}>Reparaciones</a>
+            <a href={"/talleres"}>Talleres</a>
+            <a href={"/reparaciones"}>Reparaciones</a>
             <a href={"/rutas"}>Creador de rutas</a>
             <a href={"/form"}>Avisos</a>
           </nav>
