@@ -715,7 +715,7 @@ SELECT @idUsuario AS id, @emailUsuario AS email, @passwordUsuario AS pass, @stat
 create table Token (
 	id_token int auto_increment primary key,
     id_usuario int not null,
-    token varchar (200) not null ,
+    token varchar (500) not null ,
     revocado boolean,
     expirado boolean,
     tipo varchar(10) default 'BEARER' check (tipo = 'BEARER'),

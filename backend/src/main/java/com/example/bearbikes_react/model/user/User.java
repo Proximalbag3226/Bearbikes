@@ -2,31 +2,31 @@ package com.example.bearbikes_react.model.user;
 
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 
 @Builder
 @AllArgsConstructor
+@Getter
+@Setter
 public class User implements UserDetails {
     private int id;
     private String email;
     private String password;
+    private String nombre;
     @Enumerated(EnumType.STRING)
     private AccountStatus accountStatus;
     @Enumerated(EnumType.STRING)
     private UserRole role;
-
-
     public User() {
         // left intentionally blank for mapping purposes
     }
-
     public User(String email, String password, UserRole role) {
         this.email = email;
         this.password = password;
@@ -36,14 +36,6 @@ public class User implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     @Override
@@ -86,39 +78,6 @@ public class User implements UserDetails {
         sb.append(", role=").append(role);
         sb.append('}');
         return sb.toString();
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public AccountStatus getAccountStatus() {
-        return accountStatus;
-    }
-
-    public void setAccountStatus(AccountStatus accountStatus) {
-        this.accountStatus = accountStatus;
-    }
-
-    public UserRole getRole() {
-        return role;
-    }
-
-    public void setRole(UserRole role) {
-        this.role = role;
-    }
-
-    @Override
-    public String getPassword() {
-        return this.password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     @Override

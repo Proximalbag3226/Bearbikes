@@ -13,6 +13,7 @@ public class Token {
     private Integer id;
     private String tokenString;
     @Enumerated(EnumType.STRING)
+    @Builder.Default
     private TokenType tokenType = TokenType.BEARER;
     private boolean revoked;
     private boolean expired;

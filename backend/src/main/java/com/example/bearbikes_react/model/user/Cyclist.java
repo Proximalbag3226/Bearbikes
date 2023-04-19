@@ -10,7 +10,6 @@ import lombok.Setter;
 public class Cyclist extends User {
     private static final UserRole ROLE = UserRole.CICLISTA;
 
-    private String nombre;
     private String apellidoPat;
     private String apellidoMat;
     private String numerocelular;
@@ -18,7 +17,7 @@ public class Cyclist extends User {
 
     public Cyclist(String email, String password, String nombre, String apellidoPat, String apellidoMat, String numerocelular, String tokenPersonal) {
         super(email, password, ROLE);
-        this.nombre = nombre;
+        super.setNombre(nombre);
         this.apellidoPat = apellidoPat;
         this.apellidoMat = apellidoMat;
         this.numerocelular = numerocelular;
@@ -31,21 +30,13 @@ public class Cyclist extends User {
         sb.append("id=").append(super.getId());
         sb.append(", email='").append(super.getEmail()).append('\'');
         sb.append(", password='").append(super.getPassword()).append('\'');
-        sb.append(", nombre='").append(nombre).append('\'');
+        sb.append(", nombre='").append(super.getNombre()).append('\'');
         sb.append(", apellidoPat='").append(apellidoPat).append('\'');
         sb.append(", apellidoMat='").append(apellidoMat).append('\'');
         sb.append(", numerocelular='").append(numerocelular).append('\'');
         sb.append(", tokenPersonal='").append(tokenPersonal).append('\'');
         sb.append('}');
         return sb.toString();
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 
     public String getApellidoPat() {
