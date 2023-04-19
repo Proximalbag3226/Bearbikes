@@ -29,6 +29,12 @@ import { isAuthenticated } from './Funciones/Permitir_acceso';
 import Tienda from './Paginas/Tienda/Componentes/Tienda';
 import { CarritoProvider } from './Paginas/Tienda/Componentes/Carritocontext';
 import Carrito from './Paginas/Tienda/Componentes/Carrito';
+import Talleres from './Paginas/Talleres/Talleres';
+import Taller1 from './Paginas/Talleres/Taller1';
+import Taller2 from './Paginas/Talleres/Taller2';
+import Comercios from './Paginas/Comercios/Comercios';
+import Comercio1 from './Paginas/Comercios/comercio1';
+import Tienda2 from './Paginas/Tienda2/Componentes/Tienda2';
 
 const router = createBrowserRouter([
   {
@@ -130,6 +136,30 @@ const router = createBrowserRouter([
   {
     path: '/tienda',
     element: <Tienda/>
+  },
+  {
+    path: '/talleres',
+    element: <Talleres/>
+  },
+  {
+    path: '/taller1',
+    element: <Taller1/>
+  },
+  {
+    path: '/taller2',
+    element: <Taller2/>
+  },
+  {
+    path: '/comercios',
+    element: <Comercios/>
+  },
+  {
+    path: '/comercio1',
+    element: <Comercio1/>
+  },
+  {
+    path: '/tienda2',
+    element: <Tienda2/>
   }
 ]);
 

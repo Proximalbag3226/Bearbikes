@@ -1,43 +1,36 @@
-import { MapContainer, TileLayer, Marker, Popup, Polyline } from 'react-leaflet';
-import { Icon } from 'leaflet';
-import 'leaflet/dist/leaflet.css';
+import React, { useEffect } from 'react';
+import L from 'leaflet';
+import 'leaflet-routing-machine';
+import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
 import Principal from '../Componentes/Principal';
-import { useState } from 'react';
 
-export function Map() {
-  const position = [19.42847, -99.12766];
-  const [route, setRoute] = useState([]);
+function Map() {
+  useEffect(() => {
+    // Inicializa el mapa en el div con el id "map"
+    const map = L.map('map').setView([51.505, -0.09], 13);
 
-  const customIcon = new Icon({
-    iconUrl: '/icons8-select-24.png',
-    iconSize: [20, 20],
-  });
+    // Agrega la capa de mapa de OpenStreetMap
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+      maxZoom: 18,
+    }).addTo(map);
 
-  const handleMapClick = (e) => {
-    const { latlng } = e;
-    setRoute((prevRoute) => [...prevRoute, latlng]);
-  };
+    // Agrega la capa de ruta usando Leaflet Routing Machine
+    L.Routing.control({
+      waypoints: [
+        L.latLng(51.5, -0.1),
+        L.latLng(51.5, -0.05),
+      ],
+      routeWhileDragging: true,
+    }).addTo(map);
+  }, []);
 
   return (
-      <div>
-        <Principal />
-        <h1 className='titulo'>Rutas de Ciclismo</h1>
-        <section className='map-component'>
-          <div className='map'>
-            <MapContainer center={position} zoom={14} scrollWheelZoom={true} onClick={handleMapClick}>
-              <TileLayer
-                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                  url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-              />
-              <Marker position={position} icon={customIcon}>
-                <Popup>🐻🍻🎉</Popup>
-              </Marker>
-              <Polyline pathOptions={{ color: 'red' }} positions={route} />
-            </MapContainer>
-          </div>
-        </section>
-      </div>
+    <div>
+      <Principal/>
+    <div id="map" style={{ height: '500px' }}></div>
+    </div>
   );
 }
 
-export default Map;
+export default Map

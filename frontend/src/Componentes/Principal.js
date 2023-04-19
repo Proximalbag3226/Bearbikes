@@ -47,10 +47,11 @@ function Principal() {
             <a href={"/login"}>Inicio de sesion</a>
             <a href={"/infot"}>Sitios turisticos</a>
             {userInfo ? <a href={"/tienda"}>Tienda</a> : null}
-            <a href={"/form"}>Comercios</a>
+            <a href={"/comercios"}>Comercios</a>
             <a href={"/infob"}>Info bicicletas</a>
             <a href={"/tienda"}>Tienda bicicletas</a>
-            <a href={"/form"}>Talleres</a>
+            <a href={"/tienda2"}>Tienda de Productos</a>
+            <a href={"/talleres"}>Talleres</a>
             <a href={"/form"}>Reparaciones</a>
             <a href={"/rutas"}>Creador de rutas</a>
             <a href={"/avisos"}>Avisos</a>
