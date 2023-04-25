@@ -616,3 +616,9 @@ body{
 .enlaces{
   background-color: rgba(0, 0, 0, 0.75);
 }
+.reparacioninicio{
+   width: 0%;
+}
+.reparacionfinal{
+  width: 50%;
+}

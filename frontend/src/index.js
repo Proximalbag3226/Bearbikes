@@ -35,6 +35,7 @@ import Taller2 from './Paginas/Talleres/Taller2';
 import Comercios from './Paginas/Comercios/Comercios';
 import Comercio1 from './Paginas/Comercios/comercio1';
 import Tienda2 from './Paginas/Tienda2/Componentes/Tienda2';
+import Reparaciones from './Paginas/Reparaciones/Reparaciones';
 
 const router = createBrowserRouter([
   {
@@ -160,6 +161,10 @@ const router = createBrowserRouter([
   {
     path: '/tienda2',
     element: <Tienda2/>
+  },
+  {
+    path: '/reparaciones',
+    element: <Reparaciones/>
   }
 ]);
 
