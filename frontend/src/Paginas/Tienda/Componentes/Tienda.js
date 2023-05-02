@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Producto from './Producto';
-import Principal from './Principal';
+import Principal from '../../../Componentes/Principal';
 import { CarritoContext } from './Carritocontext';
 import { useContext } from 'react';
 
@@ -8,7 +8,7 @@ function Tienda(){
   return (
     <div>
       <div>
-        <Principal />
+        <Principal/>
       </div>
       <br />
       <p

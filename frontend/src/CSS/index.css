@@ -69,6 +69,7 @@ body{
 }
 
 .container .btn-menu, .logo{
+    padding-top: 1.2em;
     float: left;
     line-height:100px;
 }
@@ -622,3 +623,4 @@ body{
 .reparacionfinal{
   width: 50%;
 }
+

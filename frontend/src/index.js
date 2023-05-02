@@ -36,6 +36,7 @@ import Comercios from './Paginas/Comercios/Comercios';
 import Comercio1 from './Paginas/Comercios/comercio1';
 import Tienda2 from './Paginas/Tienda2/Componentes/Tienda2';
 import Reparaciones from './Paginas/Reparaciones/Reparaciones';
+import GestionTaller from './Paginas/Gestion de talleres/Gestion';
 
 const router = createBrowserRouter([
   {
@@ -165,6 +166,10 @@ const router = createBrowserRouter([
   {
     path: '/reparaciones',
     element: <Reparaciones/>
+  },
+  {
+    path: '/gestion',
+    element: <GestionTaller/>
   }
 ]);
 
