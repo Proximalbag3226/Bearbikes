@@ -69,7 +69,6 @@ body{
 }
 
 .container .btn-menu, .logo{
-    padding-top: 1.2em;
     float: left;
     line-height:100px;
 }
@@ -85,6 +84,7 @@ body{
     font-weight: 400;
     font-size: 22px;
     margin-left: 10px;
+    padding-top: 1.7em;
 }
 
 .container .menu{
@@ -577,16 +577,15 @@ body{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 2000px;
-  height: 1000px;
+  width: 1100px;
+  height: 500px;
   margin-left: 10%;
   margin-top: 5%;
 }
 
 .map {
-  height: 10px;
-  width: 1000px;
-  margin: 30px;
+  height: 500px;
+  width: 1100px;
   border: 1px solid gray;
   display: flex;
   flex-direction: row;
@@ -598,8 +597,10 @@ body{
 
 /* --- (4) Leaflet container with map dimensions (other properties optional) --- */
 .leaflet-container {
-  width: 2000px;
-  height: 1000px;
+  margin-left: 20%;
+  margin-top: 5%;
+  width: 1100px;
+  height: 500px;
   border-radius: 5px;
 }
 
@@ -659,10 +660,6 @@ body{
   transform: translateY(-50%);
   height: 4px;
   width: 50%;
-<<<<<<< HEAD
-}
-
-=======
   z-index: -1;
   transition: 0.4s ease
 }
@@ -705,4 +702,3 @@ body{
   background-color: #ff7300;
   cursor: not-allowed;
 }
->>>>>>> 26d3a6e1158c881d92c9ce6362feabe2a333f4c7

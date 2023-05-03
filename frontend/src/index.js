@@ -18,6 +18,9 @@ import Chapultepec from "./Paginas/Sitios/Chapultepec";
 import Mapa from './Paginas/Rutas';
 import Aviso from './Paginas/Avisos';
 import Cuadro_b from './Paginas/Infobicicletas/Cuadro_b';
+import Bateria from './Paginas/Infobicicletas/Baterias';
+import Viabilidad from './Paginas/Infobicicletas/Viabilidad';
+import Equipo from './Paginas/Infobicicletas/Equipo';
 import Eleccion from './Paginas/Registro/Eleccion';
 import Login from './Paginas/Registro/Login';
 import Admin from './Paginas/Registro/Adminf';
@@ -122,6 +125,18 @@ const router = createBrowserRouter([
   {
     path: '/cuadro',
     element: <Cuadro_b/>
+  },
+  {
+    path: '/bateria',
+    element: <Bateria/>
+  },
+  {
+    path: '/equipo',
+    element: <Equipo/>
+  },
+  {
+    path: '/viabilidad',
+    element: <Viabilidad/>
   },
   {
     path: '/eleccion',

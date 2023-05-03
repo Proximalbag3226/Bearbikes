@@ -1,19 +1,18 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import jwt_decode from "jwt-decode";
-import { registerUser } from "../Funciones/Register";
-import { redirect } from "react-router-dom";
 
 function Principal() {
+
   const getUserInfo = () => {
     const token = localStorage.getItem("token");
     if (token) {
       const decoded = jwt_decode(token);
+      console.log(decoded);
       return decoded;
     }
     return null;
   };
-  console.log(getUserInfo.apply())
 
   const [userInfo, setUserInfo] = useState(null);
   return (
@@ -35,6 +34,8 @@ function Principal() {
             ) : (
               <a href="#">Bienvenido, identifiquese</a>
             )}
+            <a href={"/carrito"}>Carrito</a>
+
           </nav>
         </div>
       </header>

@@ -28,6 +28,7 @@ function Map() {
   return (
     <div>
       <Principal/>
+      <h1 className='titulo'>Rutas</h1>
     <div id="map" style={{ height: '500px' }}></div>
     </div>
   );
