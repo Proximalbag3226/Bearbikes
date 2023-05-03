@@ -2,7 +2,7 @@ import { unstable_batchedUpdates } from "react-dom";
 import Principal from "../Tienda/Componentes/Principal";
 
 const Reparaciones = () => {
-  const progreso = document.getElementById('progreso');
+  const progreso = document.getElementsByClassName('linea');
   const anterior = document.getElementById('anterior');
   const siguiente = document.getElementById('siguiente');
   const circulos = document.getElementsByClassName('circulo');
@@ -38,6 +38,9 @@ const Reparaciones = () => {
         circulos[i].className = 'circulo';
       }
     }
+    const actives = document.getElementsByClassName('circulo active');
+    progreso[0].style.width=((actives.length-1)/(circulos.length-1))*100 + '%';
+    console.log(((actives.length-1)/(circulos.length-1))*100);
   }
   return (
     <div>
@@ -48,8 +51,10 @@ const Reparaciones = () => {
         <div>
           <h2 className="titulo">Reparaciones</h2>
           <div className="reparacioninicio">
-            <div className="conetendor" >
+            <div className="contenedor" >
               <div className="progreso-contenedor">
+                <div className="linea">
+                </div>
                 <div id="1" className="circulo active">1</div>
                 <div id="2" className="circulo">2</div>
                 <div id="3" className="circulo">3</div>

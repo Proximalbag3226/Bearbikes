@@ -640,9 +640,10 @@ body{
   width: 350px;
 
 }
-.progreso-contenedor::before{
+
+.linea::before{
   content: '';
-  background-color: #c7c7c7;
+  background-color: #ff7300;
   position: absolute;
   top: 50%;
   left: 0;
@@ -652,7 +653,7 @@ body{
   z-index: -1;
   transition: 0.4s ease
 }
-.progreso{
+.linea{
   background-color: #ff7300;
   position: absolute;
   top: 50%;
