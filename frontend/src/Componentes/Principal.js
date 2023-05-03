@@ -53,7 +53,7 @@ function Principal() {
             <a href={"/tienda"}>Tienda bicicletas</a>
             <a href={"/tienda2"}>Tienda de Productos</a>
             <a href={"/talleres"}>Talleres</a>
-            <a href={"/form"}>Reparaciones</a>
+            <a href={"/reparaciones"}>Reparaciones</a>
             <a href={"/rutas"}>Creador de rutas</a>
             <a href={"/avisos"}>Avisos</a>
           </nav>
