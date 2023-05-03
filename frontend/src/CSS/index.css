@@ -597,7 +597,7 @@ body{
 
 /* --- (4) Leaflet container with map dimensions (other properties optional) --- */
 .leaflet-container {
-  margin-left: 20%;
+  margin-left: 10%;
   margin-top: 5%;
   width: 1100px;
   height: 500px;
