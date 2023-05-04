@@ -668,7 +668,7 @@ DROP procedure IF EXISTS find_user_by_id;
     DELIMITER $$
 -- ---------------------- PROCEDURE USUARIO POR ID --------------------------------------------------------------- 
 $$
-	CREATE PROCEDURE find_user_by_id (IN id int, OUT idUsuario int, OUT email varchar(30), OUT password varchar(200), OUT status varchar(15), OUT role varchar(15))
+	CREATE PROCEDURE find_user_by_id (IN id int, OUT idUsuario int, OUT email varchar(30), OUT password varchar(200), OUT status varchar(15), OUT role varchar(15), OUT name varchar(50))
 		BEGIN     
 			
 			DECLARE tipoUsuario INT DEFAULT 1; -- Tipo usuario correspondiente a persona
@@ -682,12 +682,16 @@ $$
 			IF tipoUsuario = 2 -- ADMINISTRADOR
 				THEN
                     SELECT 'ADMINISTRADOR' into role;
+                    SELECT nombre_admin into name from Administradores where id_admin = id;
 			ELSE -- PERSONA
 				SELECT Personas.tipo_persona into tipoPersona From personas where idUsuario = personas.id_persona;
+                -- SELECT nombre into name from Personas where id_persona= id;
+                SELECT concat(nombre, ' ', apellido_pat) into name from Personas where id_persona= id;
 				IF tipoPersona = 1 
 					THEN 
 						IF (SELECT Empresarios.tipo_empresario FROM Empresarios WHERE Empresarios.id_empresario = idUsuario) = 1
-							THEN SET ROLE = 'DUEÑO_TALLER';
+							THEN 
+								SET ROLE = 'DUEÑO_TALLER';
                         ELSE 
 							SET role = 'DUEÑO_COMERCIO';
 						END IF;
@@ -704,10 +708,11 @@ SELECT * from PERSONAS;
 
 SELECT Personas.tipo_persona
 					From personas where 2 = personas.id_persona;
+                    
 
-CALL find_user_by_id (5,  @idUsuario, @emailUsuario, @passwordUsuario, @statusUsuario, @roleUsuario);
+CALL find_user_by_id (5,  @idUsuario, @emailUsuario, @passwordUsuario, @statusUsuario, @roleUsuario, @name);
 
-SELECT @idUsuario AS id, @emailUsuario AS email, @passwordUsuario AS pass, @statusUsuario AS status, @roleUsuario AS role;
+SELECT @idUsuario AS id, @emailUsuario AS email, @passwordUsuario AS pass, @statusUsuario AS status, @roleUsuario AS role, @name as nombre;
 
 
 -- ------------------------------------- TABLA PARA ALMACENAR SESIONES JWT-----------------------------------

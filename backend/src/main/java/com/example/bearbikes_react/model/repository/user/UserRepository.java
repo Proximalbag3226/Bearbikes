@@ -5,6 +5,7 @@ import com.example.bearbikes_react.model.user.User;
 import com.example.bearbikes_react.model.user.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.SqlOutParameter;
@@ -17,6 +18,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Repository
@@ -37,12 +39,19 @@ public class UserRepository {
     }
 
     Optional<Integer> findIdByEmail(String email) throws DataAccessException {
-        Integer idUser = jdbcTemplate.queryForObject(SELECT_USER_ID_BY_EMAIL, Integer.class, email);
+
+        Integer idUser;
+        try {
+            idUser = jdbcTemplate.queryForObject(SELECT_USER_ID_BY_EMAIL, Integer.class, email);
+        } catch (IncorrectResultSizeDataAccessException e) {
+            System.out.printf("%n ***%-40s ===> %s %n", "USUARIO NO ENCONTRADO", email);
+            idUser = null;
+        }
         return Optional.ofNullable(idUser);
     }
 
     public Optional<User> findUserByEmail(String email) {
-        User newUser = null;
+        User newUser;
         try {
             SimpleJdbcCall addUserProcedureCall =
                     new SimpleJdbcCall(jdbcTemplate)
@@ -53,15 +62,16 @@ public class UserRepository {
                                     new SqlOutParameter("email", Types.VARCHAR),
                                     new SqlOutParameter("password", Types.VARCHAR),
                                     new SqlOutParameter("status", Types.VARCHAR),
-                                    new SqlOutParameter("role", Types.VARCHAR));
+                                    new SqlOutParameter("role", Types.VARCHAR),
+                                    new SqlOutParameter("name", Types.VARCHAR));
             Map<String, Object> result = addUserProcedureCall.execute(
                     this.findIdByEmail(email).get()
             );
 
             UserMapper userMapper = new UserMapper();
             newUser = userMapper.mapProcedureResult(result);
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (NoSuchElementException e) {
+            newUser = null;
         }
 
         return Optional.ofNullable(newUser);
@@ -94,6 +104,7 @@ public class UserRepository {
             user.setPassword((String) rs.get("password"));
             user.setAccountStatus(AccountStatus.valueOf((String) rs.get("status")));
             user.setRole(UserRole.valueOf((String) rs.get("role")));
+            user.setNombre((String) rs.get("name"));
             return user;
         }
     }
