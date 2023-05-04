@@ -22,4 +22,18 @@ public class RegisterWorkshopOwnerRequest extends RegisterRequest {
     private String apellidoMat;
     private String celular;
     private String rfc;
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("RegisterWorkshopOwnerRequest{");
+        sb.append("name='").append(super.getName()).append('\'');
+        sb.append(", email='").append(super.getEmail()).append('\'');
+        sb.append(", password='").append(super.getPassword()).append('\'');
+        sb.append(", apellidoPat='").append(apellidoPat).append('\'');
+        sb.append(", apellidoMat='").append(apellidoMat).append('\'');
+        sb.append(", celular='").append(celular).append('\'');
+        sb.append(", rfc='").append(rfc).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 }
