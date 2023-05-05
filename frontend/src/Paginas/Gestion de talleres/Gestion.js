@@ -1,5 +1,6 @@
 import Principal from "../../Componentes/Principal"
 import 'bootstrap/dist/css/bootstrap.css';
+import withAuthorization from "../../Funciones/Permitir_acceso";
 
 function GestionTaller() {
     return (
@@ -57,4 +58,4 @@ function GestionTaller() {
     )
 }
 
-export default GestionTaller
+export default withAuthorization(GestionTaller, ['admin']);

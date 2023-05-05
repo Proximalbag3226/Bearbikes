@@ -40,6 +40,7 @@ import Comercio1 from './Paginas/Comercios/comercio1';
 import Tienda2 from './Paginas/Tienda2/Componentes/Tienda2';
 import Reparaciones from './Paginas/Reparaciones/Reparaciones';
 import GestionTaller from './Paginas/Gestion de talleres/Gestion';
+import Noautorizado from './Modificados/Noautorizado';
 
 const router = createBrowserRouter([
   {
@@ -185,6 +186,10 @@ const router = createBrowserRouter([
   {
     path: '/gestion',
     element: <GestionTaller/>
+  },
+  {
+    path: '/no',
+    element: <Noautorizado/>
   }
 ]);
 

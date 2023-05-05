@@ -56,6 +56,7 @@ function Principal() {
             <a href={"/reparaciones"}>Reparaciones</a>
             <a href={"/rutas"}>Creador de rutas</a>
             <a href={"/avisos"}>Avisos</a>
+            <a href={"/gestion"}>Gestion</a>
           </nav>
           <label htmlFor={"btn-menu"}>✖</label>
         </div>
