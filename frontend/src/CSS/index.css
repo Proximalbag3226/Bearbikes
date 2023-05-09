@@ -703,3 +703,9 @@ body{
   background-color: #ff7300;
   cursor: not-allowed;
 }
+
+
+.leaflet-marker-icon{
+  background-image: url('../IMG/marcadorHumilde.png');
+  background-size: auto;
+}

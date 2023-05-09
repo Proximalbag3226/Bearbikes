@@ -5,6 +5,9 @@ import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
 import "leaflet-control-geocoder/dist/Control.Geocoder.css";
 import "leaflet-control-geocoder/dist/Control.Geocoder.js";
 import Principal from '../Componentes/Principal';
+import marcador2 from '../IMG/marcador2.png'
+
+
 
 function Map() {
   useEffect(() => {
@@ -16,6 +19,16 @@ function Map() {
       attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
       maxZoom: 18,
     }).addTo(map);
+
+
+
+
+    L.icon = function(){
+      return {
+        iconUrl: marcador2,
+        iconRetinaUrl: marcador2
+      }
+    };
 
     // Agrega la capa de ruta usando Leaflet Routing Machine
     L.Routing.control({
@@ -42,15 +55,18 @@ function Map() {
           { color: 'blue', opacity: 0.5, weight: 2 }
         ]
       },
-      profile : 'cycling'
+      profile: 'cycling'
     }).addTo(map);
   }, []);
 
   return (
     <div>
-      <Principal/>
+      <Principal />
       <h1 className='titulo'>Rutas</h1>
-    <div id="map" style={{ height: '500px' }}></div>
+      <div id="map" style={{ height: '500px', zIndex: '-1', display: 'block' }}></div>
+      <script>
+        var variable = document.getElementsByClassName('leaflet-marker-icon leaflet-zoom-animated leaflet-interactive leaflet-marker-draggable');
+      </script>
     </div>
   );
 }

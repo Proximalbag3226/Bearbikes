@@ -2,43 +2,31 @@ import '../../CSS/index.css'
 import { MapContainer, TileLayer, Marker, Popup, Polyline } from 'react-leaflet';
 import { Icon } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import L from 'leaflet'
 
-export function Ubicacion(props){
+import marcador2 from '../../IMG/marcador2.png'
 
-    const position = [19.443876740696666, -99.17962725340328];
+export function Ubicacion(props) {
+
+    const customMarkerIcon = new L.Icon({
+        iconUrl: marcador2,
+        iconRetinaUrl: marcador2,
+        iconSize: new L.Point(65, 75),
+    });
+
     return (
-        <div>
-            <div className="textito">
-                <p style={{color: "white",
-                    textAlign: "center",
-                    fontSize: "40px",
-                    fontFamily: 'Oranienbaum',}}>{props.lugar}</p>
-                    <section className='map-component'>
-          <div className='map' style={{marginLeft: '-6%'}}>
-            <MapContainer center={position} zoom={16} scrollWheelZoom={true}>
-              <TileLayer
-                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                  url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-              />
-              <Marker position={position}>
-                <Popup>
-                <p>Aqui se encuentra el Taller</p>
-                </Popup>
-              </Marker>
-            </MapContainer>
-          </div>
-        </section>
-            </div>
-            <div className="imagenes">
-                <figure>
-                    <img src={require(`../../IMG/${props.img1}.jpg`)}/>
-                    <br/><br/><br/><br/>
-                    <img src={require(`../../IMG/${props.img2}.jpg`)}/>
-                    <br/><br/><br/><br/><br/>
-                    <img src={require(`../../IMG/${props.img3}.jpg`)}/>
-                </figure>
-            </div>
-        </div>
+                <MapContainer center={props.coordinates} zoom={15} scrollWheelZoom={true} style={{zIndex:'-1', display: 'block'}}>
+                    <TileLayer
+                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                        url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+                    />
+                    <Marker icon={customMarkerIcon} position={props.coordinates} >
+                        <Popup className='popup'>
+                            <h4>{props.lugar}</h4>
+                            <p>Aqui se encuentra el Taller</p>
+                        </Popup>
+                    </Marker>
+                </MapContainer>
     );
 }
 
