@@ -64,7 +64,7 @@ const Formulario = (props) => {
                     value={formData.rfc}
                     handleChange={handleChange}
                     styles={
-                        { display: (tipoUsuario === "dueño_taller" || tipoUsuario === "dueño_comercio" || tipoUsuario === "nuevo_taller") ? "block" : "none" }
+                        { display: (tipoUsuario === "dueño_taller" || tipoUsuario === "dueño_comercio" || tipoUsuario === "nuevo_taller" || tipoUsuario === "nuevo_comercio") ? "block" : "none" }
                     }
                 />
 
@@ -84,7 +84,7 @@ const Formulario = (props) => {
                     handleChange={handleChange}
                     styles={
                         {
-                            display: (tipoUsuario === "ciclista" || tipoUsuario === "dueño_taller" || tipoUsuario === "dueño_comercio" || tipoUsuario === "nuevo_taller")
+                            display: (tipoUsuario === "ciclista" || tipoUsuario === "dueño_taller" || tipoUsuario === "dueño_comercio" || tipoUsuario === "nuevo_taller" || tipoUsuario === "nuevo_comercio")
                                 ? "block" : "none"
                         }
                     }
@@ -94,7 +94,7 @@ const Formulario = (props) => {
                     handleChange={handleChange}
                     styles={
                         {
-                            display: (tipoUsuario === "ciclista" || tipoUsuario === "dueño_taller" || tipoUsuario === "dueño_comercio" || tipoUsuario === "nuevo_taller")
+                            display: (tipoUsuario === "ciclista" || tipoUsuario === "dueño_taller" || tipoUsuario === "dueño_comercio" || tipoUsuario === "nuevo_taller" || tipoUsuario === "nuevo_comercio")
                                 ? "block" : "none"
                         }
                     }
@@ -104,7 +104,7 @@ const Formulario = (props) => {
                     handleChange={handleChange}
                     styles={
                         {
-                            display: (tipoUsuario === "ciclista" || tipoUsuario === "dueño_taller" || tipoUsuario === "dueño_comercio" || tipoUsuario === "nuevo_taller")
+                            display: (tipoUsuario === "ciclista" || tipoUsuario === "dueño_taller" || tipoUsuario === "dueño_comercio" || tipoUsuario === "nuevo_taller" || tipoUsuario === "nuevo_comercio")
                                 ? "block" : "none"
                         }
                     }
@@ -114,7 +114,7 @@ const Formulario = (props) => {
                     handleChange={handleChange}
                     styles={
                         {
-                            display: (tipoUsuario === "nuevo_taller")
+                            display: (tipoUsuario === "nuevo_taller" || tipoUsuario === "nuevo_comercio")
                                 ? "block" : "none"
                         }
                     }
@@ -124,7 +124,7 @@ const Formulario = (props) => {
                     handleChange={handleChange}
                     styles={
                         {
-                            display: (tipoUsuario === "nuevo_taller")
+                            display: (tipoUsuario === "nuevo_taller" || tipoUsuario === "nuevo_comercio")
                                 ? "block" : "none"
                         }
                     }
