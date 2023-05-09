@@ -225,5 +225,42 @@ export const RfcPersonaFisicaInput = (props) => {
         
     );
 }
+export const DireccionInput = (props) => {
+    return(
+        <div>
+            {
+                Input({
+                    id: "direccion",
+                    name: "direccion",
+                    type: "text",
+                    placeholder: "Direccion",
+                    value: props.value || "",
+                    onChange: props.handleChange,
+                    maxLength: props.maxLength || "",
+                    minLength: props.minLength || "",
+                    styles: props.styles
+                })
+            }
+        </div>  
+    );
+}
+export const ImagenInput = (props) => {
+    return(
+        <div>
+            {
+                Input({
+                    
+                    id: "imagen",
+                    name: "imagen",
+                    type: "file",
+                    placeholder: "Imagen",
+                    value: props.value || "",
+                    onChange: props.handleChange,
+                    styles: props.styles
+                })
+            }
+        </div>
+    );
+}
 
 export default Input;

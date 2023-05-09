@@ -10,7 +10,6 @@ const withAuthorization = (WrappedComponent, allowedUserTypes) => {
         if(!token){
           return null;
         }
-      
         try{
         const decode = jwtDecode(token)
         console.log(decode.userType)

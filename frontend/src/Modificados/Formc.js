@@ -9,8 +9,10 @@ import {
     NombreInput,
     AdminKeyInput,
     RfcPersonaFisicaInput,
-
+    DireccionInput,
+    ImagenInput
 } from '../Componentes/Inputs';
+
 const Formulario = (props) => {
     const tipoUsuario = props.tipoUsuario;
     console.log("tipoUsuario: ", tipoUsuario);
@@ -40,7 +42,16 @@ const Formulario = (props) => {
             formInitialData.set("name", "");
             formInitialData.set("adminKey", "");
             break;
+
+        case "nuevo_taller":
+            formInitialData.set("name" , "");
+            formInitialData.set("celular", "");
+            formInitialData.set("rfc", "");
+            formInitialData.set("direccion", "");
+            formInitialData.set("imagen", "")
+            break;
     }
+
     const { formData, handleChange, handleSubmit } = FormFunction(formInitialData);
     return (
         <form onSubmit={handleSubmit}>
@@ -53,7 +64,7 @@ const Formulario = (props) => {
                     value={formData.rfc}
                     handleChange={handleChange}
                     styles={
-                        { display: (tipoUsuario === "dueño_taller" || tipoUsuario === "dueño_comercio") ? "block" : "none" }
+                        { display: (tipoUsuario === "dueño_taller" || tipoUsuario === "dueño_comercio" || tipoUsuario === "nuevo_taller") ? "block" : "none" }
                     }
                 />
 
@@ -73,7 +84,7 @@ const Formulario = (props) => {
                     handleChange={handleChange}
                     styles={
                         {
-                            display: (tipoUsuario === "ciclista" || tipoUsuario === "dueño_taller" || tipoUsuario === "dueño_comercio")
+                            display: (tipoUsuario === "ciclista" || tipoUsuario === "dueño_taller" || tipoUsuario === "dueño_comercio" || tipoUsuario === "nuevo_taller")
                                 ? "block" : "none"
                         }
                     }
@@ -83,7 +94,7 @@ const Formulario = (props) => {
                     handleChange={handleChange}
                     styles={
                         {
-                            display: (tipoUsuario === "ciclista" || tipoUsuario === "dueño_taller" || tipoUsuario === "dueño_comercio")
+                            display: (tipoUsuario === "ciclista" || tipoUsuario === "dueño_taller" || tipoUsuario === "dueño_comercio" || tipoUsuario === "nuevo_taller")
                                 ? "block" : "none"
                         }
                     }
@@ -93,7 +104,27 @@ const Formulario = (props) => {
                     handleChange={handleChange}
                     styles={
                         {
-                            display: (tipoUsuario === "ciclista" || tipoUsuario === "dueño_taller" || tipoUsuario === "dueño_comercio")
+                            display: (tipoUsuario === "ciclista" || tipoUsuario === "dueño_taller" || tipoUsuario === "dueño_comercio" || tipoUsuario === "nuevo_taller")
+                                ? "block" : "none"
+                        }
+                    }
+                />
+                <DireccionInput
+                    data={formData.direccion}
+                    handleChange={handleChange}
+                    styles={
+                        {
+                            display: (tipoUsuario === "nuevo_taller")
+                                ? "block" : "none"
+                        }
+                    }
+                />
+                <ImagenInput
+                    data={formData.Imagen}
+                    handleChange={handleChange}
+                    styles={
+                        {
+                            display: (tipoUsuario === "nuevo_taller")
                                 ? "block" : "none"
                         }
                     }

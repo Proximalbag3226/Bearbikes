@@ -41,6 +41,7 @@ import Tienda2 from './Paginas/Tienda2/Componentes/Tienda2';
 import Reparaciones from './Paginas/Reparaciones/Reparaciones';
 import GestionTaller from './Paginas/Gestion de talleres/Gestion';
 import Noautorizado from './Modificados/Noautorizado';
+import Formtalleres from './Paginas/Talleres/Formtalleres';
 
 const router = createBrowserRouter([
   {
@@ -190,6 +191,10 @@ const router = createBrowserRouter([
   {
     path: '/no',
     element: <Noautorizado/>
+  },
+  {
+    path: 'nuevotaller',
+    element: <Formtalleres/>
   }
 ]);
 
