@@ -1,5 +1,6 @@
 import { unstable_batchedUpdates } from "react-dom";
 import Principal from "../Tienda/Componentes/Principal";
+import FormFunction from "../../Funciones/Functionform";
 
 const Reparaciones = () => {
   const progreso = document.getElementsByClassName('linea');
@@ -51,19 +52,37 @@ const Reparaciones = () => {
         <div>
           <h2 className="titulo">Reparaciones</h2>
           <div className="reparacioninicio">
-            <div className="contenedor" >
+          <table class="default">
+            <tr>
+              <td>
+              <br></br>
+              <br></br>
+              <div className="contenedor" >
               <div className="progreso-contenedor">
-                <div className="linea">
-                </div>
+                <div className="linea"></div>
                 <div id="1" className="circulo active">1</div>
                 <div id="2" className="circulo">2</div>
                 <div id="3" className="circulo">3</div>
                 <div id="4" className="circulo">4</div>
                 <div id="5" className="circulo">5</div>
               </div>
-              <button className="btn" id="anterior" onClick={anteriorf}>Anterior</button>
-              <button className="btn" id="siguiente" onClick={siguientef} >Siguiente</button>
-            </div>
+              <button color="orange" className="btn" id="anterior" onClick={anteriorf}>Anterior</button>
+              <button color="orange" className="btn" id="siguiente" onClick={siguientef} >Siguiente</button>
+             </div>
+              </td>
+              
+              <td>
+              <section class="form-register">
+                <h4>Formulario Reparaciones</h4>
+                <input class="controls" type="text" name="reparacion" id="reparacion" placeholder="Nombre Reparación"/>
+                <input class="controls" type="text" name="descrip" id="descrip" placeholder="Descripcion"/>
+                <input class="controls" type="text" name="fechas" id="fechas" placeholder="Fecha"/>
+                <input class="controls" type="text" name="encargado" id="encargado" placeholder="Encargado"/>
+              </section>
+              </td>
+            </tr>
+            </table>
+            
           </div>
         </div>
       </div>
