@@ -1,8 +1,46 @@
-import { unstable_batchedUpdates } from "react-dom";
 import Principal from "../Tienda/Componentes/Principal";
-import FormFunction from "../../Funciones/Functionform";
+import { useState } from "react";
+import Boton from "../../Componentes/botonr";
 
-const Reparaciones = () => {
+function Reparaciones(){
+  const [formData, setFormData] = useState({
+    nombre_reparacion: "",
+    descrip: "",
+    fechas: "",
+    encargado: "",
+    currentActive: 0,
+  });
+
+  const handleChange= (event)=>{
+    setFormData({
+      ...formData, [event.target.name]: event.target.value
+    })
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const updateFormData = {
+      ...formData, currentActive: currentActive-1,
+    }
+
+    fetch("http://192.168.20.110:9009/ciclistas/register", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log("Success:", data);
+            localStorage.setItem("token", data.token);
+        })
+        .catch((error) => {
+            console.error("Error:", error);
+        });
+};
+
   const progreso = document.getElementsByClassName('linea');
   const anterior = document.getElementById('anterior');
   const siguiente = document.getElementById('siguiente');
@@ -42,6 +80,7 @@ const Reparaciones = () => {
     const actives = document.getElementsByClassName('circulo active');
     progreso[0].style.width=((actives.length-1)/(circulos.length-1))*100 + '%';
     console.log(((actives.length-1)/(circulos.length-1))*100);
+    console.log("numero actual", currentActive-1);
   }
   return (
     <div>
@@ -70,19 +109,19 @@ const Reparaciones = () => {
               <button color="orange" className="btn" id="siguiente" onClick={siguientef} >Siguiente</button>
              </div>
               </td>
-              
               <td>
-              <section class="form-register">
+              <form class="form-register" onSubmit={handleSubmit}>
                 <h4>Formulario Reparaciones</h4>
-                <input class="controls" type="text" name="reparacion" id="reparacion" placeholder="Nombre Reparación"/>
-                <input class="controls" type="text" name="descrip" id="descrip" placeholder="Descripcion"/>
-                <input class="controls" type="text" name="fechas" id="fechas" placeholder="Fecha"/>
-                <input class="controls" type="text" name="encargado" id="encargado" placeholder="Encargado"/>
-              </section>
+                <input className="controls" type="text" name="nombre_reparacion" id="nombre_reparacion" placeholder="Nombre Reparación" onChange={handleChange} value={formData.nombre_reparacion}/>
+                <input className="controls" type="text" name="descrip" id="descrip" placeholder="Descripcion" onChange={handleChange} value={formData.descrip}/>
+                <input className="controls" type="text" name="fechas" id="fechas" placeholder="Fecha" onChange={handleChange} value={formData.fechas}/>
+                <input className="controls" type="text" name="encargado" id="encargado" placeholder="Encargado" onChange={handleChange} value={formData.encargado}/>
+                <Boton
+                boton={"Registrar reparacion"}/>
+              </form>
               </td>
             </tr>
             </table>
-            
           </div>
         </div>
       </div>
