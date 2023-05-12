@@ -42,6 +42,7 @@ import Reparaciones from './Paginas/Reparaciones/Reparaciones';
 import GestionTaller from './Paginas/Gestion de talleres/Gestion';
 import Noautorizado from './Modificados/Noautorizado';
 import Formtalleres from './Paginas/Talleres/Formtalleres';
+import Prueba from './Paginas/Prueba/noc';
 
 const router = createBrowserRouter([
   {
@@ -193,8 +194,12 @@ const router = createBrowserRouter([
     element: <Noautorizado/>
   },
   {
-    path: 'nuevotaller',
+    path: '/nuevotaller',
     element: <Formtalleres/>
+  },
+  {
+    path: '/prueba',
+    element: <Prueba/> 
   }
 ]);
 

@@ -3,6 +3,7 @@ import { useState } from "react";
 import Boton from "../../Componentes/botonr";
 
 function Reparaciones(){
+  const llave = 'admin';
   const [formData, setFormData] = useState({
     nombre_reparacion: "",
     descrip: "",
@@ -19,10 +20,6 @@ function Reparaciones(){
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    const updateFormData = {
-      ...formData, currentActive: currentActive-1,
-    }
 
     fetch("http://192.168.20.110:9009/ciclistas/register", {
         method: "POST",
@@ -81,6 +78,12 @@ function Reparaciones(){
     progreso[0].style.width=((actives.length-1)/(circulos.length-1))*100 + '%';
     console.log(((actives.length-1)/(circulos.length-1))*100);
     console.log("numero actual", currentActive-1);
+
+    setFormData({
+      ...formData,
+      currentActive: currentActive - 1,
+    });
+
   }
   return (
     <div>
@@ -109,6 +112,7 @@ function Reparaciones(){
               <button color="orange" className="btn" id="siguiente" onClick={siguientef} >Siguiente</button>
              </div>
               </td>
+                {llave === 'admin' ? (
               <td>
               <form class="form-register" onSubmit={handleSubmit}>
                 <h4>Formulario Reparaciones</h4>
@@ -120,6 +124,9 @@ function Reparaciones(){
                 boton={"Registrar reparacion"}/>
               </form>
               </td>
+                    ) : (
+                    <></>
+                )}
             </tr>
             </table>
           </div>

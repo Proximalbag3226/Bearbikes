@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import jwt_decode from "jwt-decode";
 
-const getUserInfo = () => {
+export const getUserInfo = () => {
     const token = localStorage.getItem("token");
     if (token) {
         const decoded = jwt_decode(token);
