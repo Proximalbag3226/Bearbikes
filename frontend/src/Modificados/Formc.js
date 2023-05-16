@@ -10,7 +10,6 @@ import {
     AdminKeyInput,
     RfcPersonaFisicaInput,
     DireccionInput,
-    ImagenInput
 } from '../Componentes/Inputs';
 
 const Formulario = (props) => {
@@ -84,7 +83,7 @@ const Formulario = (props) => {
                     handleChange={handleChange}
                     styles={
                         {
-                            display: (tipoUsuario === "ciclista" || tipoUsuario === "dueño_taller" || tipoUsuario === "dueño_comercio" || tipoUsuario === "nuevo_taller" || tipoUsuario === "nuevo_comercio")
+                            display: (tipoUsuario === "ciclista" || tipoUsuario === "dueño_taller" || tipoUsuario === "dueño_comercio")
                                 ? "block" : "none"
                         }
                     }
@@ -94,7 +93,7 @@ const Formulario = (props) => {
                     handleChange={handleChange}
                     styles={
                         {
-                            display: (tipoUsuario === "ciclista" || tipoUsuario === "dueño_taller" || tipoUsuario === "dueño_comercio" || tipoUsuario === "nuevo_taller" || tipoUsuario === "nuevo_comercio")
+                            display: (tipoUsuario === "ciclista" || tipoUsuario === "dueño_taller" || tipoUsuario === "dueño_comercio")
                                 ? "block" : "none"
                         }
                     }
@@ -111,16 +110,6 @@ const Formulario = (props) => {
                 />
                 <DireccionInput
                     data={formData.direccion}
-                    handleChange={handleChange}
-                    styles={
-                        {
-                            display: (tipoUsuario === "nuevo_taller" || tipoUsuario === "nuevo_comercio")
-                                ? "block" : "none"
-                        }
-                    }
-                />
-                <ImagenInput
-                    data={formData.Imagen}
                     handleChange={handleChange}
                     styles={
                         {

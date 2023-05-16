@@ -45,6 +45,8 @@ function Carrito() {
       )}
       <br/>
       <h3 className='texto0'>Total: {total}</h3>
+      <br/>
+      <h3 className='texto0'>Estos productos seran enviados a su tienda de refacciones mas cercana, por favor acuda a ella lo antes posible</h3>
     </div>
   );
 }

@@ -19,20 +19,11 @@ function GestionTaller() {
                                         <th scope="col">ID</th>
                                         <th scope="col">EMAIL</th>
                                         <th scope="col">NOMBRE</th>
-                                        <th scope="col">STATUS</th>
-                                        <th scope="col">PREGUNTA</th>
-                                        <th scope="col">SOLUCION</th>
-                                        <th scope="col">FECHA</th>
-                                        <th scope="col">TIPO</th>
-                                        <th scope="col">ENVIADO</th>
-                                        <th scope="col" style={{display: 'inherited',}}>GERENTE<br />SOPORTE</th>
-                                        <th scope="col" style={{display: 'inherited',}}>INGENIERO<br />SOPORTE</th>
-                                        <th scope="col" style={{display: 'inherited',}}>EDITOR</th>
+                                        <th scope="col">ELIMINAR</th>
                                     </tr>
                                 </thead>
                                 <tbody style={{backgroundColor: 'white'}}>
-                                    <tr><td>1</td><td>usuario@correo.com</td><td>asdf</td><td>ABIERTO</td><td>asdfasdf</td><td>Solución Pendiente</td><td>2023-05-02</td><td>SIN_ESPECIFICAR</td><td>false</td><td style={{display: 'inherited',}}><button type='submit' style={{display: 'block'}} className='botonAsignarIngeniero_gerenteSoporte w-100 btn btn-lg btn-primary' value='1'>Asignar Ingeniero</button></td><td style={{display: 'inherited'}}><button type='submit' style={{display: 'none'}} className='botonResolverReporte_ingSoporte w-100 btn btn-lg btn-primary' value='1'>Resolver Reporte</button><button type='submit' style={{display: 'none'}} className='botonDevolverReporte_ingSoporte w-100 btn btn-lg btn-primary' value='1'>Devolver Reporte</button></td><td style={{display: 'inherited'}}><button type='submit' style={{display: 'none'}} className='botonAñadirComoFaqSoporte w-100 btn btn-lg btn-primary' value='1'>Publicar</button></td></tr>
-
+                                    <tr><td>1</td><td>usuario@correo.com</td><td>asdf</td><td><input type="submit" placeholder=""></input></td></tr>
                                 </tbody>
                             </table>
                         </div>
@@ -58,4 +49,6 @@ function GestionTaller() {
     )
 }
 
-export default withAuthorization(GestionTaller, ['admin']);
+export default GestionTaller
+
+//export default withAuthorization(GestionTaller, ['admin']);

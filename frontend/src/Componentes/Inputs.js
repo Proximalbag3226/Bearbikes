@@ -244,23 +244,4 @@ export const DireccionInput = (props) => {
         </div>  
     );
 }
-export const ImagenInput = (props) => {
-    return(
-        <div>
-            {
-                Input({
-                    
-                    id: "imagen",
-                    name: "imagen",
-                    type: "file",
-                    placeholder: "Imagen",
-                    value: props.value || "",
-                    onChange: props.handleChange,
-                    styles: props.styles
-                })
-            }
-        </div>
-    );
-}
-
 export default Input;

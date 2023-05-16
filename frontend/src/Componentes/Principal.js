@@ -4,6 +4,8 @@ import jwt_decode from "jwt-decode";
 
 function Principal() {
 
+  const llave = 'admin';
+
   const getUserInfo = () => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -35,7 +37,11 @@ function Principal() {
               <a href="#">Bienvenido, identifiquese</a>
             )}
             <a href={"/carrito"}>Carrito</a>
-
+            {llave === 'admin' ? (
+                    <a href="/nuevotaller">Nuevo Taller</a>
+                    ) : (
+                      <></>
+                )}
           </nav>
         </div>
       </header>
