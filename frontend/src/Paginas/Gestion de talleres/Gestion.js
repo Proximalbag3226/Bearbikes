@@ -1,8 +1,32 @@
 import Principal from "../../Componentes/Principal"
 import 'bootstrap/dist/css/bootstrap.css';
 import withAuthorization from "../../Funciones/Permitir_acceso";
-
+import Boton from "../Tienda/Componentes/Boton";
+import { useState } from "react";
 function GestionTaller() {
+    const [formData] = useState({
+        id_taller: ""
+      });
+    const handleSubmit = (event) => {
+        event.preventDefault();
+    
+        fetch("http://192.168.20.110:9009/taller/eliminar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formData)
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log("Success:", data);
+                localStorage.setItem("token", data.token);
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+            });
+            formData.id_taller=document.getElementById("id");
+    };
     return (
         <div>
             <div>
@@ -23,14 +47,13 @@ function GestionTaller() {
                                     </tr>
                                 </thead>
                                 <tbody style={{backgroundColor: 'white'}}>
-                                    <tr><td>1</td><td>usuario@correo.com</td><td>asdf</td><td><input type="submit" placeholder=""></input></td></tr>
+                                    <tr><td id="id">1</td><td>usuario@correo.com</td><td>asdf</td><td><Boton onClick={handleSubmit} boton="Eliminar"/></td></tr>
                                 </tbody>
                             </table>
                         </div>
                         <div id="divToasts">
                             <div aria-live="polite" aria-atomic="true"
                                 className="d-flex justify-content-center align-items-center w-100">
-
                                 <div id="botonAsignarIngeniero_gerenteSoporteToast" className="toast" role="alert" aria-live="assertive"
                                     aria-atomic="true" data-bs-autohide="false" style={{width: '80%'}}>
                                     <div className="toast-header">

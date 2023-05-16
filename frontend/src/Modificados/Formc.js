@@ -10,6 +10,7 @@ import {
     AdminKeyInput,
     RfcPersonaFisicaInput,
     DireccionInput,
+    Direccion2,
 } from '../Componentes/Inputs';
 
 const Formulario = (props) => {
@@ -46,8 +47,8 @@ const Formulario = (props) => {
             formInitialData.set("name" , "");
             formInitialData.set("celular", "");
             formInitialData.set("rfc", "");
+            formInitialData.set("direccion2", "");
             formInitialData.set("direccion", "");
-            formInitialData.set("imagen", "")
             break;
     }
 
@@ -66,6 +67,15 @@ const Formulario = (props) => {
                         { display: (tipoUsuario === "dueño_taller" || tipoUsuario === "dueño_comercio" || tipoUsuario === "nuevo_taller" || tipoUsuario === "nuevo_comercio") ? "block" : "none" }
                     }
                 />
+
+                
+                <Direccion2
+                    value={formData.direccion2}
+                    handleChange={handleChange}
+                    styles={
+                        { display: (tipoUsuario === "dueño_taller" || tipoUsuario === "dueño_comercio" || tipoUsuario === "nuevo_taller" || tipoUsuario === "nuevo_comercio") ? "block" : "none" }
+                    }
+                />  
 
                 <AdminKeyInput
                     value={formData.adminKey}
@@ -104,16 +114,6 @@ const Formulario = (props) => {
                     styles={
                         {
                             display: (tipoUsuario === "ciclista" || tipoUsuario === "dueño_taller" || tipoUsuario === "dueño_comercio" || tipoUsuario === "nuevo_taller" || tipoUsuario === "nuevo_comercio")
-                                ? "block" : "none"
-                        }
-                    }
-                />
-                <DireccionInput
-                    data={formData.direccion}
-                    handleChange={handleChange}
-                    styles={
-                        {
-                            display: (tipoUsuario === "nuevo_taller" || tipoUsuario === "nuevo_comercio")
                                 ? "block" : "none"
                         }
                     }

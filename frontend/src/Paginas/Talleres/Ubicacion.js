@@ -15,7 +15,7 @@ export function Ubicacion(props) {
     });
 
     return (
-                <MapContainer center={props.coordinates} zoom={15} scrollWheelZoom={true} style={{zIndex:'-1', display: 'block'}}>
+                <MapContainer center={props.coordinates} zoom={14} scrollWheelZoom={true} style={{zIndex:'-1', display: 'block'}}>
                     <TileLayer
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                         url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'

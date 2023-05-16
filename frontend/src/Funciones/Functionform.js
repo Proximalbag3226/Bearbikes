@@ -13,7 +13,7 @@ function FormFunction(formValues){
 
         console.log("formData before: ", formData);
         
-    // console.log("event name and value: ", event.target.name, + " " +event.target.value);
+     console.log("event name and value: ", event.target.name, + " " +event.target.value);
         
         setFormData({
             ...formData,

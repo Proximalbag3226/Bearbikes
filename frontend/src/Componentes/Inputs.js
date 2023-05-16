@@ -244,4 +244,26 @@ export const DireccionInput = (props) => {
         </div>  
     );
 }
+
+export const Direccion2 = (props) => {
+    return (
+        <div>
+            {
+                Input({
+                    id: "direccion2",
+                    name: "direccion2",
+                    type: "text",
+                    placeholder: "Direccion",
+                    value: props.value || "",
+                    onChange: props.handleChange,
+                    maxLength: props.maxLength || "",
+                    minLength: props.minLength || "",
+                    styles: props.styles
+                })
+            }            
+        </div>
+        
+    );
+}
+
 export default Input;
