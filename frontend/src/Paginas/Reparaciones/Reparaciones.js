@@ -1,7 +1,6 @@
 import Principal from "../Tienda/Componentes/Principal";
 import { useState } from "react";
 import Boton from "../../Componentes/botonr";
-
 function Reparaciones(){
   const llave = 'admin';
   const [formData, setFormData] = useState({
@@ -9,10 +8,12 @@ function Reparaciones(){
     descrip: "",
     fechas: "",
     encargado: "",
-    currentActive: 0,
+    currentActive: 1,
   });
 
   const handleChange= (event)=>{
+    
+    console.log("event name and value: ", event.target.name, + " " +event.target.value);
     setFormData({
       ...formData, [event.target.name]: event.target.value
     })
@@ -21,7 +22,8 @@ function Reparaciones(){
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    fetch("http://192.168.20.110:9009/ciclistas/register", {
+
+    fetch("http://192.168.20.110:9009/reparaciones/register", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -42,7 +44,8 @@ function Reparaciones(){
   const anterior = document.getElementById('anterior');
   const siguiente = document.getElementById('siguiente');
   const circulos = document.getElementsByClassName('circulo');
-  let currentActive = 2; //agregaruna variable que cambie el numero conforme a lo guardado en la base de datos
+  let currentActive = 2;
+ //agregaruna variable que cambie el numero conforme a lo guardado en la base de datos
 
   console.log(circulos)
   function siguientef() {
@@ -56,6 +59,7 @@ function Reparaciones(){
     update();
   }
   function anteriorf() {
+
 
     if (currentActive == 2)
       return;
@@ -79,10 +83,7 @@ function Reparaciones(){
     console.log(((actives.length-1)/(circulos.length-1))*100);
     console.log("numero actual", currentActive-1);
 
-    setFormData({
-      ...formData,
-      currentActive: currentActive - 1,
-    });
+    formData.currentActive=currentActive-1;
 
   }
   return (
@@ -108,8 +109,8 @@ function Reparaciones(){
                 <div id="4" className="circulo">4</div>
                 <div id="5" className="circulo">5</div>
               </div>
-              <button color="orange" className="btn" id="anterior" onClick={anteriorf}>Anterior</button>
-              <button color="orange" className="btn" id="siguiente" onClick={siguientef} >Siguiente</button>
+              <button color="orange" className="btn" id="anterior" onClick={anteriorf} onChange={handleChange}>Anterior</button>
+              <button color="orange" className="btn" id="siguiente" onClick={siguientef} onChange={handleChange}>Siguiente</button>
              </div>
               </td>
                 {llave === 'admin' ? (
