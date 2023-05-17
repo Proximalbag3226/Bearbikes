@@ -60,7 +60,6 @@ function Reparaciones(){
   }
   function anteriorf() {
 
-
     if (currentActive == 2)
       return;
     console.log('anterior')
@@ -100,18 +99,18 @@ function Reparaciones(){
               <td>
               <br></br>
               <br></br>
-              <div className="contenedor" >
+              <form className="contenedor" onSubmit={handleSubmit}>
               <div className="progreso-contenedor">
                 <div className="linea"></div>
                 <div id="1" className="circulo active">1</div>
                 <div id="2" className="circulo">2</div>
                 <div id="3" className="circulo">3</div>
                 <div id="4" className="circulo">4</div>
-                <div id="5" className="circulo">5</div>
+                <div id="5" className="circulo">5</div> 
               </div>
-              <button color="orange" className="btn" id="anterior" onClick={anteriorf} onChange={handleChange}>Anterior</button>
-              <button color="orange" className="btn" id="siguiente" onClick={siguientef} onChange={handleChange}>Siguiente</button>
-             </div>
+              <input color="orange" type="submit" className="btn" id="anterior" onClick={anteriorf} onChange={handleChange} value="anterior"/>
+              <input color="orange" type="submit" className="btn" id="siguiente" onClick={siguientef} onChange={handleChange} value="siguiente"/>
+             </form>
               </td>
                 {llave === 'admin' ? (
               <td>
@@ -121,8 +120,6 @@ function Reparaciones(){
                 <input className="controls" type="text" name="descrip" id="descrip" placeholder="Descripcion" onChange={handleChange} value={formData.descrip}/>
                 <input className="controls" type="text" name="fechas" id="fechas" placeholder="Fecha" onChange={handleChange} value={formData.fechas}/>
                 <input className="controls" type="text" name="encargado" id="encargado" placeholder="Encargado" onChange={handleChange} value={formData.encargado}/>
-                <Boton
-                boton={"Registrar reparacion"}/>
               </form>
               </td>
                     ) : (

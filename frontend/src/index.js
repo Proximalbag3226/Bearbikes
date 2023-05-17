@@ -43,6 +43,9 @@ import GestionTaller from './Paginas/Gestion de talleres/Gestion';
 import Noautorizado from './Modificados/Noautorizado';
 import Formtalleres from './Paginas/Talleres/Formtalleres';
 import Prueba from './Paginas/Prueba/noc';
+import ShowProducts from './Paginas/Prueba2/ShowProducts';
+import CreateProducts from './Paginas/Prueba2/CreateProducts';
+import EditProducts from './Paginas/Prueba2/EditProducts';
 
 const router = createBrowserRouter([
   {
@@ -200,6 +203,18 @@ const router = createBrowserRouter([
   {
     path: '/prueba',
     element: <Prueba/> 
+  },
+  {
+    path: '/showproducts',
+    element: <ShowProducts/>
+  },
+  {
+    path: '/create',
+    element: <CreateProducts/>
+  },
+  {
+    path: '/edit/:id',
+    element: <EditProducts/>
   }
 ]);
 

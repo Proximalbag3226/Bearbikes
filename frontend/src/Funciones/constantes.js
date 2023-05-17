@@ -1,6 +1,6 @@
 const variables = { 
     registrar : "api/v1",
-    apiHost : "127.0.0.10",
+    apiHost : "192.168.20.47",
     apiPort : "9009"
 }
 
