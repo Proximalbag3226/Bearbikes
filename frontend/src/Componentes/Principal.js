@@ -5,7 +5,6 @@ import jwt_decode from "jwt-decode";
 function Principal() {
 
   const llave = 'admin';
-
   const getUserInfo = () => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -15,6 +14,8 @@ function Principal() {
     }
     return null;
   };
+
+  const key = getUserInfo.key;
 
   const [userInfo, setUserInfo] = useState(null);
   return (
@@ -37,7 +38,7 @@ function Principal() {
               <a href="#">Bienvenido, identifiquese</a>
             )}
             <a href={"/carrito"}>Carrito</a>
-            {llave === 'admin' ? (
+            {key === 'admin' ? (
                     <a href="/nuevotaller">Nuevo Taller</a>
                     ) : (
                       <></>
@@ -53,16 +54,28 @@ function Principal() {
             <a href={"/eleccion"}>Registro</a>
             <a href={"/login"}>Inicio de sesion</a>
             <a href={"/infot"}>Sitios turisticos</a>
-            {userInfo ? <a href={"/tienda"}>Tienda</a> : null}
+            {key === '' ? (
+            <a href={"/tienda"}>Tienda</a>
+            ) : (
+              <></>
+              )}
             <a href={"/comercios"}>Comercios</a>
             <a href={"/infob"}>Info bicicletas</a>
             <a href={"/tienda"}>Tienda bicicletas</a>
             <a href={"/tienda2"}>Tienda de Productos</a>
             <a href={"/talleres"}>Talleres</a>
+            {llave === 'admin' ? (
             <a href={"/reparaciones"}>Reparaciones</a>
+            ) : (
+              <></>
+              )}
             <a href={"/rutas"}>Creador de rutas</a>
             <a href={"/avisos"}>Avisos</a>
+            {llave === 'admin' ? (
             <a href={"/gestion"}>Gestion</a>
+            ) : (
+              <></>
+              )}
           </nav>
           <label htmlFor={"btn-menu"}>✖</label>
         </div>
