@@ -4,20 +4,54 @@ import { useNavigate } from "react-router-dom";
 import './App.css';
 import Principal from "../../Componentes/Principal";
 import 'bootstrap/dist/css/bootstrap.min.css'
+import jwtDecode from "jwt-decode";
+import variables from "../../Funciones/constantes";
 
-const url = 'http://api-products.run/index.php';
+const url = `http://${variables.apiHost}:${variables.apiPort}/${variables.taller}/register`;
 
 const CreateProducts = () => {
-    const[name, setName]= useState('');
-    const[description, setDescription]= useState('');
-    const[price, setPrice]= useState(0);
+    const[nombreEstablecimiento, setNombreEstablecimiento]= useState('');
+    const[direccionEstablecimiento, setDireccionEstablecimiento]= useState('');
+    const[calle, setCalle]= useState('');
+    const[numeroInterior, setNumeroInterior]= useState('');
+    const[numeroExterior, setNumeroExterior]= useState('');
+    const[colonia, setColonia]= useState('');
+    const[alcaldia, setAlcaldia]= useState('');
+    const[ciudad, setCiudad]= useState('');
+    const[cantidadEmpleados, setCantidadEmpleados]= useState(0);
+    const[rfcEstablecimiento, setRfcEstablecimiento] = useState('');
+
+    const type = "taller"
+    const tipoDireccion = "ESTABLECIMIENTO"
+    const token = localStorage.getItem("token")
     const redirect = useNavigate();
 
-    const store = async(e) =>{
+    const store = async (e) => {
         e.preventDefault();
-        await axios.post(url, {name:name,description:description,price:price});
+        const headers = {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}` // Agrega el encabezado JWT con el token
+        };
+      
+        const data = {
+          nombreEstablecimiento: nombreEstablecimiento,
+          direccionEstablecimiento: direccionEstablecimiento,
+          cantidadEmpleados: cantidadEmpleados,
+          rfcEstablecimiento: rfcEstablecimiento,
+          direccionEstablecimiento : { 
+            tipoDireccion : tipoDireccion,
+            calle: calle,
+            numeroInterior : numeroInterior,
+            numeroExterior : numeroExterior,
+            colonia: colonia,
+            alcaldia: alcaldia,
+            ciudad: ciudad,
+        },
+          type: type,
+        };
+        await axios.post(url, data, { headers: headers }); //quitando el await ya se puede realizar la redireccion
         redirect('/');
-    }
+      };
 
   return (
     <div className="container-fluid">
@@ -25,23 +59,53 @@ const CreateProducts = () => {
         <div className="row mt-3">
             <div className="col-12 col-lg-8 offset-0 offset-lg-2">
                 <div className="card">
-                    <div className="card-header bg-dark text-white">Añadir productos</div>
+                    <div className="card-header bg-dark text-white">Añadir Talleres</div>
                     <div className="card-body">
                         <form onSubmit={store}>
                             <label>Nombre: </label>
                             <input type='text' id='nombre' maxLength='80' 
                             className="form-control"
-                            required={true} value={name} onChange={ (e) => setName(e.target.value)}>
+                            required={true} value={nombreEstablecimiento} onChange={ (e) => setNombreEstablecimiento(e.target.value)}>
                             </input>
-                            <label>Direccion: </label>
-                            <input type='text' id='descripcion' maxLength='150' 
+                            <label>Calle: </label>
+                            <input type='text' id='direc' maxLength='80' 
                             className="form-control"
-                            required={true} value={description} onChange={ (e) => setDescription(e.target.value)}>
+                            required={true} value={calle} onChange={ (e) => setCalle(e.target.value)}>
                             </input>
-                            <label>Horario: </label>
+                            <label>Numero Exterior: </label>
+                            <input type='text' id='direc' maxLength='80' 
+                            className="form-control"
+                            required={true} value={numeroExterior} onChange={ (e) => setNumeroExterior(e.target.value)}>
+                            </input>
+                            <label>Numero Interior: </label>
+                            <input type='text' id='direc' maxLength='80' 
+                            className="form-control"
+                            required={true} value={numeroInterior} onChange={ (e) => setNumeroInterior(e.target.value)}>
+                            </input>
+                            <label>Colonia: </label>
+                            <input type='text' id='direc' maxLength='80' 
+                            className="form-control"
+                            required={true} value={colonia} onChange={ (e) => setColonia(e.target.value)}>
+                            </input>
+                            <label>Alcaldia: </label>
+                            <input type='text' id='direc' maxLength='80' 
+                            className="form-control"
+                            required={true} value={alcaldia} onChange={ (e) => setAlcaldia(e.target.value)}>
+                            </input>
+                            <label>Ciudad: </label>
+                            <input type='text' id='direc' maxLength='80' 
+                            className="form-control"
+                            required={true} value={ciudad} onChange={ (e) => setCiudad(e.target.value)}>
+                            </input>
+                            <label>RFC: </label>
+                            <input type='text' id='rfc' maxLength='150' 
+                            className="form-control"
+                            required={true} value={rfcEstablecimiento} onChange={ (e) => setRfcEstablecimiento(e.target.value)}>
+                            </input>
+                            <label>Cantidad de empleados: </label>
                             <input type='number' id='precio' 
                             className="form-control" step='0.1'
-                            required={true} value={price} onChange={ (e) => setPrice(e.target.value)}>
+                            required={true} value={cantidadEmpleados} onChange={ (e) => setCantidadEmpleados(e.target.value)}>
                             </input>
                             <button className="btn btn-success mt-3">Guardar</button>
                         </form>

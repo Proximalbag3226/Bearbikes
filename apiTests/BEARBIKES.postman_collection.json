@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "90567eb0-928d-4205-9222-92ceb3c07f9d",
-		"name": "BEARBIKES REQUESTS Copy",
+		"name": "BEARBIKES API Requests",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "26086390"
 	},
@@ -11,11 +11,25 @@
 			"item": [
 				{
 					"name": "Contar Ciclistas",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbciOiJIUzI1NiJ9.eyJyb2xlIjoiQ0lDTElTVEEiLCJzdWIiOiJlbWFpbEBwb3N0bWFuLmNvbSIsImlhdCI6MTY4MTQ0NTYzMiwiZXhwIjoxNjgxNTMyMDMyfQ.6d7sNh9hvS9uGKaBWfAqGoxs-xxcdD1sNHuY84h1dm4",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Charset",
+								"value": "UTF-8",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/{{PATH_CICLISTAS}}/count",
+							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/{{PATH_CICLISTAS}}/count?path=hola",
 							"host": [
 								"{{SERVER_IP}}"
 							],
@@ -23,16 +37,116 @@
 							"path": [
 								"{{PATH_CICLISTAS}}",
 								"count"
+							],
+							"query": [
+								{
+									"key": "path",
+									"value": "hola"
+								}
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Contar Ciclistas",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbWFpbEBwb3N0bWFuLmNvbSIsImlhdCI6MTY4MTQxNjk0MSwiZXhwIjoxNjgxNTAzMzQxfQ.tvFBDa_Chu9vwErHyA7TzC1MDwHmYgSYwseKKb0Iu2M",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/{{PATH_CICLISTAS}}/count",
+									"host": [
+										"{{SERVER_IP}}"
+									],
+									"port": "{{SERVER_PORT}}",
+									"path": [
+										"{{PATH_CICLISTAS}}",
+										"count"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Apr 2023 20:19:21 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "2"
+						}
+					]
 				},
 				{
 					"name": "Obtener Ciclistas",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbWFpbEBwb3N0bWFuLmNvbSIsImlhdCI6MTY4MTQxNjk0MSwiZXhwIjoxNjgxNTAzMzQxfQ.tvFBDa_Chu9vwErHyA7TzC1MDwHmYgSYwseKKb0Iu2M",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/{{PATH_CICLISTAS}}/getAll",
 							"host": [
@@ -45,7 +159,95 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Obtener Ciclistas",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbWFpbEBwb3N0bWFuLmNvbSIsImlhdCI6MTY4MTQxNjk0MSwiZXhwIjoxNjgxNTAzMzQxfQ.tvFBDa_Chu9vwErHyA7TzC1MDwHmYgSYwseKKb0Iu2M",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/{{PATH_CICLISTAS}}/getAll",
+									"host": [
+										"{{SERVER_IP}}"
+									],
+									"port": "{{SERVER_PORT}}",
+									"path": [
+										"{{PATH_CICLISTAS}}",
+										"getAll"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Apr 2023 20:16:56 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 6,\n        \"email\": \"email@postman.com\",\n        \"password\": \"$2a$10$aubiL92MVsZx0Bt3ZycTUOA5NmRS/xJT6jd9MhoOAOHq2BNt81KSO\",\n        \"accountStatus\": \"ACTIVA\",\n        \"role\": \"CICLISTA\",\n        \"nombre\": \"Post\",\n        \"apellidoPat\": \"Man\",\n        \"apellidoMat\": \"Request\",\n        \"numerocelular\": \"5533175289\",\n        \"tokenPersonal\": \"U5Z`Z=fkwMPBczjhrq:\\\\FjoNHIVgRM\",\n        \"enabled\": true,\n        \"accountNonLocked\": true,\n        \"credentialsNonExpired\": true,\n        \"accountNonExpired\": true,\n        \"username\": \"email@postman.com\",\n        \"authorities\": [\n            {\n                \"authority\": \"CICLISTA\"\n            }\n        ]\n    },\n    {\n        \"id\": 1,\n        \"email\": \"procedureCiclista@mysql.com\",\n        \"password\": \"password\",\n        \"accountStatus\": \"ACTIVA\",\n        \"role\": \"CICLISTA\",\n        \"nombre\": \"ciclista procedure\",\n        \"apellidoPat\": \"Paterno\",\n        \"apellidoMat\": \"Materno\",\n        \"numerocelular\": \"5615548192\",\n        \"tokenPersonal\": \"UN_TOKEN_BIEN_SEGURO\",\n        \"enabled\": true,\n        \"accountNonLocked\": true,\n        \"credentialsNonExpired\": true,\n        \"accountNonExpired\": true,\n        \"username\": \"procedureCiclista@mysql.com\",\n        \"authorities\": [\n            {\n                \"authority\": \"CICLISTA\"\n            }\n        ]\n    }\n]"
+						}
+					]
 				},
 				{
 					"name": "Registrar Ciclistas",
@@ -54,7 +256,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"type\" : \"ciclista\",\r\n    \"email\": \"email@postman.com\",\r\n    \"password\": \"contraseñaPostman1\",\r\n    \"nombre\": \"Post\",\r\n    \"apellidoPat\": \"Man\",\r\n    \"apellidoMat\": \"Request\",\r\n    \"celular\": \"5533175289\"\r\n}",
+							"raw": "{\r\n    \"type\" : \"ciclista\",\r\n    \"email\": \"email@postman.com\",\r\n    \"password\": \"contraseñaPostman1\",\r\n    \"name\": \"Post\",\r\n    \"apellidoPat\": \"Man\",\r\n    \"apellidoMat\": \"Request\",\r\n    \"celular\": \"5533175289\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -62,14 +264,52 @@
 							}
 						},
 						"url": {
-							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/{{PATH_CICLISTAS}}/register",
+							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/api/v1/auth/register",
 							"host": [
 								"{{SERVER_IP}}"
 							],
 							"port": "{{SERVER_PORT}}",
 							"path": [
-								"{{PATH_CICLISTAS}}",
+								"api",
+								"v1",
+								"auth",
 								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "loginCiclista",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"email@postman.com\",\r\n    \"password\": \"contraseñaPostman1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/api/v1/auth/authenticate?",
+							"host": [
+								"{{SERVER_IP}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"authenticate"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
 							]
 						}
 					},
@@ -84,9 +324,15 @@
 					"name": "Contar dueños taller",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkdWXDsW90YWxsZXJAcG9zdG1hbi5jb20iLCJpYXQiOjE2ODAwNzgyMzUsImV4cCI6MTY4MDE2NDYzNX0.rsKN0Im9xzni8gTxqwfeBqBbR6pkqyrrCrnWzBcbsWU",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/{{PATH_DUEÑOS_TALLER}}/count",
+							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/{{PATH_DUEÑOS_TALLER}}/count?",
 							"host": [
 								"{{SERVER_IP}}"
 							],
@@ -94,6 +340,12 @@
 							"path": [
 								"{{PATH_DUEÑOS_TALLER}}",
 								"count"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
 							]
 						}
 					},
@@ -103,7 +355,13 @@
 					"name": "Obtener Dueños taller",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkdWXDsW90YWxsZXJAcG9zdG1hbi5jb20iLCJpYXQiOjE2ODAwNzgyMzUsImV4cCI6MTY4MDE2NDYzNX0.rsKN0Im9xzni8gTxqwfeBqBbR6pkqyrrCrnWzBcbsWU",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/{{PATH_DUEÑOS_TALLER}}/getAll",
 							"host": [
@@ -125,7 +383,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"type\" : \"dueño_taller\",\r\n    \"email\": \"email@postman.com\",\r\n    \"password\": \"contraseñaPostman1\",\r\n    \"nombre\": \"Post\",\r\n    \"apellidoPat\": \"Man\",\r\n    \"apellidoMat\": \"Request\",\r\n    \"celular\": \"5533175289\",\r\n    \"rfc\": \"1234567890ABCDE\"\r\n}",
+							"raw": "{\r\n    \"type\" : \"dueño_taller\",\r\n    \"email\": \"dueñotaller@postman.com\",\r\n    \"password\": \"contraseñaPostman1\",\r\n    \"name\": \"Post\",\r\n    \"apellidoPat\": \"Man\",\r\n    \"apellidoMat\": \"Request\",\r\n    \"celular\": \"5533175289\",\r\n    \"rfc\": \"1234567890ABCDG\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -133,14 +391,179 @@
 							}
 						},
 						"url": {
-							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/{{PATH_DUEÑOS_TALLER}}/register",
+							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/api/v1/auth/register",
 							"host": [
 								"{{SERVER_IP}}"
 							],
 							"port": "{{SERVER_PORT}}",
 							"path": [
-								"{{PATH_DUEÑOS_TALLER}}",
+								"api",
+								"v1",
+								"auth",
 								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "loginDueño taller",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"dueñotaller@postman.com\",\r\n    \"password\": \"contraseñaPostman1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/api/v1/auth/authenticate?",
+							"host": [
+								"{{SERVER_IP}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"authenticate"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DUEÑOS COMERCIO",
+			"item": [
+				{
+					"name": "Contar dueños comercio",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkdWXDsW9jb21lcmNpb0Bwb3N0bWFuLmNvbSIsImlhdCI6MTY4MDA4MDA3NywiZXhwIjoxNjgwMTY2NDc3fQ.c1Y8Q4bw3CtTp3DpvdEWRkaE2g8DGh80L4tuJaWTKo8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/{{PATH_DUEÑOS_COMERCIO}}/count?",
+							"host": [
+								"{{SERVER_IP}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"{{PATH_DUEÑOS_COMERCIO}}",
+								"count"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Dueños comercio",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkdWXDsW9jb21lcmNpb0Bwb3N0bWFuLmNvbSIsImlhdCI6MTY4MDA4MDA3NywiZXhwIjoxNjgwMTY2NDc3fQ.c1Y8Q4bw3CtTp3DpvdEWRkaE2g8DGh80L4tuJaWTKo8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/{{PATH_DUEÑOS_COMERCIO}}/getAll",
+							"host": [
+								"{{SERVER_IP}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"{{PATH_DUEÑOS_COMERCIO}}",
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registrar Dueños comercio",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\" : \"dueño_comercio\",\r\n    \"email\": \"dueñocomercio@postman.com\",\r\n    \"password\": \"contraseñaPostman1\",\r\n    \"name\": \"Post\",\r\n    \"apellidoPat\": \"Man\",\r\n    \"apellidoMat\": \"Request\",\r\n    \"celular\": \"5533175289\",\r\n    \"rfc\": \"1234567890ABCDE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/api/v1/auth/register",
+							"host": [
+								"{{SERVER_IP}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "loginDueño comercio",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"dueñocomercio@postman.com\",\r\n    \"password\": \"contraseñaPostman1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/api/v1/auth/authenticate?",
+							"host": [
+								"{{SERVER_IP}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"authenticate"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
 							]
 						}
 					},
@@ -155,7 +578,13 @@
 					"name": "Contar Administradores",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBwb3N0bWFuLmNvbSIsImlhdCI6MTY4MDA3ODU5NCwiZXhwIjoxNjgwMTY0OTk0fQ.EWhj3RfdKlqgE63HT1qrftkZaB-eh_76FfWLZiBWM5I",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/{{PATH_ADMIN}}/count",
 							"host": [
@@ -174,7 +603,13 @@
 					"name": "Obtener Administradores",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBwb3N0bWFuLmNvbSIsImlhdCI6MTY4MDA3ODU5NCwiZXhwIjoxNjgwMTY0OTk0fQ.EWhj3RfdKlqgE63HT1qrftkZaB-eh_76FfWLZiBWM5I",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/{{PATH_ADMIN}}/getAll",
 							"host": [
@@ -184,6 +619,13 @@
 							"path": [
 								"{{PATH_ADMIN}}",
 								"getAll"
+							],
+							"query": [
+								{
+									"key": "Authorization",
+									"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBwb3N0bWFuLmNvbSIsImlhdCI6MTY4MDA3ODU5NCwiZXhwIjoxNjgwMTY0OTk0fQ.EWhj3RfdKlqgE63HT1qrftkZaB-eh_76FfWLZiBWM5I",
+									"disabled": true
+								}
 							]
 						}
 					},
@@ -196,7 +638,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"type\" : \"admin\",\r\n    \"email\": \"email1@postman.com\",\r\n    \"password\": \"contraseñaPostman1\",\r\n    \"nombre\": \"Post\",\r\n    \"adminKey\" : \"CLAVE123\"\r\n}",
+							"raw": "{\r\n    \"type\" : \"admin\",\r\n    \"email\": \"admin@postman.com\",\r\n    \"password\": \"contraseñaPostman1\",\r\n    \"name\": \"Post\",\r\n    \"adminKey\" : \"CLAVE123\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -204,14 +646,52 @@
 							}
 						},
 						"url": {
-							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/{{PATH_ADMIN}}/register",
+							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/api/v1/auth/register",
 							"host": [
 								"{{SERVER_IP}}"
 							],
 							"port": "{{SERVER_PORT}}",
 							"path": [
-								"{{PATH_ADMIN}}",
+								"api",
+								"v1",
+								"auth",
 								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "loginAdmin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin@postman.com\",\r\n    \"password\": \"contraseñaPostman1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/api/v1/auth/authenticate?",
+							"host": [
+								"{{SERVER_IP}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"authenticate"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
 							]
 						}
 					},
@@ -221,7 +701,259 @@
 		},
 		{
 			"name": "TALLER",
-			"item": []
+			"item": [
+				{
+					"name": "Contar Talleres",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiRFVFw5FPX1RBTExFUiIsInN1YiI6ImR1ZcOxb3RhbGxlckBwb3N0bWFuLmNvbSIsImlhdCI6MTY4MTU0NDA0MiwiZXhwIjoxNjgxNjMwNDQyfQ.MPswbOciypfAZG2TSA-B6X-HflEgjDpaiHuSkV_5a3U",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/{{PATH_TALLER}}/count",
+							"host": [
+								"{{SERVER_IP}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"{{PATH_TALLER}}",
+								"count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Talleres Registrados",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkdWXDsW90YWxsZXJAcG9zdG1hbi5jb20iLCJpYXQiOjE2ODAwODA0MDIsImV4cCI6MTY4MDE2NjgwMn0.tTtRNH4OBMx6P2ZL0drEpMr1AzPvlieiJ63rXLVHOcc",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/{{PATH_TALLER}}/getAll",
+							"host": [
+								"{{SERVER_IP}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"{{PATH_TALLER}}",
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registrar Taller",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiRFVFw5FPX1RBTExFUiIsInN1YiI6ImR1ZcOxb3RhbGxlckBwb3N0bWFuLmNvbSIsImlhdCI6MTY4MTU0NDA0MiwiZXhwIjoxNjgxNjMwNDQyfQ.MPswbOciypfAZG2TSA-B6X-HflEgjDpaiHuSkV_5a3U",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\" : \"taller\",\r\n    \"nombreEstablecimiento\": \"Taller 1 Postman\",\r\n    \"rfcEstablecimiento\": \"RFC_tALLER56\",\r\n    \"direccionEstablecimiento\": {\r\n        \"tipoDireccion\" : \"ESTABLECIMIENTO\",\r\n        \"calle\" : \"CALLE POSTMAN\",\r\n        \"numeroExterior\" : \"23\",\r\n        \"numeroInterior\" : \"S/N\",\r\n        \"colonia\" : \"COLONIA POSTMAN\",\r\n        \"codigoPostal\" : \"01758\",\r\n        \"alcaldia\" : \"ALVARO OBREGON\",\r\n        \"ciudad\" : \"CDMX\"\r\n    },\r\n    \"cantidadEmpleados\" : \"500\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/{{PATH_TALLER}}/register",
+							"host": [
+								"{{SERVER_IP}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"{{PATH_TALLER}}",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "loginDueño taller",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"dueñotaller@postman.com\",\r\n    \"password\": \"contraseñaPostman1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/api/v1/auth/authenticate?",
+							"host": [
+								"{{SERVER_IP}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"authenticate"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "COMERCIO",
+			"item": [
+				{
+					"name": "Contar Comercios",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiRFVFw5FPX0NPTUVSQ0lPIiwic3ViIjoiZHVlw7FvY29tZXJjaW9AcG9zdG1hbi5jb20iLCJpYXQiOjE2ODE1NDQ0ODYsImV4cCI6MTY4MTYzMDg4Nn0.xVWBStKGTCuviy0T63mxTjhoEr8609_JPA45L6u9VvQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/{{PATH_COMERCIO}}/count",
+							"host": [
+								"{{SERVER_IP}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"{{PATH_COMERCIO}}",
+								"count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Comercios Registrados",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiRFVFw5FPX0NPTUVSQ0lPIiwic3ViIjoiZHVlw7FvY29tZXJjaW9AcG9zdG1hbi5jb20iLCJpYXQiOjE2ODE1NDQ0ODYsImV4cCI6MTY4MTYzMDg4Nn0.xVWBStKGTCuviy0T63mxTjhoEr8609_JPA45L6u9VvQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/{{PATH_COMERCIO}}/getAll",
+							"host": [
+								"{{SERVER_IP}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"{{PATH_COMERCIO}}",
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registrar Comercio",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiRFVFw5FPX0NPTUVSQ0lPIiwic3ViIjoiZHVlw7FvY29tZXJjaW9AcG9zdG1hbi5jb20iLCJpYXQiOjE2ODE1NDQ0ODYsImV4cCI6MTY4MTYzMDg4Nn0.xVWBStKGTCuviy0T63mxTjhoEr8609_JPA45L6u9VvQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\" : \"comercio\",\r\n    \"nombreEstablecimiento\": \"Comercio 1 Postman\",\r\n    \"rfcEstablecimiento\": \"RFC_COMERCIO\",\r\n    \"direccionEstablecimiento\": {\r\n        \"tipoDireccion\" : \"ESTABLECIMIENTO\",\r\n        \"calle\" : \"CALLE POSTMAN\",\r\n        \"numeroExterior\" : \"23\",\r\n        \"numeroInterior\" : \"S/N\",\r\n        \"colonia\" : \"COLONIA POSTMAN\",\r\n        \"codigoPostal\" : \"01758\",\r\n        \"alcaldia\" : \"ALVARO OBREGON\",\r\n        \"ciudad\" : \"CDMX\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/{{PATH_COMERCIO}}/register",
+							"host": [
+								"{{SERVER_IP}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"{{PATH_COMERCIO}}",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login Dueño Comercio",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"dueñocomercio@postman.com\",\r\n    \"password\": \"contraseñaPostman1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER_IP}}:{{SERVER_PORT}}/api/v1/auth/authenticate?",
+							"host": [
+								"{{SERVER_IP}}"
+							],
+							"port": "{{SERVER_PORT}}",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"authenticate"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "REPARACIONES",
@@ -379,8 +1111,24 @@
 			"type": "string"
 		},
 		{
+			"key": "PATH_COMERCIO",
+			"value": "commerce",
+			"type": "string"
+		},
+		{
 			"key": "PATH_DUEÑOS_TALLER",
 			"value": "workshopOwner",
+			"type": "string"
+		},
+		{
+			"key": "PATH_API",
+			"value": "",
+			"type": "string",
+			"disabled": true
+		},
+		{
+			"key": "PATH_DUEÑOS_COMERCIO",
+			"value": "commerceOwner",
 			"type": "string"
 		}
 	]

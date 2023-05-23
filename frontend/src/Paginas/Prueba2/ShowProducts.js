@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 import './App.css';
 import Principal from "../../Componentes/Principal";
 import 'bootstrap/dist/css/bootstrap.min.css'
+import variables from "../../Funciones/constantes";
 
-const url = 'http://api-products.run/index.php';
+const url = `http://${variables.apiHost}:${variables.apiPort}/${variables.taller}/register`;
 
 const ShowProducts = () => {
     const [products, setProducts] = useState([]);
@@ -36,7 +37,7 @@ const ShowProducts = () => {
                 <div className="table-responsive">
                     <table className="table table-bordered">
                         <thead className="texto">
-                            <tr><th className="texto1">ID</th><th className="texto1">Taller</th><th className="texto1">Direccion</th><th className="texto1">Horario</th><th></th></tr>
+                            <tr><th className="texto1">ID</th><th className="texto1">Taller</th><th className="texto1">Direccion</th><th className="texto1">Cantidad de empleados</th><th></th></tr>
                         </thead>
                         <tbody className="table-group-divider">
                             { products.map( (product, i)=>(
