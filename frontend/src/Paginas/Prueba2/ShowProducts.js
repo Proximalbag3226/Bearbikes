@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import variables from "../../Funciones/constantes";
 
 const url = `http://${variables.apiHost}:${variables.apiPort}/${variables.taller}/getAll`;
-const urlsdelete = `http://${variables.apiHost}:${variables.apiPort}/${variables.taller}/deleate`;
+const urlsdelete = `http://${variables.apiHost}:${variables.apiPort}/${variables.taller}/delete`;
 
 const ShowProducts = () => {
     const key = 'admin'
@@ -20,8 +20,13 @@ const ShowProducts = () => {
         setTalleres(respuesta.data);
     }
     const deleteTaller = async(id) =>{
-        const params  = {headers: {'Content-Type':'application/json'},data:{'id':id}};
-        await axios.delete(urlsdelete,params);
+        const headers = {
+            'Content-Type': 'application/json',
+          };
+          const data = {
+            'id' : id
+          }
+        await axios.post(urlsdelete, data, {headers: headers});
         getTalleres();
     }
   return (

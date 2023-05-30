@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import variables from "../../Funciones/constantes";
 
 const url = `http://${variables.apiHost}:${variables.apiPort}/${variables.comercio}/getAll`;
-const urlsdelete = `http://${variables.apiHost}:${variables.apiPort}/${variables.comercio}/deleate`;
+const urlsdelete = `http://${variables.apiHost}:${variables.apiPort}/${variables.comercio}/delete`;
 
 const ShowComercio = () => {
     const key = 'admin'
@@ -20,8 +20,13 @@ const ShowComercio = () => {
         setComercios(respuesta.data);
     }
     const deleteComercio = async(id) =>{
-        const params  = {headers: {'Content-Type':'application/json'},data:{'id':id}};
-        await axios.delete(urlsdelete,params);
+        const headers = {
+            'Content-Type': 'application/json',
+          };
+          const data = {
+            'id' : id
+          }
+        await axios.post(urlsdelete, data, {headers: headers});
         getComercios();
     }
   return (
@@ -39,7 +44,7 @@ const ShowComercio = () => {
                 <div className="table-responsive">
                     <table className="table table-bordered">
                         <thead className="texto">
-                            <tr><th className="texto1">ID</th><th className="texto1">Comercios</th><th className="texto1">Direccion</th><th className="texto1">Codigo Postal</th><th></th></tr>
+                            <tr><th className="texto1">ID</th><th className="texto1">Comercios</th><th className="texto1">Direccion</th><th className="texto1">Colonia</th><th></th></tr>
                         </thead>
                         <tbody className="table-group-divider">
                             {comercios.map( (comercios, i)=>(
@@ -47,7 +52,7 @@ const ShowComercio = () => {
                                     <td>{(i+1)}</td>
                                     <td>{comercios.nombreEstablecimiento}</td>
                                     <td>{comercios.direccion.calle}</td>
-                                    <td>{ new Intl.NumberFormat('es-mx').format(comercios.codigoPostal)}</td>
+                                    <td>{comercios.direccion.colonia}</td>
                                     {key === 'admin' ? (   
                                     <td>
                                     <Link to={`/edit/${comercios.id}`} className='btn btn-warning'>Editar</Link>

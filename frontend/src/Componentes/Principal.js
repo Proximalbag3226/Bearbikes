@@ -18,7 +18,7 @@ function Principal() {
     return null;
   }
   const tokenDecodificado = decodificado();
-  const username = tokenDecodificado?.sub;
+  const username = tokenDecodificado?.name;
   const key = tokenDecodificado?.role;
 
   return (
@@ -36,7 +36,7 @@ function Principal() {
             <a href="prueba1/src/Componentes/Principal">Nosotros</a>
             <a href="src/componentes/Principal#">Contacto</a>
             {username ? (
-              <a href="#">Bienvenido, {username}!</a>
+              <a href="#">Bienvenido, {username}</a>
             ) : (
               <a href="#">Bienvenido, identifiquese</a>
             )}
