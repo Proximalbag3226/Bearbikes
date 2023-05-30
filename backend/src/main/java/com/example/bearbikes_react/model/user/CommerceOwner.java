@@ -1,5 +1,6 @@
 package com.example.bearbikes_react.model.user;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,7 +10,6 @@ import lombok.Setter;
 @Setter
 public class CommerceOwner extends User {
     private static final UserRole ROLE = UserRole.DUEÑO_COMERCIO;
-    private String nombre;
     private String apellidoPat;
     private String apellidoMat;
     private String numerocelular;
@@ -17,7 +17,7 @@ public class CommerceOwner extends User {
 
     public CommerceOwner(String email, String password, String nombre, String apellidoPat, String apellidoMat, String numerocelular, String rfcFisica) {
         super(email, password, ROLE);
-        this.nombre = nombre;
+        super.setNombre(nombre);
         this.apellidoPat = apellidoPat;
         this.apellidoMat = apellidoMat;
         this.numerocelular = numerocelular;
@@ -30,7 +30,7 @@ public class CommerceOwner extends User {
         sb.append("id=").append(super.getId());
         sb.append(", email='").append(super.getEmail()).append('\'');
         sb.append(", password='").append(super.getPassword()).append('\'');
-        sb.append(", nombre='").append(nombre).append('\'');
+        sb.append(", nombre='").append(super.getNombre()).append('\'');
         sb.append(", apellidoPat='").append(apellidoPat).append('\'');
         sb.append(", apellidoMat='").append(apellidoMat).append('\'');
         sb.append(", numerocelular='").append(numerocelular).append('\'');

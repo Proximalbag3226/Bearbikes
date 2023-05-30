@@ -10,12 +10,11 @@ import java.sql.Date;
 @Setter
 public class Admin extends User {
     private static final UserRole ROLE = UserRole.ADMINISTRADOR;
-    private String name;
     private Date registerDate;
 
-    public Admin(String email, String password, String name) {
+    public Admin(String email, String password, String nombre) {
         super(email, password, ROLE);
-        this.name = name;
+        super.setNombre(nombre);
     }
 
     @Override
@@ -24,17 +23,9 @@ public class Admin extends User {
         sb.append("id=").append(super.getId());
         sb.append(", email='").append(super.getEmail()).append('\'');
         sb.append(", password='").append(super.getPassword()).append('\'');
-        sb.append(", nombre='").append(name).append('\'');
+        sb.append(", nombre='").append(super.getNombre()).append('\'');
         sb.append(", registerDate='").append(registerDate).append('\'');
         sb.append('}');
         return sb.toString();
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 }

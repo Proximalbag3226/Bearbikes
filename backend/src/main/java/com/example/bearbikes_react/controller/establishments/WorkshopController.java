@@ -45,11 +45,11 @@ public class WorkshopController {
             newWorkshop.setCantidadEmpleados(newWorkshopRequest.getCantidadEmpleados());
             newWorkshop.setCalificacionTaller(0);
 
-            return new ResponseEntity(workshopRepository.addNew(newWorkshop), HttpStatus.OK);
+            return new ResponseEntity<>(workshopRepository.addNew(newWorkshop), HttpStatus.OK);
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            return new ResponseEntity(e, HttpStatus.OK);
+            return new ResponseEntity<>(e, HttpStatus.OK);
         }
     }
 

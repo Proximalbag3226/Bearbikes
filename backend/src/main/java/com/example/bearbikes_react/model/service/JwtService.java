@@ -1,6 +1,10 @@
 package com.example.bearbikes_react.model.service;
 
+import com.example.bearbikes_react.model.user.Admin;
+import com.example.bearbikes_react.model.user.CommerceOwner;
+import com.example.bearbikes_react.model.user.Cyclist;
 import com.example.bearbikes_react.model.user.User;
+import com.example.bearbikes_react.model.user.WorkshopOwner;
 import com.fasterxml.jackson.core.JsonParseException;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
@@ -34,7 +38,12 @@ public class JwtService {
 
     public String generateToken(UserDetails userDetails) {
         Map<String, Object> extraClaims = new HashMap<>();
-        extraClaims.put("role", ((User) userDetails).getRole());
+        User user = (User) userDetails;
+                
+        extraClaims.put("name", user.getNombre());
+        extraClaims.put("username", user.getUsername());
+        extraClaims.put("role", user.getRole());
+
         return generateToken(extraClaims, userDetails);
     }
 

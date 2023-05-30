@@ -9,7 +9,6 @@ import lombok.ToString;
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString
 
 @JsonSubTypes({
         @JsonSubTypes.Type(value = RegisterAdminRequest.class, name = "admin"),
@@ -21,4 +20,17 @@ public class RegisterCyclistRequest extends RegisterRequest{
   private String apellidoPat;
   private String apellidoMat;
   private String celular;
+
+  @Override
+  public String toString() {
+    final StringBuilder sb = new StringBuilder("RegisterCyclistRequest{");
+    sb.append("name='").append(super.getName()).append('\'');
+    sb.append(", email='").append(super.getEmail()).append('\'');
+    sb.append(", password='").append(super.getPassword()).append('\'');
+    sb.append(", apellidoPat='").append(apellidoPat).append('\'');
+    sb.append(", apellidoMat='").append(apellidoMat).append('\'');
+    sb.append(", celular='").append(celular).append('\'');
+    sb.append('}');
+    return sb.toString();
+  }
 }

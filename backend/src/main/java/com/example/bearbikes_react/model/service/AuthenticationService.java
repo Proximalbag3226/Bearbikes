@@ -161,13 +161,13 @@ public class AuthenticationService {
 
     public AuthenticationResponse authenticate(AuthenticateRequest request) {
         try{
+            var user = userRepository.findUserByEmail(request.getEmail()).orElseThrow(); // to first verify if user Exists
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
                             request.getEmail(),
                             request.getPassword()
                     )
             );
-            var user = userRepository.findUserByEmail(request.getEmail()).orElseThrow();
             var jwtToken = jwtService.generateToken(user);
             revokeAllUserTokens(user);
             saveUserToken(user, jwtToken);
@@ -176,7 +176,13 @@ public class AuthenticationService {
                     .token(jwtToken)
                     .cause("")
                     .build();
-        }catch(NoSuchElementException | AuthenticationException e){
+        }catch(NoSuchElementException e){
+            return AuthenticationResponse.builder()
+                    .message("No se pudo iniciar sesión")
+                    .token("")
+                    .cause("No existe ningún usuario registrado con el email proporcionado")
+                    .build();
+        }catch (AuthenticationException e ){
             return AuthenticationResponse.builder()
                     .message("No se pudo iniciar sesión")
                     .token("")
