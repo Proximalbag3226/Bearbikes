@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { registerUser } from "./Register";
 import { loginUser } from './Register';
 import { redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function FormFunction(formValues){
+    const redirect = useNavigate();
     console.log("formValues: ", formValues);
     const [formData, setFormData] = useState({
         ...formValues
@@ -28,11 +30,14 @@ function FormFunction(formValues){
         try {
             const formDataWithUserType = {...formData, type: formValues.get('type')}; // añade el tipo de usuario al objeto formData
             console.log("formData submit: ", formData);
-            const data = await registerUser(formDataWithUserType);
+            const data = registerUser(formDataWithUserType);
             console.log("Success:", data);
+            alert("registro exitoso")
         } catch (error) {
             console.error("Error:", error);
+            alert("No se ha registrado el")
         }
+        redirect('/login');
     };
     return {handleChange, handleSubmit, formData};
 }
@@ -62,10 +67,14 @@ export function Formlogin(formValues){
         try {
             const data = await loginUser(formData);
             console.log("Success:", data);
+            alert("Inicio de Sesion exitoso");
+            redirect("/")
         } catch (error) {
             console.error("Error:", error);
+            redirect("/");
+            alert("No se ha podido iniciar sesion");
         }
-        return redirect("/");
+        redirect("/");
     };
     return {handleChange, handleSubmit, formData};
 }

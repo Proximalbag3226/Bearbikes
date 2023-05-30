@@ -5,19 +5,23 @@ import jwt_decode from "jwt-decode";
 function Principal() {
 
   const llave = 'admin';
-  const getUserInfo = () => {
+  function decodificado(){
     const token = localStorage.getItem("token");
-    if (token) {
-      const decoded = jwt_decode(token);
-      console.log(decoded);
-      return decoded;
+    if  (token) {
+      try{
+        const tokenDecodificado = jwt_decode(token);
+        console.log(tokenDecodificado);
+        return tokenDecodificado;
+      } catch (error) {
+        console.error('El token no ha podido ser decodificado', error);
+      }
     }
     return null;
-  };
+  }
+  const tokenDecodificado = decodificado();
+  const username = tokenDecodificado?.username;
+  const key = tokenDecodificado?.type;
 
-  const key = getUserInfo.key;
-
-  const [userInfo, setUserInfo] = useState(null);
   return (
     <div>
       <header className={"header"}>
@@ -32,8 +36,8 @@ function Principal() {
             <a href="/">Inicio</a>
             <a href="prueba1/src/Componentes/Principal">Nosotros</a>
             <a href="src/componentes/Principal#">Contacto</a>
-            {userInfo ? (
-              <a href="#">Bienvenido, {userInfo.username}!</a>
+            {username ? (
+              <a href="#">Bienvenido, {username}!</a>
             ) : (
               <a href="#">Bienvenido, identifiquese</a>
             )}
@@ -64,14 +68,14 @@ function Principal() {
             <a href={"/tienda"}>Tienda bicicletas</a>
             <a href={"/tienda2"}>Tienda de Productos</a>
             <a href={"/talleres"}>Talleres</a>
-            {llave === 'admin' ? (
+            {key === 'admin' ? (
             <a href={"/reparaciones"}>Reparaciones</a>
             ) : (
               <></>
               )}
             <a href={"/rutas"}>Creador de rutas</a>
             <a href={"/avisos"}>Avisos</a>
-            {llave === 'admin' ? (
+            {key === 'admin' ? (
             <a href={"/gestion"}>Gestion</a>
             ) : (
               <></>

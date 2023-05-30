@@ -49,7 +49,7 @@ const CreateProducts = () => {
         },
           type: type,
         };
-        await axios.post(url, data, { headers: headers }); //quitando el await ya se puede realizar la redireccion
+        axios.post(url, data, { headers: headers }); //quitando el await ya se puede realizar la redireccion
         redirect('/');
       };
 
