@@ -40,12 +40,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull FilterChain filterChain) throws ServletException, IOException {
         String authHeader = request.getHeader("Authorization");
-        if (new AntPathRequestMatcher("/api/v1/auth/**").matches(request)) { // if the request is a register or login request we do not need jwt auth
+        if (new AntPathRequestMatcher("/api/v1/auth/**").matches(request) || new AntPathRequestMatcher("/workshop/**").matches(request) || new AntPathRequestMatcher("/commerce/**").matches(request)) { // if the request is a register or login request we do not need jwt auth
             filterChain.doFilter(request, response);
             return;
         }
         try {
-
             if (isAuthHeaderValid(authHeader)) { // check if request has a valid auth Header
                 String jwt = authHeader.substring(7);
 

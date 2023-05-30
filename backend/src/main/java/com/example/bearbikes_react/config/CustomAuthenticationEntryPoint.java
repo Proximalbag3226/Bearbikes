@@ -24,6 +24,7 @@ public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint 
     public void commence(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse,
                          AuthenticationException e) throws IOException, ServletException {
         ObjectMapper mapper = new ObjectMapper();
+        e.printStackTrace();
 
         InvalidJwtResponse errorDetails =
                 InvalidJwtResponse.builder()

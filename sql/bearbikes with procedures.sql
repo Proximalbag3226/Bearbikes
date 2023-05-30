@@ -117,9 +117,9 @@ CREATE TABLE Establecimientos( -- LA TIENDA Y TALLER SE ENCUENTRAN AQUI, PERO EL
     rfc_moral varchar(15) not null unique,
     tipo_establecimiento varchar(30) not null default 'COMERCIO' check(tipo_establecimiento = 'TALLER' OR tipo_establecimiento = 'COMERCIO'),
     id_direccion int ,
-    foreign key (id_direccion) references Direcciones(id_direccion),
+    foreign key (id_direccion) references Direcciones(id_direccion) on delete cascade on update cascade,
     foreign key (tipo_establecimiento) references TipoEstablecimientos(tipo_establecimiento),
-    foreign key (id_dueño_establecimiento) references Empresarios (id_empresario)
+    foreign key (id_dueño_establecimiento) references Empresarios (id_empresario) on delete cascade on update cascade
 );
     
 create table Talleres (
@@ -141,14 +141,14 @@ create table Reparaciones(
 	estado_reparacion varchar(20) default 'etapa inicial' not null,
 	tipo_reparacion varchar (40),
 	fecha_estimada TIMESTAMP,
-	foreign key (id_dueño_taller) references Empresarios(id_empresario),
+	foreign key (id_dueño_taller) references Empresarios(id_empresario) on delete cascade,
 	foreign key (id_ciclista) references Ciclistas(id_ciclista),
-	foreign key (id_taller) references Talleres(id_taller)
+	foreign key (id_taller) references Talleres(id_taller) on delete cascade
 );
-create table Taller_Direccion(
-	id_taller int not null, 
+create table establecimiento_direccion(
+	id_establecimiento int not null, 
 	id_direccion int not null, 
-    foreign key (id_taller) references Talleres(id_taller) on update cascade on delete cascade,
+    foreign key (id_establecimiento) references Establecimientos(id_establecimiento) on update cascade on delete cascade,
     foreign key (id_direccion) references Direcciones(id_direccion) on update cascade on delete cascade
 );
 
@@ -464,6 +464,7 @@ DELIMITER $$
 				(calle, numero_exterior, numero_interior, colonia, codigo_postal, alcaldia, ciudad, tipo_direccion) VALUES
 				(calle, numeroExterior, numeroInterior, colonia, codigoPostal, alcaldia, ciudad, 'ESTABLECIMIENTO');
 			SELECT last_insert_id() into idDireccionInsertada;
+            
                 
 			SET idDireccionEstablecimiento = last_insert_id();
             CALL debug_msg('ID EMPRESARIO OBTENIDO ', idEmpresario);
@@ -471,6 +472,8 @@ DELIMITER $$
             
 			CALL insertar_nuevo_establecimiento(idEmpresario, nombreEstablecimiento, rfcEstablecimiento, idDireccionEstablecimiento, @idEstablecimientoInsertado);
 			SELECT @idEstablecimientoInsertado INTO idEstablecimiento;       
+            
+            INSERT INTO establecimiento_direccion values( idEstablecimiento,idDireccionInsertada);
 		END $$
         
         -- ---------------------------------------- PROCEDURE NUEVO TALLER -----------------------------------------$$
@@ -498,6 +501,8 @@ DELIMITER $$
 			CALL insertar_nuevo_establecimiento(idEmpresario, nombreEstablecimiento, rfcEstablecimiento, idDireccionEstablecimiento, @idEstablecimientoInsertado);
 			SELECT @idEstablecimientoInsertado INTO idEstablecimiento;     
             
+            INSERT INTO establecimiento_direccion values( idEstablecimiento,idDireccionInsertada);
+            
             INSERT INTO Talleres (id_taller, tipo_establecimiento, calificacion_taller, cantidad_empleados) values
 				(@idEstablecimientoInsertado, 'TALLER', 0, numeroEmpleados);
 		END $$
@@ -522,6 +527,14 @@ CALL añadir_nuevo_taller(
 	/* idEstablecimiento */ @idTallerInsertado
 );
 SELECT @idTallerInsertado AS 'id del nuevo taller', @idDireccionInsertada AS 'id direccion del nuevo taller';
+select * from direcciones;
+SELECT establecimiento_direccion.id_direccion FROM establecimiento_direccion WHERE establecimiento_direccion.id_establecimiento = 1;
+
+/*
+DELETE FROM Talleres WHERE id_taller = 3;
+DELETE FROM Establecimientos WHERE id_establecimiento = 3;
+DELETE FROM direcciones WHERE id_direccion = 3;
+*/
 SELECT -- select del taller insertado
 	Establecimientos.nombre_establecimiento, Establecimientos.rfc_moral, Establecimientos.tipo_establecimiento, 
     Personas.nombre as nombre_dueño, Personas.numero_celular as celular_dueño, 

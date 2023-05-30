@@ -2,6 +2,7 @@ package com.example.bearbikes_react.controller.establishments;
 
 import com.example.bearbikes_react.model.establishments.Workshop;
 import com.example.bearbikes_react.model.repository.establishment.WorkshopRepository;
+import com.example.bearbikes_react.utils.payload.establishment.delete.request.DeleteEstablishmentRequest;
 import com.example.bearbikes_react.utils.payload.establishment.register.request.RegisterWorkshopRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,12 +31,28 @@ public class WorkshopController {
         return workshopRepository.getAll();
     }
 
+
+
+    @PostMapping(value = "/delete", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<?> deleteRegisteredWorkshop(@RequestBody DeleteEstablishmentRequest deleteRequest) {
+	try {
+            int id = deleteRequest.getId();
+            System.out.println("**ID TALLER => " + id);
+       
+            return new ResponseEntity<>(workshopRepository.deleteById(id), HttpStatus.OK);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.OK);
+        }
+    }
+
     @PostMapping(value = "/register", consumes = "application/json", produces = "application/json")
     public ResponseEntity<?> registerNewAdmin(@RequestBody RegisterWorkshopRequest newWorkshopRequest) {
 
         try {
-            String emailSesionActiva = SecurityContextHolder.getContext().getAuthentication().getName();
-            System.out.println("Active session email " + emailSesionActiva);
+            String emailSesionActiva = newWorkshopRequest.getEmail();
+            System.out.println("**EMAIL => " + emailSesionActiva);
 
             Workshop newWorkshop = new Workshop();
             newWorkshop.setEmailDueñoEstablecimiento(emailSesionActiva);
@@ -44,12 +61,14 @@ public class WorkshopController {
             newWorkshop.setDireccion(newWorkshopRequest.getDireccionEstablecimiento());
             newWorkshop.setCantidadEmpleados(newWorkshopRequest.getCantidadEmpleados());
             newWorkshop.setCalificacionTaller(0);
+            System.out.println("**newWorkshop => " + newWorkshop );
+         
 
             return new ResponseEntity<>(workshopRepository.addNew(newWorkshop), HttpStatus.OK);
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            return new ResponseEntity<>(e, HttpStatus.OK);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.OK);
         }
     }
 

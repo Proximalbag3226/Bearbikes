@@ -73,6 +73,23 @@ public class CommerceRepository {
         return jdbcTemplate.queryForObject(countUsersQuery, Integer.class);
     }
 
+    public Boolean deleteById (int id){
+		/*
+			DELETE FROM Talleres WHERE id_taller = 3;
+			DELETE FROM Establecimientos WHERE id_establecimiento = 3;
+			DELETE FROM direcciones WHERE id_direccion = 3;
+		*/
+
+        int idDireccion = getAddressIdForCommerce(id);
+
+        String sqlEstablecimiento = "DELETE FROM Establecimientos WHERE id_establecimiento = ?";
+        jdbcTemplate.update(sqlEstablecimiento, id);
+
+        String sqlDireccion = "DELETE FROM direcciones WHERE id_direccion = ?";
+        jdbcTemplate.update(sqlDireccion, idDireccion);
+
+        return true;
+    }
 
     public Commerce getById(int workshopId) {
         return jdbcTemplate.queryForObject(SELECT_COMMERCE_BY_ID_QUERY, new CommerceMapper(), workshopId);
@@ -89,8 +106,9 @@ public class CommerceRepository {
         return jdbcTemplate.query(SELECT_ALL_COMMERCES_QUERY, new CommerceMapper());
     }
 
-    public int getAddressIdForWorkshop(int idEstablishment) {
-        String query = "SELECT direcciones.id_direccion FROM direcciones WHERE direcciones.id_direccion = (?)";
+
+    public int getAddressIdForCommerce(int idEstablishment){
+        String query = "SELECT establecimiento_direccion.id_direccion FROM establecimiento_direccion WHERE establecimiento_direccion.id_establecimiento = (?);";
         return jdbcTemplate.queryForObject(query, Integer.class, idEstablishment);
     }
 
@@ -151,7 +169,7 @@ public class CommerceRepository {
     class CommerceMapper implements RowMapper<Commerce> {
         public Commerce mapRow(ResultSet rs, int rowNum) throws SQLException {
             Address commerceAddress = new Address();
-            commerceAddress.setIdDireccion(getAddressIdForWorkshop(rs.getInt("id_establecimiento")));
+            commerceAddress.setIdDireccion(getAddressIdForCommerce(rs.getInt("id_establecimiento")));
             commerceAddress.setCalle(rs.getString("calle"));
             commerceAddress.setNumeroExterior(rs.getString("numero_exterior"));
             commerceAddress.setNumeroInterior(rs.getString("numero_interior"));

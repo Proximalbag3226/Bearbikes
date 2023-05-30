@@ -88,9 +88,29 @@ public class WorkshopRepository {
         return jdbcTemplate.query(SELECT_ALL_WORKSHOPS_QUERY, new WorkshopMapper());
     }
 
+    public Boolean deleteById (int id){
+		/*
+			DELETE FROM Talleres WHERE id_taller = 3;
+			DELETE FROM Establecimientos WHERE id_establecimiento = 3;
+			DELETE FROM direcciones WHERE id_direccion = 3;
+		*/
+
+        int idDireccion = getAddressIdForWorkshop(id);
+
+        String sqlTaller = "DELETE FROM Talleres WHERE id_taller = ?";
+        jdbcTemplate.update(sqlTaller, id);
+		
+        String sqlEstablecimiento = "DELETE FROM Establecimientos WHERE id_establecimiento = ?";
+        jdbcTemplate.update(sqlEstablecimiento, id);
+
+        String sqlDireccion = "DELETE FROM direcciones WHERE id_direccion = ?";
+        jdbcTemplate.update(sqlDireccion, idDireccion);		
+		
+		return true;		
+    }
 
     public int getAddressIdForWorkshop(int idEstablishment){
-        String query = "SELECT direcciones.id_direccion FROM direcciones WHERE direcciones.id_direccion = (?)";
+        String query = "SELECT establecimiento_direccion.id_direccion FROM establecimiento_direccion WHERE establecimiento_direccion.id_establecimiento = (?);";
         return jdbcTemplate.queryForObject(query, Integer.class, idEstablishment);
     }
 

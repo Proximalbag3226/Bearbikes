@@ -27,6 +27,7 @@ public abstract class RegisterEstablishmentRequest {
 
     private String nombreEstablecimiento;
     private String rfcEstablecimiento;
+    private String email;
     private Address direccionEstablecimiento;
 }
 
