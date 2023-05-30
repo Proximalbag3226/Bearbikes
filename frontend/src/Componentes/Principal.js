@@ -4,7 +4,6 @@ import jwt_decode from "jwt-decode";
 
 function Principal() {
 
-  const llave = 'admin';
   function decodificado(){
     const token = localStorage.getItem("token");
     if  (token) {
@@ -19,8 +18,8 @@ function Principal() {
     return null;
   }
   const tokenDecodificado = decodificado();
-  const username = tokenDecodificado?.username;
-  const key = tokenDecodificado?.type;
+  const username = tokenDecodificado?.sub;
+  const key = tokenDecodificado?.role;
 
   return (
     <div>
@@ -43,7 +42,7 @@ function Principal() {
             )}
             <a href={"/carrito"}>Carrito</a>
             {key === 'admin' ? (
-                    <a href="/nuevotaller">Nuevo Taller</a>
+                    <a href="/createtaller">Nuevo Taller</a>
                     ) : (
                       <></>
                 )}
@@ -64,10 +63,11 @@ function Principal() {
               <></>
               )}
             <a href={"/comercios"}>Comercios</a>
+            <a href={"/nuevoscomercios"}>Nuevos Comercios</a>
             <a href={"/infob"}>Info bicicletas</a>
             <a href={"/tienda"}>Tienda bicicletas</a>
-            <a href={"/tienda2"}>Tienda de Productos</a>
             <a href={"/talleres"}>Talleres</a>
+            <a href={"/nuevostalleres"}>Nuevos Talleres</a>
             {key === 'admin' ? (
             <a href={"/reparaciones"}>Reparaciones</a>
             ) : (

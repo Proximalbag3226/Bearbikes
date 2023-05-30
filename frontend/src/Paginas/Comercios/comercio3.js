@@ -1,7 +1,7 @@
 import Principal from "../../Componentes/Principal";
 import Ubicacion from "../Talleres/Ubicacion";
 
-const Comercio1 = () => {
+const Comercio3 = () => {
     return(
         <div>
             <div>
@@ -10,7 +10,7 @@ const Comercio1 = () => {
             <div>
                 <Ubicacion
                     coordinates={[19.443876740696666, -99.17962725340328]}
-                    lugar={"Tienda de ropa ay wey"}
+                    lugar={"Aqui esta la palestina"}
                     text={"aquii va una breve descripción del taller"}
                     img1='comercio1.1'
                     img2='comercio1.2'
@@ -20,4 +20,4 @@ const Comercio1 = () => {
     );
 }
 
-export default Comercio1
+export default Comercio3

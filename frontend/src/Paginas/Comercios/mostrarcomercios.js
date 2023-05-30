@@ -6,23 +6,23 @@ import Principal from "../../Componentes/Principal";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import variables from "../../Funciones/constantes";
 
-const url = `http://${variables.apiHost}:${variables.apiPort}/${variables.taller}/getAll`;
-const urlsdelete = `http://${variables.apiHost}:${variables.apiPort}/${variables.taller}/deleate`;
+const url = `http://${variables.apiHost}:${variables.apiPort}/${variables.comercio}/getAll`;
+const urlsdelete = `http://${variables.apiHost}:${variables.apiPort}/${variables.comercio}/deleate`;
 
-const ShowProducts = () => {
+const ShowComercio = () => {
     const key = 'admin'
-    const [talleres, setTalleres] = useState([]);
+    const [comercios, setComercios] = useState([]);
     useEffect(() => {
-        getTalleres();
+        getComercios();
     },[]);
-    const getTalleres = async() =>{
+    const getComercios = async() =>{
         const respuesta = await axios.get(url);
-        setTalleres(respuesta.data);
+        setComercios(respuesta.data);
     }
-    const deleteTaller = async(id) =>{
+    const deleteComercio = async(id) =>{
         const params  = {headers: {'Content-Type':'application/json'},data:{'id':id}};
         await axios.delete(urlsdelete,params);
-        getTalleres();
+        getComercios();
     }
   return (
     <div className="container-fluid">
@@ -30,7 +30,7 @@ const ShowProducts = () => {
         <div className="row mt-3">
             <div className="col-md-4 offset-md-4">
                 <div className="d-grid mx-auto">
-                    <Link to='/createtaller' className="btn btn-dark" >Añadir</Link>
+                    <Link to='/createcomercio' className="btn btn-dark" >Añadir Nuevo Comercio</Link>
                 </div>
             </div>
         </div>
@@ -39,20 +39,20 @@ const ShowProducts = () => {
                 <div className="table-responsive">
                     <table className="table table-bordered">
                         <thead className="texto">
-                            <tr><th className="texto1">ID</th><th className="texto1">Taller</th><th className="texto1">Direccion</th><th className="texto1">Cantidad de empleados</th><th></th></tr>
+                            <tr><th className="texto1">ID</th><th className="texto1">Comercios</th><th className="texto1">Direccion</th><th className="texto1">Codigo Postal</th><th></th></tr>
                         </thead>
                         <tbody className="table-group-divider">
-                            {talleres.map( (taller, i)=>(
-                                <tr key={taller.id} className="texto">
+                            {comercios.map( (comercios, i)=>(
+                                <tr key={comercios.id} className="texto">
                                     <td>{(i+1)}</td>
-                                    <td>{taller.nombreEstablecimiento}</td>
-                                    <td>{taller.direccion.calle}</td>
-                                    <td>{ new Intl.NumberFormat('es-mx').format(taller.cantidadEmpleados)}</td>
+                                    <td>{comercios.nombreEstablecimiento}</td>
+                                    <td>{comercios.direccion.calle}</td>
+                                    <td>{ new Intl.NumberFormat('es-mx').format(comercios.codigoPostal)}</td>
                                     {key === 'admin' ? (   
                                     <td>
-                                    <Link to={`/edit/${taller.id}`} className='btn btn-warning'>Editar</Link>
+                                    <Link to={`/edit/${comercios.id}`} className='btn btn-warning'>Editar</Link>
                                     &nbsp;
-                                    <button className="btn btn-danger" onClick={()=>deleteTaller(taller.id)}>Eliminar</button>
+                                    <button className="btn btn-danger" onClick={()=>deleteComercio(comercios.id)}>Eliminar</button>
                                     </td>
                                     ) : (
                                     <></>
@@ -69,4 +69,4 @@ const ShowProducts = () => {
   )
 }
 
-export default ShowProducts
+export default ShowComercio

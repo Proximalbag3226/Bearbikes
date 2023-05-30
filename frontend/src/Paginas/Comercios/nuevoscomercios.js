@@ -7,9 +7,9 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import jwt_decode from "jwt-decode";
 import variables from "../../Funciones/constantes";
 
-const url = `http://${variables.apiHost}:${variables.apiPort}/${variables.taller}/register`;
+const url = `http://${variables.apiHost}:${variables.apiPort}/${variables.comercio}/register`;
 
-const CreateProducts = () => {
+const CreateComercio = () => {
     const[nombreEstablecimiento, setNombreEstablecimiento]= useState('');
     const[direccionEstablecimiento, setDireccionEstablecimiento]= useState('');
     const[calle, setCalle]= useState('');
@@ -18,10 +18,10 @@ const CreateProducts = () => {
     const[colonia, setColonia]= useState('');
     const[alcaldia, setAlcaldia]= useState('');
     const[ciudad, setCiudad]= useState('');
-    const[cantidadEmpleados, setCantidadEmpleados]= useState(0);
+    const[codigoPostal, setCodigoPostal]= useState(0);
     const[rfcEstablecimiento, setRfcEstablecimiento] = useState('');
 
-    const type = "taller"
+    const type = "comercio"
     const tipoDireccion = "ESTABLECIMIENTO"
     const token = localStorage.getItem("token")
     const redirect = useNavigate();
@@ -50,7 +50,7 @@ const CreateProducts = () => {
         const data = {
           nombreEstablecimiento: nombreEstablecimiento,
           direccionEstablecimiento: direccionEstablecimiento,
-          cantidadEmpleados: cantidadEmpleados,
+          codigoPostal: codigoPostal,
           rfcEstablecimiento: rfcEstablecimiento,
           direccionEstablecimiento : { 
             tipoDireccion : tipoDireccion,
@@ -74,7 +74,7 @@ const CreateProducts = () => {
         <div className="row mt-3">
             <div className="col-12 col-lg-8 offset-0 offset-lg-2">
                 <div className="card">
-                    <div className="card-header bg-dark text-white">Añadir Talleres</div>
+                    <div className="card-header bg-dark text-white">Añadir Comercios</div>
                     <div className="card-body">
                         <form onSubmit={store}>
                             <label>Nombre: </label>
@@ -117,10 +117,10 @@ const CreateProducts = () => {
                             className="form-control"
                             required={true} value={rfcEstablecimiento} onChange={ (e) => setRfcEstablecimiento(e.target.value)}>
                             </input>
-                            <label>Cantidad de empleados: </label>
+                            <label>Codigo Postal: </label>
                             <input type='number' id='precio' 
                             className="form-control" step='0.1'
-                            required={true} value={cantidadEmpleados} onChange={ (e) => setCantidadEmpleados(e.target.value)}>
+                            required={true} value={codigoPostal} onChange={ (e) => setCodigoPostal(e.target.value)} maxLength={5}>
                             </input>
                             <button className="btn btn-success mt-3">Guardar</button>
                         </form>
@@ -132,4 +132,4 @@ const CreateProducts = () => {
   )
 }
 
-export default CreateProducts
+export default CreateComercio

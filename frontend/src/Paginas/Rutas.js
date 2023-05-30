@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import L from 'leaflet';
+import L, { icon } from 'leaflet';
 import 'leaflet-routing-machine';
 import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
 import "leaflet-control-geocoder/dist/Control.Geocoder.css";
@@ -11,6 +11,10 @@ import marcador2 from '../IMG/marcador2.png'
 
 function Map() {
   useEffect(() => {
+    const customIcon = L.icon({
+      iconUrl: marcador2,
+      iconSize: [32, 32],
+    });
     // Inicializa el mapa en el div con el id "map"
     const map = L.map('map').setView([19.42847, -99.12766], 13);
 
@@ -19,22 +23,16 @@ function Map() {
       attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
       maxZoom: 18,
     }).addTo(map);
-
-
-
-
-    L.icon = function(){
-      return {
-        iconUrl: marcador2,
-        iconRetinaUrl: marcador2
-      }
-    };
-
     // Agrega la capa de ruta usando Leaflet Routing Machine
     L.Routing.control({
-      waypoints: [
-        L.latLng(19.452147, -99.1747),
-        L.latLng(19.4521, -99.17)
+      waypoints: [{
+        latLng: L.latLng(19.452147, -99.1747),
+        icon: customIcon,
+      },
+      {
+        latLng: L.latLng(19.4521, -99.17),
+        icon: customIcon,
+      }
       ],
       language: 'es',
       geocoder: L.Control.Geocoder.nominatim(),

@@ -29,6 +29,7 @@ import Dueño_taller from './Paginas/Registro/Tallerf';
 import { redirect } from "react-router-dom";
 import { Route, Routes } from "react-router-dom";
 import { isAuthenticated } from './Funciones/Permitir_acceso';
+import Taller3 from './Paginas/Talleres/Taller3';
 import Tienda from './Paginas/Tienda/Componentes/Tienda';
 import { CarritoProvider } from './Paginas/Tienda/Componentes/Carritocontext';
 import Carrito from './Paginas/Tienda/Componentes/Carrito';
@@ -46,6 +47,11 @@ import Prueba from './Paginas/Prueba/noc';
 import ShowProducts from './Paginas/Prueba2/ShowProducts';
 import CreateProducts from './Paginas/Prueba2/CreateProducts';
 import EditProducts from './Paginas/Prueba2/EditProducts';
+import Taller4 from './Paginas/Talleres/Taller4';
+import Comercio2 from './Paginas/Comercios/comercio2';
+import Comercio3 from './Paginas/Comercios/comercio3';
+import ShowComercio from './Paginas/Comercios/mostrarcomercios';
+import CreateComercio from './Paginas/Comercios/nuevoscomercios';
 
 const router = createBrowserRouter([
   {
@@ -173,12 +179,28 @@ const router = createBrowserRouter([
     element: <Taller2/>
   },
   {
+    path: '/taller3',
+    element: <Taller3/>
+  },
+  {
+    path: 'taller4',
+    element: <Taller4/>
+  },
+  {
     path: '/comercios',
     element: <Comercios/>
   },
   {
     path: '/comercio1',
     element: <Comercio1/>
+  },
+  {
+    path: '/comercio2',
+    element: <Comercio2/>
+  },
+  {
+    path: '/comercio3',
+    element: <Comercio3/>
   },
   {
     path: '/tienda2',
@@ -205,16 +227,24 @@ const router = createBrowserRouter([
     element: <Prueba/> 
   },
   {
-    path: '/showproducts',
+    path: '/nuevostalleres',
     element: <ShowProducts/>
   },
   {
-    path: '/create',
+    path: '/createtaller',
     element: <CreateProducts/>
   },
   {
     path: '/edit/:id',
     element: <EditProducts/>
+  },
+  {
+    path: '/nuevoscomercios',
+    element: <ShowComercio/>
+  },
+  {
+    path: '/createcomercio',
+    element: <CreateComercio/>
   }
 ]);
 
