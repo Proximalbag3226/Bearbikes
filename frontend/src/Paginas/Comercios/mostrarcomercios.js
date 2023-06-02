@@ -36,7 +36,7 @@ const ShowComercio = () => {
             <div className="col-md-4 offset-md-4">
                 <div className="d-grid mx-auto">
                     <Link to='/createcomercio' className="btn btn-dark" >Añadir Nuevo Comercio</Link>
-                </div>
+                </div>  
             </div>
         </div>
         <div className="row mt-3">
