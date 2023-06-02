@@ -611,10 +611,14 @@ INSERT INTO reparaciones (id_dueño_taller, id_ciclista, id_taller,  tipo_repara
     -- ------------------------------------------- SELECT CLAUSE para Chats ---------------------------------------------
 select * from chats;
 INSERT INTO chats ( id_dueño_taller, id_ciclista) values( 2, 1);
+SELECT * from chats where chats.id_chat = 1 LIMIT 1;
 
 -- ------------------------------------------- SELECT CLAUSE para MENSAJES ---------------------------------------------
 select * from mensajes;
 INSERT INTO mensajes (tipo_mensaje, id_chat, id_Emisor, contenido_mensaje) values ('TEXTO', 1, 2, 'HOLA DESDE DUEÑO TALLER');
+
+
+SELECT * FROM mensajes where mensajes.id_chat = 1 ORDER BY mensajes.fecha_envio, mensajes.id_mensaje;
 
 -- ------------------------------------------- USER LOGIN PROCEDURE ----------------------------------------------------
 DROP procedure IF EXISTS login_usuario;

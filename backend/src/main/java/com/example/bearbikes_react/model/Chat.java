@@ -1,12 +1,19 @@
 package com.example.bearbikes_react.model;
 
+import lombok.Builder;
+import lombok.Data;
+
+import java.sql.Timestamp;
 import java.util.List;
 
+@Data
+@Builder
 public class Chat {
     private int id;
     private int idDueño;
     private int idCiclista;
     private List<Message> mensajesChat;
+    private Timestamp fechaCreacion;
 
     public Chat(int idDueño, int idCiclista) {
         this.idDueño = idDueño;
@@ -26,35 +33,5 @@ public class Chat {
         return sb.toString();
     }
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getIdDueño() {
-        return idDueño;
-    }
-
-    public void setIdDueño(int idDueño) {
-        this.idDueño = idDueño;
-    }
-
-    public int getIdCiclista() {
-        return idCiclista;
-    }
-
-    public void setIdCiclista(int idCiclista) {
-        this.idCiclista = idCiclista;
-    }
-
-    public List<Message> getMensajesChat() {
-        return mensajesChat;
-    }
-
-    public void setMensajesChat(List<Message> mensajesChat) {
-        this.mensajesChat = mensajesChat;
-    }
 }

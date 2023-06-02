@@ -1,0 +1,18 @@
+##### Deployment configuration
+server.port=${DEPLOY_PORT}
+#server.address=${DEPLOY_IP}
+server.address=127.0.0.1
+
+##### mysql database configurations
+spring.datasource.url=jdbc:mysql://localhost:${DATABASE_PORT}/${DATABASE_NAME}?
+spring.datasource.username=${DATABASE_USERNAME}
+spring.datasource.password=${DATABASE_PASS}
+
+##### JWT authentication config
+# secret for JWT signing process
+jwt.secret=${JWT_SECRET_PASSWORD}
+# JWT tokens life in ms
+jwt.life.ms=86400000
+
+# colorized output config
+spring.output.ansi.enabled=ALWAYS

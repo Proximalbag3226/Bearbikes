@@ -1,32 +1,30 @@
 package com.example.bearbikes_react.model;
 
-import java.sql.Date;
+import lombok.Builder;
+import lombok.Data;
 
+import java.sql.Timestamp;
+
+
+@Data
+@Builder
 public class Message {
+
+
+    public Message(){}// No args constructor for Builder annotation
 
     private int id;
     private int idChat;
     private int idEmisor;
     private TipoMensaje tipo;
-    private Object contenido;
-    private Date fechaEnvio;
+    private byte[] contenido;
+    private Timestamp fechaEnvio;
 
-    public Message(int idEmisor, int idChat, TipoMensaje tipo, Object contenido) {
+    public Message(int idEmisor, int idChat, TipoMensaje tipo, byte[] contenido) {
         this.idEmisor = idEmisor;
         this.idChat = idChat;
         this.tipo = tipo;
         this.contenido = contenido;
-    }
-
-    public Message() {
-    }
-
-    public int getIdChat() {
-        return idChat;
-    }
-
-    public void setIdChat(int idChat) {
-        this.idChat = idChat;
     }
 
     @Override
@@ -40,46 +38,6 @@ public class Message {
         sb.append(", fechaEnvio=").append(fechaEnvio);
         sb.append('}');
         return sb.toString();
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getIdEmisor() {
-        return idEmisor;
-    }
-
-    public void setIdEmisor(int idEmisor) {
-        this.idEmisor = idEmisor;
-    }
-
-    public TipoMensaje getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(TipoMensaje tipo) {
-        this.tipo = tipo;
-    }
-
-    public Object getContenido() {
-        return contenido;
-    }
-
-    public void setContenido(Object contenido) {
-        this.contenido = contenido;
-    }
-
-    public Date getFechaEnvio() {
-        return fechaEnvio;
-    }
-
-    public void setFechaEnvio(Date fechaEnvio) {
-        this.fechaEnvio = fechaEnvio;
     }
 
 
