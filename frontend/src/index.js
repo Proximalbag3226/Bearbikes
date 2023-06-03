@@ -52,7 +52,6 @@ import Comercio2 from './Paginas/Comercios/comercio2';
 import Comercio3 from './Paginas/Comercios/comercio3';
 import ShowComercio from './Paginas/Comercios/mostrarcomercios';
 import CreateComercio from './Paginas/Comercios/nuevoscomercios';
-import Chat from './Paginas/Chat/Chat';
 
 const router = createBrowserRouter([
   {
@@ -246,10 +245,6 @@ const router = createBrowserRouter([
   {
     path: '/createcomercio',
     element: <CreateComercio/>
-  },
-  {
-    path: '/chat',
-    element: <Chat/>
   }
 ]);
 

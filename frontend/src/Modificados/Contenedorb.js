@@ -9,7 +9,7 @@ function Contenedorb() {
                 imagen='casco'
                 href={"/cuadro"}/>
             <Tarjeta
-                lugar='Baterias Phylion'
+                lugar='Baterías Phylion'
                 imagen='bici'
                 href={"/bateria"}/>
             <Tarjeta

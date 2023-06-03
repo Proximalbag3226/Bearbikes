@@ -1,9 +1,12 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import jwt_decode from "jwt-decode";
+import { handleLogout } from "../Funciones/Logout";
+import { redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Principal() {
-
+  const redirect = useNavigate();
   function decodificado(){
     const token = localStorage.getItem("token");
     if  (token) {
@@ -33,18 +36,25 @@ function Principal() {
           </div>
           <nav className={"menu"}>
             <a href="/">Inicio</a>
-            <a href="prueba1/src/Componentes/Principal">Nosotros</a>
-            <a href="src/componentes/Principal#">Contacto</a>
             {username ? (
-              <a href="#">Bienvenido, {username}</a>
+              <a href="/">Bienvenido, {username}</a>
             ) : (
-              <a href="#">Bienvenido, identifiquese</a>
+              <a href="/login">Bienvenido, identifiquese</a>
             )}
-            <a href={"/carrito"}>Carrito</a>
-            {key === 'admin' ? (
+            {key === 'CICLISTA' ? (
+              <a href={"/carrito"}>Carrito</a>
+            ):(
+              <></>
+            )}
+            {key === 'DUEÑO_TALLER' ? (
                     <a href="/createtaller">Nuevo Taller</a>
                     ) : (
                       <></>
+                )}
+              {key === '' ? (
+                <></>
+                 ) : (
+                  <button className="button-16" role="button" onClick={handleLogout}>Cerrar sesion</button>
                 )}
           </nav>
         </div>

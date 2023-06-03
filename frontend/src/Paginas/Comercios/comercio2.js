@@ -10,8 +10,8 @@ const Comercio2 = () => {
             <div>
                 <Ubicacion
                     coordinates={[19.443876740696666, -99.17962725340328]}
-                    lugar={"Aqui esta no c"}
-                    text={"aquii va una breve descripción del taller"}
+                    lugar={"Tlayuc"}
+                    text={"Esta es la ubicación del comercio"}
                     img1='comercio1.1'
                     img2='comercio1.2'
                     img3='comercio1.3'/>

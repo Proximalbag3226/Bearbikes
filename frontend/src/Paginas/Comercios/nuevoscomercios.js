@@ -6,6 +6,7 @@ import Principal from "../../Componentes/Principal";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import jwt_decode from "jwt-decode";
 import variables from "../../Funciones/constantes";
+import withAuthorization from "../../Funciones/Permitir_acceso";
 
 const url = `http://${variables.apiHost}:${variables.apiPort}/${variables.comercio}/register`;
 
@@ -65,7 +66,7 @@ const CreateComercio = () => {
           email: email,
         };
         axios.post(url, data, { headers: headers }); //quitando el await ya se puede realizar la redireccion
-        redirect('/');
+        redirect('/nuevoscomercios');
       };
 
   return (

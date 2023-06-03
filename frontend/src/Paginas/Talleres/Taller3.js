@@ -10,7 +10,7 @@ const Taller3 = () => {
             <div>
                 <Ubicacion
                     coordinates={[19.44697059880854, -99.16737650092698]}
-                    lugar={"Taller Hernandez"}
+                    lugar={"Taller Mi princesa"}
                     text={"aquii va una breve descripción del taller"}
                     img1='taller2'
                     img2='taller2.1'

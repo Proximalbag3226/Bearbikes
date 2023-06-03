@@ -9,7 +9,7 @@ function Infocomercios() {
                 imagen='comercio1'
                 href={"/comercio1"}/>
             <Tarjeta
-                lugar='NO C'
+                lugar='Tlayuc'
                 imagen='comercio2'
                 href={"/comercio2"}/>
             <Tarjeta

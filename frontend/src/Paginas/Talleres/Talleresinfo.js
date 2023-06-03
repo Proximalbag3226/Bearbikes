@@ -5,7 +5,7 @@ function Talleresinfo() {
     return(
         <div>
             <Tarjeta
-                lugar='Taller "El chino"'
+                lugar='Taller "Bici Fine"'
                 imagen='taller1'
                 href={"/taller1"}/>
             <Tarjeta
@@ -13,11 +13,11 @@ function Talleresinfo() {
                 imagen='taller2'
                 href={"/taller2"}/>
             <Tarjeta
-                lugar='Taller "El oriental"'
+                lugar='Taller "Mi princesa"'
                 imagen='taller3'
                 href={"/taller3"}/>
             <Tarjeta
-                lugar='Taller "zy"'
+                lugar='Taller "Brinspice"'
                 imagen='taller4'
                 href={"/taller4"}/>
         </div>

@@ -32,7 +32,7 @@ function Producto(props) {
       <h3>
         <img src={require(`../IMG/${props.img1}.jpg`)} alt={props.nombre}/>
       </h3>
-      <p style={{ color: 'white', textAlign: 'center', fontSize: '45px', fontFamily: 'Franklin Gothic', fontWeight: 'inherit',}}> {props.precio} </p>
+      <p style={{ color: 'white', textAlign: 'center', fontSize: '45px', fontFamily: 'Franklin Gothic', fontWeight: 'inherit',}}> {props.precio}$ </p>
       <Boton boton={'Agregar'} onClick={handleClick} />
     </div>
     <div>

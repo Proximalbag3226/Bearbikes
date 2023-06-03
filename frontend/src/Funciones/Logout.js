@@ -1,9 +1,4 @@
-
-const handleLogout = () => {
+export const handleLogout = () => {
     localStorage.removeItem('token');
-    axios.post('/api/logout')
-        .then(response => {
-        })
-        .catch(error => {
-        });
+    window.location.href = window.location.href;
 }

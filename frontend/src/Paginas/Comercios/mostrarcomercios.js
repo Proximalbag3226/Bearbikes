@@ -5,12 +5,27 @@ import './App.css';
 import Principal from "../../Componentes/Principal";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import variables from "../../Funciones/constantes";
+import jwt_decode from "jwt-decode";
 
 const url = `http://${variables.apiHost}:${variables.apiPort}/${variables.comercio}/getAll`;
 const urlsdelete = `http://${variables.apiHost}:${variables.apiPort}/${variables.comercio}/delete`;
 
 const ShowComercio = () => {
-    const key = 'admin'
+    function decodificado(){
+        const token = localStorage.getItem("token");
+        if  (token) {
+          try{
+            const tokenDecodificado = jwt_decode(token);
+            console.log(tokenDecodificado);
+            return tokenDecodificado;
+          } catch (error) {
+            console.error('El token no ha podido ser decodificado', error);
+          }
+        }
+        return null;
+      }
+      const tokenDecodificado = decodificado();
+      const key = tokenDecodificado?.role;
     const [comercios, setComercios] = useState([]);
     useEffect(() => {
         getComercios();
@@ -35,7 +50,11 @@ const ShowComercio = () => {
         <div className="row mt-3">
             <div className="col-md-4 offset-md-4">
                 <div className="d-grid mx-auto">
-                    <Link to='/createcomercio' className="btn btn-dark" >Añadir Nuevo Comercio</Link>
+                    {key === 'DUEÑO_COMERCIO'?(
+                         <a href="/createcomercio" className="btn btn-dark" >Añadir Nuevo Comercio</a>
+                    ):(
+                        <h1 className="titulo">Nuevos Comercios</h1>
+                    )}
                 </div>  
             </div>
         </div>
@@ -44,16 +63,16 @@ const ShowComercio = () => {
                 <div className="table-responsive">
                     <table className="table table-bordered">
                         <thead className="texto">
-                            <tr><th className="texto1">ID</th><th className="texto1">Comercios</th><th className="texto1">Direccion</th><th className="texto1">Colonia</th><th></th></tr>
+                            <tr><th className="texto2">Contacto</th><th className="texto2">Comercio</th><th className="texto2">Direccion</th><th className="texto2">Colonia</th><th className="texto2">Opciones</th></tr>
                         </thead>
                         <tbody className="table-group-divider">
                             {comercios.map( (comercios, i)=>(
-                                <tr key={comercios.id} className="texto">
-                                    <td>{(i+1)}</td>
+                                <tr key={comercios.emailDueñoEstablecimiento} className="texto2">
+                                    <td>{comercios.emailDueñoEstablecimiento}</td>
                                     <td>{comercios.nombreEstablecimiento}</td>
                                     <td>{comercios.direccion.calle}</td>
                                     <td>{comercios.direccion.colonia}</td>
-                                    {key === 'admin' ? (   
+                                    {key === 'DUEÑO_COMERCIO' ? (   
                                     <td>
                                     <Link to={`/edit/${comercios.id}`} className='btn btn-warning'>Editar</Link>
                                     &nbsp;

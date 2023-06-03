@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { CarritoContext } from './Carritocontext';
-import Principal from './Principal';
+import Principal from '../../../Componentes/Principal';
 
 function Carrito() {
   const [carrito, setCarrito] = useContext(CarritoContext);

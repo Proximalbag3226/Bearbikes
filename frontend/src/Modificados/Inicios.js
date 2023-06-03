@@ -11,6 +11,7 @@ function Inicios(){
     formInitialData.set("email", "");
     formInitialData.set("password", "");
     const { formData, handleChange, handleSubmit } = Formlogin(formInitialData);
+    
     return(
         <form onSubmit={handleSubmit}>  
         <h1 className={"titulo"}>Complete los campos</h1>

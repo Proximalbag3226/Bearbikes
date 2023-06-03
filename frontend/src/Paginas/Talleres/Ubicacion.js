@@ -23,7 +23,7 @@ export function Ubicacion(props) {
                     <Marker icon={customMarkerIcon} position={props.coordinates} >
                         <Popup className='popup'>
                             <h4>{props.lugar}</h4>
-                            <p>Aqui se encuentra el Taller</p>
+                            <p>Esta es la ubicación del taller</p>
                         </Popup>
                     </Marker>
                 </MapContainer>

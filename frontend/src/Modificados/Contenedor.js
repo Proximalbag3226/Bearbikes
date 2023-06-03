@@ -5,7 +5,7 @@ function Contenedor() {
     return(
         <div>
             <Tarjeta
-                lugar='Zocalo'
+                lugar='Zócalo'
                 imagen='zocalo'
                 href={"/zocalo"}/>
             <Tarjeta
